@@ -1,0 +1,13 @@
+[package]
+name = "rhb-specs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+creusot-contracts = { version = "*", path = "../creusot/creusot-contracts" }
+
+[features]
+contracts = ["creusot-contracts/contracts"]
