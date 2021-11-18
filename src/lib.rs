@@ -1,5 +1,5 @@
 #![feature(box_syntax, box_patterns)]
-#![feature(unsized_fn_params)]
+#![feature(unsized_fn_params, stmt_expr_attributes, proc_macro_hygiene)]
 #![allow(dead_code)]
 
 pub mod cell;
@@ -9,6 +9,7 @@ pub mod mutex;
 pub mod r#fn;
 pub mod thread;
 pub mod r#box;
+pub mod mem;
 
 pub mod all_zero;
 pub mod even_cell;

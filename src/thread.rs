@@ -5,12 +5,14 @@ use crate::prelude::*;
 pub fn spawn<T: Send + 'static, F: Send + 'static + FakeFnOnce<Return = T>>(
     f: F,
 ) -> JoinHandle<T, SpawnPostCond<F>> {
+    let post_cond = SpawnPostCond { f };
+    let g = Ghost::record(&post_cond);
+    let f = post_cond.f;
     JoinHandle(
         JoinHandleInner(::std::thread::spawn(
             #[cfg_attr(feature = "contracts", creusot::no_translate)]
             || f.call(),
-        )),
-        Ghost::record(&SpawnPostCond { f }),
+        )), g
     )
 }
 

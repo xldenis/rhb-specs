@@ -31,6 +31,7 @@ impl<T> Vec<T> {
 
 struct IterMut<'a, T>(::std::slice::IterMut<'a, T>);
 
+#[cfg(feature = "contracts")]
 impl<'a, T> Model for IterMut<'a, T> {
     type ModelTy = Seq<&'a mut T>;
 

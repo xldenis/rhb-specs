@@ -1,5 +1,4 @@
 use crate::prelude::*;
-use creusot_contracts::std::mem::replace;
 
 enum List<T> {
     Nil,
