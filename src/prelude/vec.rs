@@ -1,4 +1,4 @@
-// SPEC LINES 8 + 2 + 2 + 2 + 5 + 2 + 4 + 5 + 8 + 3 + 4
+// SPEC LINES 8 + 2 + 2 + 2 + 5 + 2 + 4 + 5 + 8 + 3 + 4 + 3
 use crate::prelude::*;
 
 pub struct Vec<T>(std::vec::Vec<T>);
@@ -71,7 +71,13 @@ impl<T> Vec<T> {
     pub fn iter_mut(&mut self) -> IterMut<'_, T> {
         IterMut(self.0.iter_mut())
     }
+}
 
+#[trusted]
+#[ensures((@result).len() === @n)]
+#[ensures(forall<i : Int> 0 <= i && i < @n ==> (@result)[i] === elem)]
+pub fn from_elem<T: ::std::clone::Clone>(elem: T, n: usize) -> Vec<T> {
+    Vec(::std::vec::from_elem(elem, n))
 }
 
 impl<T> ::std::ops::IndexMut<usize> for Vec<T> {

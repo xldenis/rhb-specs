@@ -16,5 +16,3 @@ fn all_zero(v: &mut Vec<u32>) {
         i += 1;
     }
 }
-
-fn main() {}

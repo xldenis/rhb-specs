@@ -1,5 +1,6 @@
 // SPEC LINES 11
-
+// This example doesn't deal with the overflow in the sum, as that's relatively boring...
+// To make the proofs pass, provide the `CREUSOT_UNBOUNDED` flag during compilation
 use crate::prelude::*;
 
 #[ensures((@^v).len() === (@v).len())]

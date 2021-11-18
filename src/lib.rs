@@ -11,3 +11,4 @@ pub mod fib_cell;
 pub mod inc_vec;
 pub mod reversal;
 pub mod concurrent;
+pub mod knights_tour;
