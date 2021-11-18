@@ -1,3 +1,4 @@
+// SPEC lines 6
 use crate::prelude::*;
 
 #[ensures(forall<i : Int> 0 <= i && i < (@^v).len() ==> (@^v)[i] === 0u32)]

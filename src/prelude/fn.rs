@@ -1,3 +1,4 @@
+// SPEC LINES 6
 use crate::prelude::*;
 
 pub trait FakeFnOnce {

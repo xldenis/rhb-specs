@@ -1,4 +1,5 @@
-use creusot_contracts::*;
+// SPEC LINES 8 + 2 + 2 + 2 + 5 + 2 + 4 + 5 + 8 + 3 + 4
+use crate::prelude::*;
 
 pub struct Vec<T>(std::vec::Vec<T>);
 
@@ -62,6 +63,15 @@ impl<T> Vec<T> {
     pub fn pop(&mut self) -> Option<T> {
         self.0.pop()
     }
+
+    #[trusted]
+    #[ensures((@*self).len() === (@result).len() && (@*self).len() === (@^self).len())]
+    #[ensures(forall<i : Int> 0 <= i && i <= (@*self).len() ==> (@*self)[i] === *(@result)[i])]
+    #[ensures(forall<i : Int> 0 <= i && i <= (@^self).len() ==> (@^self)[i] === ^(@result)[i])]
+    pub fn iter_mut(&mut self) -> IterMut<'_, T> {
+        IterMut(self.0.iter_mut())
+    }
+
 }
 
 impl<T> ::std::ops::IndexMut<usize> for Vec<T> {

@@ -1,3 +1,4 @@
+// SPEC LINES 2
 use crate::prelude::*;
 
 // A version of Box::leak

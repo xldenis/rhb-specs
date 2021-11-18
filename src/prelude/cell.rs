@@ -1,3 +1,4 @@
+// SPEC LINES 4 + 4 (INV)
 use creusot_contracts::*;
 
 pub trait Inv<T> {

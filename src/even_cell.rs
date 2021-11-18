@@ -1,35 +1,11 @@
-use creusot_contracts::*;
-use ::std::marker::PhantomData;
-
-trait Inv<T> {
-    #[predicate]
-    fn inv(x: T) -> bool;
-}
-
-struct Cell<T, I> {
-    inner: ::std::cell::Cell<T>,
-    inv: PhantomData<I>,
-}
-
-impl<T: Copy, I: Inv<T>> Cell<T, I> {
-    #[trusted]
-    #[ensures(I::inv(result))]
-    fn get(&self) -> T {
-        self.inner.get()
-    }
-
-    #[trusted]
-    #[requires(I::inv(v))]
-    fn set(&self, v: T) {
-        self.inner.set(v)
-    }
-}
+// SPEC LINES 5
+use crate::prelude::*;
 
 struct Even;
 
 impl Inv<u32> for Even {
     #[predicate]
-    fn inv(x: u32) -> bool {
+    fn inv(&self, x: u32) -> bool {
         x % 2u32 == 0u32
     }
 }
