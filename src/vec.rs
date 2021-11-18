@@ -2,6 +2,7 @@ use creusot_contracts::*;
 
 pub struct Vec<T>(std::vec::Vec<T>);
 
+#[cfg(feature = "contracts")]
 impl<T> Model for Vec<T> {
     type ModelTy = Seq<T>;
     #[logic]

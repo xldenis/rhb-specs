@@ -8,7 +8,7 @@ pub trait Inv<T> {
 pub struct Cell<T, I> {
     inner: ::std::cell::Cell<T>,
     // Pretend that `I` is ghost
-    ghost_inv: I,
+    pub ghost_inv: I,
 }
 
 impl<T: Copy, I: Inv<T>> Cell<T, I> {
