@@ -8,19 +8,18 @@ pub trait Inv<T> {
 
 pub struct Cell<T, I> {
     inner: ::std::cell::Cell<T>,
-    // Pretend that `I` is ghost
-    pub ghost_inv: I,
+    pub ghost_inv: Ghost<I>,
 }
 
 impl<T: Copy, I: Inv<T>> Cell<T, I> {
     #[trusted]
-    #[ensures(self.ghost_inv.inv(result))]
+    #[ensures((@(self.ghost_inv)).inv(result))]
     pub fn get(&self) -> T {
         self.inner.get()
     }
 
     #[trusted]
-    #[requires(self.ghost_inv.inv(v))]
+    #[requires((@(self.ghost_inv)).inv(v))]
     pub fn set(&self, v: T) {
         self.inner.set(v)
     }
