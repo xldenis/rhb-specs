@@ -3,14 +3,14 @@ use crate::prelude::*;
 
 struct Even;
 
-impl Inv<u32> for Even {
+impl Inv<u64> for Even {
     #[predicate]
-    fn inv(&self, x: u32) -> bool {
-        x % 2u32 == 0u32
+    fn inv(&self, x: u64) -> bool {
+        x % 2u64 == 0u64
     }
 }
 
-fn adds_two(c: &Cell<u32, Even>) {
+fn adds_two(c: &Cell<u64, Even>) {
     let v = c.get();
     // To shut up overflow checking
     if v < 100000 {
