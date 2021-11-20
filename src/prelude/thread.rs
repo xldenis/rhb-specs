@@ -21,7 +21,8 @@ pub struct SpawnPostCond<F> {
     f: F,
 }
 
-impl<F: FakeFnOnce> Inv<F::Return> for SpawnPostCond<F> {
+impl<F: FakeFnOnce + 'static> Inv<F::Return> for SpawnPostCond<F>
+{
     #[predicate]
     fn inv(&self, v: F::Return) -> bool {
         self.f.postcondition(v)

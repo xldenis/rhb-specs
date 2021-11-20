@@ -1,7 +1,7 @@
 // SPEC LINES 4 + 4 (INV)
 use creusot_contracts::*;
 
-pub trait Inv<T> {
+pub trait Inv<T> : 'static {
     #[predicate]
     fn inv(&self, x: T) -> bool;
 }
