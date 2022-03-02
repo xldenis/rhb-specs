@@ -9,7 +9,7 @@ impl<'a, T> Model for IterMut<'a, T> {
     #[trusted]
     #[logic]
     fn model(self) -> Self::ModelTy {
-        panic!()
+        std::process::abort()
     }
 }
 
