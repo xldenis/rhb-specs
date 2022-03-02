@@ -8,6 +8,7 @@ impl<T> Model for Vec<T> {
     type ModelTy = Seq<T>;
     #[logic]
     #[trusted]
+    #[ensures(result.len() <= @usize::MAX)]
     fn model(self) -> Self::ModelTy {
         std::process::abort()
     }

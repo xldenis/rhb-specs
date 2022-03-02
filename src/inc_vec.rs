@@ -1,8 +1,7 @@
 // SPEC LINES 11
-// This example doesn't deal with the overflow in the sum, as that's relatively boring...
-// To make the proofs pass, provide the `CREUSOT_UNBOUNDED` flag during compilation
 use crate::prelude::*;
 
+#[requires(forall<i : Int> 0 <= i && i < (@^v).len() ==> @(@v)[i] <= 10)]
 #[ensures((@^v).len() === (@v).len())]
 #[ensures(forall<i : Int> 0 <= i && i < (@^v).len() ==> @(@^v)[i] === @(@v)[i] + 5)]
 fn inc_vec(v: &mut Vec<u32>) {
@@ -10,6 +9,7 @@ fn inc_vec(v: &mut Vec<u32>) {
 
     let mut it = v.iter_mut();
     let mut _ghost_seen: usize = 0; // Creusot doesn't yet have ghost code
+
     #[invariant(incremented, forall<i : Int>
         0 <= i && i < @_ghost_seen ==>
         @(@^@old_v)[i] === @(@@old_v)[i] + 5
