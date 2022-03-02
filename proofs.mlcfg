@@ -1,0 +1,3701 @@
+module Type
+  use Ref
+  use mach.int.Int
+  use prelude.Int8
+  use prelude.Int16
+  use mach.int.Int32
+  use mach.int.Int64
+  use prelude.UInt8
+  use prelude.UInt16
+  use mach.int.UInt32
+  use mach.int.UInt64
+  use string.Char
+  use floating_point.Single
+  use floating_point.Double
+  use prelude.Prelude
+  type core_cell_unsafecell 't = 
+    | Core_Cell_UnsafeCell 't
+    
+  type core_cell_cell 't = 
+    | Core_Cell_Cell (core_cell_unsafecell 't)
+    
+  type creusotcontracts_logic_ghost_ghost 't = 
+    | CreusotContracts_Logic_Ghost_Ghost opaque_ptr
+    
+  type rhbspecs_prelude_cell_cell 't 'i = 
+    | RhbSpecs_Prelude_Cell_Cell (core_cell_cell 't) (creusotcontracts_logic_ghost_ghost 'i)
+    
+  function rhbspecs_prelude_cell_cell_Cell_ghost_inv (self : rhbspecs_prelude_cell_cell 't 'i) : creusotcontracts_logic_ghost_ghost 'i
+    
+  val rhbspecs_prelude_cell_cell_Cell_ghost_inv (self : rhbspecs_prelude_cell_cell 't 'i) : creusotcontracts_logic_ghost_ghost 'i
+    ensures { result = rhbspecs_prelude_cell_cell_Cell_ghost_inv self }
+    
+  axiom rhbspecs_prelude_cell_cell_Cell_ghost_inv_acc : forall a : core_cell_cell 't, b : creusotcontracts_logic_ghost_ghost 'i . rhbspecs_prelude_cell_cell_Cell_ghost_inv (RhbSpecs_Prelude_Cell_Cell a b : rhbspecs_prelude_cell_cell 't 'i) = b
+  type rhbspecs_evencell_even  = 
+    | RhbSpecs_EvenCell_Even
+    
+  type rhbspecs_prelude_mutex_mutexinner 't  
+  type rhbspecs_prelude_mutex_mutex 't 'i = 
+    | RhbSpecs_Prelude_Mutex_Mutex (rhbspecs_prelude_mutex_mutexinner 't) 'i
+    
+  function rhbspecs_prelude_mutex_mutex_Mutex_1 (self : rhbspecs_prelude_mutex_mutex 't 'i) : 'i
+  val rhbspecs_prelude_mutex_mutex_Mutex_1 (self : rhbspecs_prelude_mutex_mutex 't 'i) : 'i
+    ensures { result = rhbspecs_prelude_mutex_mutex_Mutex_1 self }
+    
+  axiom rhbspecs_prelude_mutex_mutex_Mutex_1_acc : forall a : rhbspecs_prelude_mutex_mutexinner 't, b : 'i . rhbspecs_prelude_mutex_mutex_Mutex_1 (RhbSpecs_Prelude_Mutex_Mutex a b : rhbspecs_prelude_mutex_mutex 't 'i) = b
+  type rhbspecs_concurrent_even  = 
+    | RhbSpecs_Concurrent_Even
+    
+  type rhbspecs_concurrent_addstwo  = 
+    | RhbSpecs_Concurrent_AddsTwo (rhbspecs_prelude_mutex_mutex uint32 (rhbspecs_concurrent_even))
+    
+  function rhbspecs_concurrent_addstwo_AddsTwo_mutex (self : rhbspecs_concurrent_addstwo) : rhbspecs_prelude_mutex_mutex uint32 (rhbspecs_concurrent_even)
+    
+  val rhbspecs_concurrent_addstwo_AddsTwo_mutex (self : rhbspecs_concurrent_addstwo) : rhbspecs_prelude_mutex_mutex uint32 (rhbspecs_concurrent_even)
+    ensures { result = rhbspecs_concurrent_addstwo_AddsTwo_mutex self }
+    
+  axiom rhbspecs_concurrent_addstwo_AddsTwo_mutex_acc : forall a : rhbspecs_prelude_mutex_mutex uint32 (rhbspecs_concurrent_even) . rhbspecs_concurrent_addstwo_AddsTwo_mutex (RhbSpecs_Concurrent_AddsTwo a : rhbspecs_concurrent_addstwo) = a
+  type rhbspecs_prelude_mutex_guardinner 't  
+  type rhbspecs_prelude_mutex_mutexguard 't 'i = 
+    | RhbSpecs_Prelude_Mutex_MutexGuard (rhbspecs_prelude_mutex_guardinner 't) (creusotcontracts_logic_ghost_ghost 'i)
+    
+  function rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 (self : rhbspecs_prelude_mutex_mutexguard 't 'i) : creusotcontracts_logic_ghost_ghost 'i
+    
+  val rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 (self : rhbspecs_prelude_mutex_mutexguard 't 'i) : creusotcontracts_logic_ghost_ghost 'i
+    ensures { result = rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 self }
+    
+  axiom rhbspecs_prelude_mutex_mutexguard_MutexGuard_1_acc : forall a : rhbspecs_prelude_mutex_guardinner 't, b : creusotcontracts_logic_ghost_ghost 'i . rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 (RhbSpecs_Prelude_Mutex_MutexGuard a b : rhbspecs_prelude_mutex_mutexguard 't 'i) = b
+  type rhbspecs_prelude_mutex_joinhandleinner 't  
+  type rhbspecs_prelude_mutex_joinhandle 't 'i = 
+    | RhbSpecs_Prelude_Mutex_JoinHandle (rhbspecs_prelude_mutex_joinhandleinner 't) (creusotcontracts_logic_ghost_ghost 'i)
+    
+  function rhbspecs_prelude_mutex_joinhandle_JoinHandle_1 (self : rhbspecs_prelude_mutex_joinhandle 't 'i) : creusotcontracts_logic_ghost_ghost 'i
+    
+  val rhbspecs_prelude_mutex_joinhandle_JoinHandle_1 (self : rhbspecs_prelude_mutex_joinhandle 't 'i) : creusotcontracts_logic_ghost_ghost 'i
+    ensures { result = rhbspecs_prelude_mutex_joinhandle_JoinHandle_1 self }
+    
+  axiom rhbspecs_prelude_mutex_joinhandle_JoinHandle_1_acc : forall a : rhbspecs_prelude_mutex_joinhandleinner 't, b : creusotcontracts_logic_ghost_ghost 'i . rhbspecs_prelude_mutex_joinhandle_JoinHandle_1 (RhbSpecs_Prelude_Mutex_JoinHandle a b : rhbspecs_prelude_mutex_joinhandle 't 'i) = b
+  type rhbspecs_prelude_thread_spawnpostcond 'f = 
+    | RhbSpecs_Prelude_Thread_SpawnPostCond 'f
+    
+  function rhbspecs_prelude_thread_spawnpostcond_SpawnPostCond_f (self : rhbspecs_prelude_thread_spawnpostcond 'f) : 'f
+  val rhbspecs_prelude_thread_spawnpostcond_SpawnPostCond_f (self : rhbspecs_prelude_thread_spawnpostcond 'f) : 'f
+    ensures { result = rhbspecs_prelude_thread_spawnpostcond_SpawnPostCond_f self }
+    
+  axiom rhbspecs_prelude_thread_spawnpostcond_SpawnPostCond_f_acc : forall a : 'f . rhbspecs_prelude_thread_spawnpostcond_SpawnPostCond_f (RhbSpecs_Prelude_Thread_SpawnPostCond a : rhbspecs_prelude_thread_spawnpostcond 'f) = a
+  type core_result_result 't 'e = 
+    | Core_Result_Result_Ok 't
+    | Core_Result_Result_Err 'e
+    
+  type core_marker_phantomdata 't = 
+    | Core_Marker_PhantomData
+    
+  type core_ptr_unique_unique 't = 
+    | Core_Ptr_Unique_Unique opaque_ptr (core_marker_phantomdata 't)
+    
+  type alloc_rawvec_rawvec 't 'a = 
+    | Alloc_RawVec_RawVec (core_ptr_unique_unique 't) usize 'a
+    
+  type alloc_vec_vec 't 'a = 
+    | Alloc_Vec_Vec (alloc_rawvec_rawvec 't 'a) usize
+    
+  type alloc_alloc_global  = 
+    | Alloc_Alloc_Global
+    
+  type rhbspecs_prelude_vec_vec 't = 
+    | RhbSpecs_Prelude_Vec_Vec (alloc_vec_vec 't (alloc_alloc_global))
+    
+  type rhbspecs_knightstour_point  = 
+    | RhbSpecs_KnightsTour_Point isize isize
+    
+  function rhbspecs_knightstour_point_Point_y (self : rhbspecs_knightstour_point) : isize
+  val rhbspecs_knightstour_point_Point_y (self : rhbspecs_knightstour_point) : isize
+    ensures { result = rhbspecs_knightstour_point_Point_y self }
+    
+  axiom rhbspecs_knightstour_point_Point_y_acc : forall a : isize, b : isize . rhbspecs_knightstour_point_Point_y (RhbSpecs_KnightsTour_Point a b : rhbspecs_knightstour_point) = b
+  function rhbspecs_knightstour_point_Point_x (self : rhbspecs_knightstour_point) : isize
+  val rhbspecs_knightstour_point_Point_x (self : rhbspecs_knightstour_point) : isize
+    ensures { result = rhbspecs_knightstour_point_Point_x self }
+    
+  axiom rhbspecs_knightstour_point_Point_x_acc : forall a : isize, b : isize . rhbspecs_knightstour_point_Point_x (RhbSpecs_KnightsTour_Point a b : rhbspecs_knightstour_point) = a
+  type core_option_option 't = 
+    | Core_Option_Option_None
+    | Core_Option_Option_Some 't
+    
+  function core_option_option_Some_0 (self : core_option_option 't) : 't
+  val core_option_option_Some_0 (self : core_option_option 't) : 't
+    ensures { result = core_option_option_Some_0 self }
+    
+  axiom core_option_option_Some_0_acc : forall a : 't . core_option_option_Some_0 (Core_Option_Option_Some a : core_option_option 't) = a
+  type core_ptr_nonnull_nonnull 't = 
+    | Core_Ptr_NonNull_NonNull opaque_ptr
+    
+  type core_slice_iter_itermut 't = 
+    | Core_Slice_Iter_IterMut (core_ptr_nonnull_nonnull 't) opaque_ptr (core_marker_phantomdata (borrowed 't))
+    
+  type rhbspecs_prelude_itermut_itermut 't = 
+    | RhbSpecs_Prelude_IterMut_IterMut (core_slice_iter_itermut 't)
+    
+  type rhbspecs_fibcell_fib  = 
+    | RhbSpecs_FibCell_Fib usize
+    
+  function rhbspecs_fibcell_fib_Fib_ix (self : rhbspecs_fibcell_fib) : usize
+  val rhbspecs_fibcell_fib_Fib_ix (self : rhbspecs_fibcell_fib) : usize
+    ensures { result = rhbspecs_fibcell_fib_Fib_ix self }
+    
+  axiom rhbspecs_fibcell_fib_Fib_ix_acc : forall a : usize . rhbspecs_fibcell_fib_Fib_ix (RhbSpecs_FibCell_Fib a : rhbspecs_fibcell_fib) = a
+  type rhbspecs_reversal_list 't = 
+    | RhbSpecs_Reversal_List_Nil
+    | RhbSpecs_Reversal_List_Cons ('t, rhbspecs_reversal_list 't)
+    
+  function rhbspecs_reversal_list_Cons_0 (self : rhbspecs_reversal_list 't) : ('t, rhbspecs_reversal_list 't)
+  val rhbspecs_reversal_list_Cons_0 (self : rhbspecs_reversal_list 't) : ('t, rhbspecs_reversal_list 't)
+    ensures { result = rhbspecs_reversal_list_Cons_0 self }
+    
+  axiom rhbspecs_reversal_list_Cons_0_acc : forall a : ('t, rhbspecs_reversal_list 't) . rhbspecs_reversal_list_Cons_0 (RhbSpecs_Reversal_List_Cons a : rhbspecs_reversal_list 't) = a
+  type rhbspecs_knightstour_board  = 
+    | RhbSpecs_KnightsTour_Board usize (rhbspecs_prelude_vec_vec (rhbspecs_prelude_vec_vec usize))
+    
+  function rhbspecs_knightstour_board_Board_size (self : rhbspecs_knightstour_board) : usize
+  val rhbspecs_knightstour_board_Board_size (self : rhbspecs_knightstour_board) : usize
+    ensures { result = rhbspecs_knightstour_board_Board_size self }
+    
+  axiom rhbspecs_knightstour_board_Board_size_acc : forall a : usize, b : rhbspecs_prelude_vec_vec (rhbspecs_prelude_vec_vec usize) . rhbspecs_knightstour_board_Board_size (RhbSpecs_KnightsTour_Board a b : rhbspecs_knightstour_board) = a
+  function rhbspecs_knightstour_board_Board_field (self : rhbspecs_knightstour_board) : rhbspecs_prelude_vec_vec (rhbspecs_prelude_vec_vec usize)
+    
+  val rhbspecs_knightstour_board_Board_field (self : rhbspecs_knightstour_board) : rhbspecs_prelude_vec_vec (rhbspecs_prelude_vec_vec usize)
+    ensures { result = rhbspecs_knightstour_board_Board_field self }
+    
+  axiom rhbspecs_knightstour_board_Board_field_acc : forall a : usize, b : rhbspecs_prelude_vec_vec (rhbspecs_prelude_vec_vec usize) . rhbspecs_knightstour_board_Board_field (RhbSpecs_KnightsTour_Board a b : rhbspecs_knightstour_board) = b
+end
+module RhbSpecs_Prelude_Fn_FakeFnOnce_Return
+  type self   
+  type return'   
+end
+module RhbSpecs_Prelude_Fn_FakeFnOnce_Precondition_Interface
+  type self   
+  predicate precondition (self : self)
+end
+module RhbSpecs_Prelude_Fn_FakeFnOnce_Precondition
+  type self   
+  predicate precondition (self : self)
+end
+module RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition_Interface
+  type self   
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return0 with type self = self
+  predicate postcondition (self : self) (_2 : Return0.return')
+end
+module RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition
+  type self   
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return0 with type self = self
+  predicate postcondition (self : self) (_2 : Return0.return')
+end
+module RhbSpecs_Prelude_Fn_FakeFnOnce_Call_Interface
+  type self   
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return0 with type self = self
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition_Interface as Postcondition0 with type self = self,
+  type Return0.return' = Return0.return'
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Precondition_Interface as Precondition0 with type self = self
+  val call [@cfg:stackify] (self : self) : Return0.return'
+    requires {Precondition0.precondition self}
+    ensures { Postcondition0.postcondition self result }
+    
+end
+module RhbSpecs_Prelude_Fn_FakeFnOnce_Call
+  type self   
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return0 with type self = self
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition as Postcondition0 with type self = self,
+  type Return0.return' = Return0.return'
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Precondition as Precondition0 with type self = self
+  val call [@cfg:stackify] (self : self) : Return0.return'
+    requires {Precondition0.precondition self}
+    ensures { Postcondition0.postcondition self result }
+    
+end
+module RhbSpecs_Prelude_Cell_Inv_Inv_Interface
+  type self   
+  type t   
+  use prelude.Prelude
+  predicate inv (self : self) (x : t)
+end
+module RhbSpecs_Prelude_Cell_Inv_Inv
+  type self   
+  type t   
+  use prelude.Prelude
+  predicate inv (self : self) (x : t)
+end
+module CreusotContracts_Logic_Model_Model_ModelTy
+  type self   
+  type modelTy   
+end
+module CreusotContracts_Logic_Model_Model_Model_Interface
+  type self   
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = self
+  function model (self : self) : ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Model_Model_Model
+  type self   
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = self
+  function model (self : self) : ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Ghost_Impl0_ModelTy
+  type t   
+  type modelTy  = 
+    t
+end
+module CreusotContracts_Logic_Ghost_Impl0_Model_Interface
+  type t   
+  use Type
+  function model (self : Type.creusotcontracts_logic_ghost_ghost t) : t
+end
+module CreusotContracts_Logic_Ghost_Impl0_Model
+  type t   
+  use Type
+  function model (self : Type.creusotcontracts_logic_ghost_ghost t) : t
+end
+module CreusotContracts_Logic_Ghost_Impl0
+  type t   
+  use Type
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = Type.creusotcontracts_logic_ghost_ghost t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function model = Model0.model
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = Type.creusotcontracts_logic_ghost_ghost t,
+  type modelTy = ModelTy0.modelTy
+end
+module RhbSpecs_Prelude_Cell_Impl0_Get_Interface
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv_Interface as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model_Interface as Model0 with type t = i
+  val get [@cfg:stackify] (self : Type.rhbspecs_prelude_cell_cell t i) : t
+    ensures { Inv0.inv (Model0.model (Type.rhbspecs_prelude_cell_cell_Cell_ghost_inv self)) result }
+    
+end
+module RhbSpecs_Prelude_Cell_Impl0_Get
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = i
+  val get [@cfg:stackify] (self : Type.rhbspecs_prelude_cell_cell t i) : t
+    ensures { Inv0.inv (Model0.model (Type.rhbspecs_prelude_cell_cell_Cell_ghost_inv self)) result }
+    
+end
+module CreusotContracts_Logic_Resolve_Resolve_Resolve_Interface
+  type self   
+  predicate resolve (self : self)
+end
+module CreusotContracts_Logic_Resolve_Resolve_Resolve
+  type self   
+  predicate resolve (self : self)
+end
+module RhbSpecs_Prelude_Cell_Impl0_Set_Interface
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv_Interface as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model_Interface as Model0 with type t = i
+  val set [@cfg:stackify] (self : Type.rhbspecs_prelude_cell_cell t i) (v : t) : ()
+    requires {Inv0.inv (Model0.model (Type.rhbspecs_prelude_cell_cell_Cell_ghost_inv self)) v}
+    
+end
+module RhbSpecs_Prelude_Cell_Impl0_Set
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = i
+  val set [@cfg:stackify] (self : Type.rhbspecs_prelude_cell_cell t i) (v : t) : ()
+    requires {Inv0.inv (Model0.model (Type.rhbspecs_prelude_cell_cell_Cell_ghost_inv self)) v}
+    
+end
+module RhbSpecs_EvenCell_Impl0_Inv_Interface
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  predicate inv (self : Type.rhbspecs_evencell_even) (x : uint64)
+end
+module RhbSpecs_EvenCell_Impl0_Inv
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  predicate inv (self : Type.rhbspecs_evencell_even) (x : uint64) = 
+    mod x (2 : uint64) = (0 : uint64)
+end
+module RhbSpecs_EvenCell_Impl0
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  clone RhbSpecs_EvenCell_Impl0_Inv as Inv0
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv1 with type self = Type.rhbspecs_evencell_even, type t = uint64,
+  predicate inv = Inv0.inv
+end
+module RhbSpecs_EvenCell_AddsTwo_Interface
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  val adds_two [@cfg:stackify] (c : Type.rhbspecs_prelude_cell_cell uint64 (Type.rhbspecs_evencell_even)) : ()
+end
+module RhbSpecs_EvenCell_AddsTwo
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_cell_cell uint64 (Type.rhbspecs_evencell_even)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = uint64
+  clone RhbSpecs_EvenCell_Impl0_Inv as Inv0
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = Type.rhbspecs_evencell_even
+  clone RhbSpecs_Prelude_Cell_Impl0_Set_Interface as Set0 with type t = uint64, type i = Type.rhbspecs_evencell_even,
+  function Model0.model = Model0.model, predicate Inv0.inv = Inv0.inv
+  clone RhbSpecs_Prelude_Cell_Impl0_Get_Interface as Get0 with type t = uint64, type i = Type.rhbspecs_evencell_even,
+  function Model0.model = Model0.model, predicate Inv0.inv = Inv0.inv
+  let rec cfg adds_two [@cfg:stackify] (c : Type.rhbspecs_prelude_cell_cell uint64 (Type.rhbspecs_evencell_even)) : ()
+   = 
+  var _0 : ();
+  var c_1 : Type.rhbspecs_prelude_cell_cell uint64 (Type.rhbspecs_evencell_even);
+  var v_2 : uint64;
+  var _3 : Type.rhbspecs_prelude_cell_cell uint64 (Type.rhbspecs_evencell_even);
+  var _4 : bool;
+  var _5 : uint64;
+  var _6 : ();
+  var _7 : Type.rhbspecs_prelude_cell_cell uint64 (Type.rhbspecs_evencell_even);
+  var _8 : uint64;
+  var _9 : uint64;
+  var _10 : ();
+  var _11 : Type.rhbspecs_prelude_cell_cell uint64 (Type.rhbspecs_evencell_even);
+  {
+    c_1 <- c;
+    goto BB0
+  }
+  BB0 {
+    _3 <- c_1;
+    v_2 <- Get0.get _3;
+    goto BB1
+  }
+  BB1 {
+    assume { Resolve0.resolve _5 };
+    _5 <- v_2;
+    _4 <- _5 < (100000 : uint64);
+    switch (_4)
+      | False -> goto BB4
+      | _ -> goto BB2
+      end
+  }
+  BB2 {
+    _7 <- c_1;
+    assume { Resolve1.resolve c_1 };
+    assume { Resolve0.resolve _9 };
+    _9 <- v_2;
+    assume { Resolve0.resolve v_2 };
+    _8 <- _9 + (2 : uint64);
+    _6 <- Set0.set _7 _8;
+    goto BB3
+  }
+  BB3 {
+    _0 <- ();
+    goto BB6
+  }
+  BB4 {
+    assume { Resolve0.resolve v_2 };
+    _11 <- c_1;
+    assume { Resolve1.resolve c_1 };
+    _10 <- Set0.set _11 (0 : uint64);
+    goto BB5
+  }
+  BB5 {
+    _0 <- ();
+    goto BB6
+  }
+  BB6 {
+    return _0
+  }
+  
+end
+module RhbSpecs_Concurrent_Impl1_Return
+  type return'  = 
+    ()
+end
+module RhbSpecs_Concurrent_Impl1_Precondition_Interface
+  use Type
+  predicate precondition (self : Type.rhbspecs_concurrent_addstwo)
+end
+module RhbSpecs_Concurrent_Impl1_Precondition
+  use Type
+  predicate precondition (self : Type.rhbspecs_concurrent_addstwo) = 
+    true
+end
+module RhbSpecs_Concurrent_Impl1_Postcondition_Interface
+  use Type
+  predicate postcondition (self : Type.rhbspecs_concurrent_addstwo) (_2 : ())
+end
+module RhbSpecs_Concurrent_Impl1_Postcondition
+  use Type
+  predicate postcondition (self : Type.rhbspecs_concurrent_addstwo) (_2 : ()) = 
+    true
+end
+module RhbSpecs_Prelude_Mutex_Impl0_Lock_Interface
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone CreusotContracts_Logic_Ghost_Impl0_Model_Interface as Model0 with type t = i
+  val lock [@cfg:stackify] (self : Type.rhbspecs_prelude_mutex_mutex t i) : Type.rhbspecs_prelude_mutex_mutexguard t i
+    ensures { Type.rhbspecs_prelude_mutex_mutex_Mutex_1 self = Model0.model (Type.rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 result) }
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl0_Lock
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = i
+  val lock [@cfg:stackify] (self : Type.rhbspecs_prelude_mutex_mutex t i) : Type.rhbspecs_prelude_mutex_mutexguard t i
+    ensures { Type.rhbspecs_prelude_mutex_mutex_Mutex_1 self = Model0.model (Type.rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 result) }
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl1_Deref_Interface
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv_Interface as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model_Interface as Model0 with type t = i
+  val deref [@cfg:stackify] (self : Type.rhbspecs_prelude_mutex_mutexguard t i) : t
+    ensures { Inv0.inv (Model0.model (Type.rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 self)) result }
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl1_Deref
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = i
+  val deref [@cfg:stackify] (self : Type.rhbspecs_prelude_mutex_mutexguard t i) : t
+    ensures { Inv0.inv (Model0.model (Type.rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 self)) result }
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl1_Set_Interface
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv_Interface as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model_Interface as Model0 with type t = i
+  val set [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_mutex_mutexguard t i)) (v : t) : ()
+    requires {Inv0.inv (Model0.model (Type.rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 ( * self))) v}
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl1_Set
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = i
+  val set [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_mutex_mutexguard t i)) (v : t) : ()
+    requires {Inv0.inv (Model0.model (Type.rhbspecs_prelude_mutex_mutexguard_MutexGuard_1 ( * self))) v}
+    
+end
+module RhbSpecs_Concurrent_Impl0_Inv_Interface
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt32
+  predicate inv (self : Type.rhbspecs_concurrent_even) (x : uint32)
+end
+module RhbSpecs_Concurrent_Impl0_Inv
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt32
+  predicate inv (self : Type.rhbspecs_concurrent_even) (x : uint32) = 
+    mod x (2 : uint32) = (0 : uint32)
+end
+module RhbSpecs_Concurrent_Impl0
+  use Type
+  use mach.int.Int
+  use mach.int.UInt32
+  clone RhbSpecs_Concurrent_Impl0_Inv as Inv0
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv1 with type self = Type.rhbspecs_concurrent_even, type t = uint32,
+  predicate inv = Inv0.inv
+end
+module RhbSpecs_Concurrent_Impl1_Call_Interface
+  use Type
+  val call [@cfg:stackify] (self : Type.rhbspecs_concurrent_addstwo) : ()
+end
+module RhbSpecs_Concurrent_Impl1_Call
+  use Type
+  use mach.int.Int
+  use mach.int.UInt32
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_prelude_mutex_mutexguard uint32 (Type.rhbspecs_concurrent_even)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = uint32
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = uint32
+  clone RhbSpecs_Concurrent_Impl0_Inv as Inv0
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = Type.rhbspecs_concurrent_even
+  clone RhbSpecs_Prelude_Mutex_Impl1_Set_Interface as Set0 with type t = uint32, type i = Type.rhbspecs_concurrent_even,
+  function Model0.model = Model0.model, predicate Inv0.inv = Inv0.inv
+  clone RhbSpecs_Prelude_Mutex_Impl1_Deref_Interface as Deref0 with type t = uint32,
+  type i = Type.rhbspecs_concurrent_even, function Model0.model = Model0.model, predicate Inv0.inv = Inv0.inv
+  clone RhbSpecs_Prelude_Mutex_Impl0_Lock_Interface as Lock0 with type t = uint32,
+  type i = Type.rhbspecs_concurrent_even, function Model0.model = Model0.model
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = Type.rhbspecs_concurrent_addstwo
+  let rec cfg call [@cfg:stackify] (self : Type.rhbspecs_concurrent_addstwo) : () = 
+  var _0 : ();
+  var self_1 : Type.rhbspecs_concurrent_addstwo;
+  var v_2 : Type.rhbspecs_prelude_mutex_mutexguard uint32 (Type.rhbspecs_concurrent_even);
+  var _3 : Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even);
+  var val'_4 : uint32;
+  var _5 : uint32;
+  var _6 : Type.rhbspecs_prelude_mutex_mutexguard uint32 (Type.rhbspecs_concurrent_even);
+  var _7 : bool;
+  var _8 : uint32;
+  var _9 : ();
+  var _10 : borrowed (Type.rhbspecs_prelude_mutex_mutexguard uint32 (Type.rhbspecs_concurrent_even));
+  var _11 : uint32;
+  var _12 : uint32;
+  var _13 : ();
+  var _14 : borrowed (Type.rhbspecs_prelude_mutex_mutexguard uint32 (Type.rhbspecs_concurrent_even));
+  {
+    self_1 <- self;
+    goto BB0
+  }
+  BB0 {
+    _3 <- Type.rhbspecs_concurrent_addstwo_AddsTwo_mutex self_1;
+    assume { Resolve0.resolve self_1 };
+    v_2 <- Lock0.lock _3;
+    goto BB1
+  }
+  BB1 {
+    _6 <- v_2;
+    _5 <- Deref0.deref _6;
+    goto BB2
+  }
+  BB2 {
+    assume { Resolve1.resolve val'_4 };
+    val'_4 <- _5;
+    assume { Resolve2.resolve _5 };
+    assume { Resolve1.resolve _8 };
+    _8 <- val'_4;
+    _7 <- _8 < (100000 : uint32);
+    switch (_7)
+      | False -> goto BB5
+      | _ -> goto BB3
+      end
+  }
+  BB3 {
+    _10 <- borrow_mut v_2;
+    v_2 <-  ^ _10;
+    assume { Resolve1.resolve _12 };
+    _12 <- val'_4;
+    assume { Resolve1.resolve val'_4 };
+    _11 <- _12 + (2 : uint32);
+    _9 <- Set0.set _10 _11;
+    goto BB4
+  }
+  BB4 {
+    _0 <- ();
+    goto BB7
+  }
+  BB5 {
+    assume { Resolve1.resolve val'_4 };
+    _14 <- borrow_mut v_2;
+    v_2 <-  ^ _14;
+    _13 <- Set0.set _14 (0 : uint32);
+    goto BB6
+  }
+  BB6 {
+    _0 <- ();
+    goto BB7
+  }
+  BB7 {
+    goto BB8
+  }
+  BB8 {
+    assume { Resolve3.resolve v_2 };
+    return _0
+  }
+  
+end
+module RhbSpecs_Concurrent_Impl1
+  use Type
+  clone RhbSpecs_Concurrent_Impl1_Call_Interface as Call0
+  clone RhbSpecs_Concurrent_Impl1_Postcondition as Postcondition0
+  clone RhbSpecs_Concurrent_Impl1_Precondition as Precondition0
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Precondition as Precondition1 with type self = Type.rhbspecs_concurrent_addstwo,
+  predicate precondition = Precondition0.precondition
+  clone RhbSpecs_Concurrent_Impl1_Return as Return0
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Call_Interface as Call1 with type self = Type.rhbspecs_concurrent_addstwo,
+  predicate Precondition0.precondition = Precondition0.precondition,
+  predicate Postcondition0.postcondition = Postcondition0.postcondition, type Return0.return' = Return0.return',
+  val call = Call0.call
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition as Postcondition1 with type self = Type.rhbspecs_concurrent_addstwo,
+  type Return0.return' = Return0.return', predicate postcondition = Postcondition0.postcondition
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return1 with type self = Type.rhbspecs_concurrent_addstwo,
+  type return' = Return0.return'
+end
+module RhbSpecs_Prelude_Mutex_Impl0_New_Interface
+  type t   
+  type i   
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv_Interface as Inv0 with type self = i, type t = t
+  val new [@cfg:stackify] (val' : t) (i : i) : Type.rhbspecs_prelude_mutex_mutex t i
+    requires {Inv0.inv i val'}
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl0_New
+  type t   
+  type i   
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv0 with type self = i, type t = t
+  val new [@cfg:stackify] (val' : t) (i : i) : Type.rhbspecs_prelude_mutex_mutex t i
+    requires {Inv0.inv i val'}
+    
+end
+module RhbSpecs_Prelude_Box_Leak_Interface
+  type t   
+  use prelude.Prelude
+  val leak [@cfg:stackify] (b : t) : borrowed t
+    ensures {  * result = b }
+    
+end
+module RhbSpecs_Prelude_Box_Leak
+  type t   
+  use prelude.Prelude
+  val leak [@cfg:stackify] (b : t) : borrowed t
+    ensures {  * result = b }
+    
+end
+module CreusotContracts_Logic_Resolve_Impl1_Resolve_Interface
+  type t   
+  use prelude.Prelude
+  predicate resolve (self : borrowed t)
+end
+module CreusotContracts_Logic_Resolve_Impl1_Resolve
+  type t   
+  use prelude.Prelude
+  predicate resolve (self : borrowed t) = 
+     ^ self =  * self
+end
+module CreusotContracts_Logic_Resolve_Impl1
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve0 with type t = t
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = borrowed t,
+  predicate resolve = Resolve0.resolve
+end
+module RhbSpecs_Prelude_Thread_Spawn_Interface
+  type t   
+  type f   
+  use Type
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Precondition_Interface as Precondition0 with type self = f
+  val spawn [@cfg:stackify] (f : f) : Type.rhbspecs_prelude_mutex_joinhandle t (Type.rhbspecs_prelude_thread_spawnpostcond f)
+    requires {Precondition0.precondition f}
+    
+end
+module RhbSpecs_Prelude_Thread_Spawn
+  type t   
+  type f   
+  use Type
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Precondition as Precondition0 with type self = f
+  val spawn [@cfg:stackify] (f : f) : Type.rhbspecs_prelude_mutex_joinhandle t (Type.rhbspecs_prelude_thread_spawnpostcond f)
+    requires {Precondition0.precondition f}
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl2_Join_Interface
+  type t   
+  type i   
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv_Interface as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model_Interface as Model0 with type t = i
+  val join [@cfg:stackify] (self : Type.rhbspecs_prelude_mutex_joinhandle t i) : Type.core_result_result t ()
+    ensures { match (result) with
+      | Type.Core_Result_Result_Ok v -> Inv0.inv (Model0.model (Type.rhbspecs_prelude_mutex_joinhandle_JoinHandle_1 self)) v
+      | _ -> true
+      end }
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl2_Join
+  type t   
+  type i   
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv0 with type self = i, type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = i
+  val join [@cfg:stackify] (self : Type.rhbspecs_prelude_mutex_joinhandle t i) : Type.core_result_result t ()
+    ensures { match (result) with
+      | Type.Core_Result_Result_Ok v -> Inv0.inv (Model0.model (Type.rhbspecs_prelude_mutex_joinhandle_JoinHandle_1 self)) v
+      | _ -> true
+      end }
+    
+end
+module RhbSpecs_Prelude_Thread_Impl0_Inv_Interface
+  type f   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return0 with type self = f
+  predicate inv (self : Type.rhbspecs_prelude_thread_spawnpostcond f) (v : Return0.return')
+end
+module RhbSpecs_Prelude_Thread_Impl0_Inv
+  type f   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return0 with type self = f
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition_Interface as Postcondition0 with type self = f,
+  type Return0.return' = Return0.return'
+  predicate inv (self : Type.rhbspecs_prelude_thread_spawnpostcond f) (v : Return0.return') = 
+    Postcondition0.postcondition (Type.rhbspecs_prelude_thread_spawnpostcond_SpawnPostCond_f self) v
+end
+module RhbSpecs_Prelude_Thread_Impl0
+  type f   
+  use Type
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return0 with type self = f
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition as Postcondition0 with type self = f,
+  type Return0.return' = Return0.return'
+  clone RhbSpecs_Prelude_Thread_Impl0_Inv as Inv0 with type f = f, type Return0.return' = Return0.return',
+  predicate Postcondition0.postcondition = Postcondition0.postcondition
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv1 with type self = Type.rhbspecs_prelude_thread_spawnpostcond f,
+  type t = Return0.return', predicate inv = Inv0.inv
+end
+module RhbSpecs_Concurrent_Concurrent_Interface
+  val concurrent [@cfg:stackify] () : ()
+end
+module RhbSpecs_Concurrent_Concurrent
+  use mach.int.Int
+  use mach.int.UInt32
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Concurrent_Impl1_Postcondition as Postcondition0
+  clone RhbSpecs_Concurrent_Impl1_Return as Return0
+  clone RhbSpecs_Prelude_Thread_Impl0_Inv as Inv1 with type f = Type.rhbspecs_concurrent_addstwo,
+  type Return0.return' = Return0.return', predicate Postcondition0.postcondition = Postcondition0.postcondition
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo)
+  clone RhbSpecs_Prelude_Mutex_Impl2_Join_Interface as Join0 with type t = (),
+  type i = Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo),
+  function Model0.model = Model0.model, predicate Inv0.inv = Inv1.inv
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = Type.rhbspecs_prelude_mutex_joinhandle () (Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo))
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
+  clone RhbSpecs_Concurrent_Impl1_Precondition as Precondition0
+  clone RhbSpecs_Prelude_Thread_Spawn_Interface as Spawn0 with type t = (), type f = Type.rhbspecs_concurrent_addstwo,
+  predicate Precondition0.precondition = Precondition0.precondition
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = Type.rhbspecs_concurrent_addstwo
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve0 with type t = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
+  clone RhbSpecs_Prelude_Box_Leak_Interface as Leak0 with type t = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
+  clone RhbSpecs_Concurrent_Impl0_Inv as Inv0
+  clone RhbSpecs_Prelude_Mutex_Impl0_New_Interface as New0 with type t = uint32, type i = Type.rhbspecs_concurrent_even,
+  predicate Inv0.inv = Inv0.inv
+  let rec cfg concurrent [@cfg:stackify] () : () = 
+  var _0 : ();
+  var m_1 : Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even);
+  var _2 : borrowed (Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even));
+  var _3 : Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even);
+  var _4 : Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even);
+  var _5 : Type.rhbspecs_concurrent_even;
+  var t1_6 : Type.rhbspecs_concurrent_addstwo;
+  var _7 : Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even);
+  var _8 : Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even);
+  var j1_9 : Type.rhbspecs_prelude_mutex_joinhandle () (Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo));
+  var _10 : Type.rhbspecs_concurrent_addstwo;
+  var t2_11 : Type.rhbspecs_concurrent_addstwo;
+  var _12 : Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even);
+  var _13 : Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even);
+  var j2_14 : Type.rhbspecs_prelude_mutex_joinhandle () (Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo));
+  var _15 : Type.rhbspecs_concurrent_addstwo;
+  var _16 : Type.core_result_result () ();
+  var _17 : Type.rhbspecs_prelude_mutex_joinhandle () (Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo));
+  var _18 : Type.core_result_result () ();
+  var _19 : Type.rhbspecs_prelude_mutex_joinhandle () (Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo));
+  {
+    goto BB0
+  }
+  BB0 {
+    _5 <- Type.RhbSpecs_Concurrent_Even;
+    _4 <- New0.new (0 : uint32) _5;
+    goto BB1
+  }
+  BB1 {
+    _3 <- _4;
+    goto BB2
+  }
+  BB2 {
+    _2 <- Leak0.leak _3;
+    goto BB3
+  }
+  BB3 {
+    m_1 <-  * _2;
+    assume { Resolve0.resolve _2 };
+    _8 <- m_1;
+    _7 <- _8;
+    assume { Resolve1.resolve _8 };
+    t1_6 <- Type.RhbSpecs_Concurrent_AddsTwo _7;
+    assume { Resolve2.resolve _10 };
+    _10 <- t1_6;
+    j1_9 <- Spawn0.spawn _10;
+    goto BB4
+  }
+  BB4 {
+    _13 <- m_1;
+    assume { Resolve3.resolve m_1 };
+    _12 <- _13;
+    assume { Resolve1.resolve _13 };
+    t2_11 <- Type.RhbSpecs_Concurrent_AddsTwo _12;
+    assume { Resolve2.resolve _15 };
+    _15 <- t2_11;
+    j2_14 <- Spawn0.spawn _15;
+    goto BB5
+  }
+  BB5 {
+    assume { Resolve4.resolve _17 };
+    _17 <- j1_9;
+    _16 <- Join0.join _17;
+    goto BB6
+  }
+  BB6 {
+    assume { Resolve4.resolve _19 };
+    _19 <- j2_14;
+    _18 <- Join0.join _19;
+    goto BB7
+  }
+  BB7 {
+    _0 <- ();
+    goto BB8
+  }
+  BB8 {
+    goto BB9
+  }
+  BB9 {
+    return _0
+  }
+  
+end
+module CreusotContracts_Logic_Model_Impl0_ModelTy
+  type t   
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
+  type modelTy  = 
+    ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Model_Impl0_Model_Interface
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
+  function model (self : t) : ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Model_Impl0_Model
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
+  clone CreusotContracts_Logic_Model_Model_Model_Interface as Model0 with type self = t,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  function model (self : t) : ModelTy0.modelTy = 
+    Model0.model self
+end
+module CreusotContracts_Logic_Model_Impl0
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy2 with type self = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model2 with type self = t, type ModelTy0.modelTy = ModelTy2.modelTy
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy,
+  function Model0.model = Model2.model
+  clone CreusotContracts_Logic_Model_Impl0_ModelTy as ModelTy0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = t, type ModelTy0.modelTy = ModelTy0.modelTy,
+  function model = Model0.model
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = t, type modelTy = ModelTy0.modelTy
+end
+module RhbSpecs_Prelude_Vec_Impl0_ModelTy
+  type t   
+  use seq.Seq
+  type modelTy  = 
+    Seq.seq t
+end
+module RhbSpecs_Prelude_Vec_Impl0_Model_Interface
+  type t   
+  use seq.Seq
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  use Type
+  function model (self : Type.rhbspecs_prelude_vec_vec t) : Seq.seq t
+end
+module RhbSpecs_Prelude_Vec_Impl0_Model
+  type t   
+  use seq.Seq
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  use Type
+  function model (self : Type.rhbspecs_prelude_vec_vec t) : Seq.seq t
+  axiom model_spec : forall self : Type.rhbspecs_prelude_vec_vec t . Seq.length (model self) <= 18446744073709551615
+end
+module RhbSpecs_Prelude_Vec_Impl0
+  type t   
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function model = Model0.model
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = Type.rhbspecs_prelude_vec_vec t,
+  type modelTy = ModelTy0.modelTy
+end
+module RhbSpecs_Prelude_Vec_Impl1_Len_Interface
+  type t   
+  use mach.int.UInt64
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl0_Model_Interface as Model0 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  val len [@cfg:stackify] (self : Type.rhbspecs_prelude_vec_vec t) : usize
+    ensures { UInt64.to_int result = Seq.length (Model0.model self) }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_Len
+  type t   
+  use mach.int.UInt64
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = t, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  val len [@cfg:stackify] (self : Type.rhbspecs_prelude_vec_vec t) : usize
+    ensures { UInt64.to_int result = Seq.length (Model0.model self) }
+    
+end
+module Core_Ops_Index_Index_Output
+  type self   
+  type idx   
+  type output   
+end
+module Core_Ops_Index_Index_Index_Interface
+  type self   
+  type idx   
+  use prelude.Prelude
+  clone Core_Ops_Index_Index_Output as Output0 with type self = self, type idx = idx
+  val index [@cfg:stackify] (self : self) (index : idx) : Output0.output
+    requires {false}
+    
+end
+module Core_Ops_Index_Index_Index
+  type self   
+  type idx   
+  use prelude.Prelude
+  clone Core_Ops_Index_Index_Output as Output0 with type self = self, type idx = idx
+  val index [@cfg:stackify] (self : self) (index : idx) : Output0.output
+    requires {false}
+    
+end
+module RhbSpecs_Prelude_Vec_Impl3_Output
+  type t   
+  type output  = 
+    t
+end
+module RhbSpecs_Prelude_Vec_Impl3_Index_Interface
+  type t   
+  use mach.int.UInt64
+  use seq.Seq
+  use mach.int.Int
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl0_Model_Interface as Model0 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  val index [@cfg:stackify] (self : Type.rhbspecs_prelude_vec_vec t) (ix : usize) : t
+    requires {UInt64.to_int ix < Seq.length (Model0.model self)}
+    ensures { result = Seq.get (Model0.model self) (UInt64.to_int ix) }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl3_Index
+  type t   
+  use mach.int.UInt64
+  use seq.Seq
+  use mach.int.Int
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = t, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  val index [@cfg:stackify] (self : Type.rhbspecs_prelude_vec_vec t) (ix : usize) : t
+    requires {UInt64.to_int ix < Seq.length (Model0.model self)}
+    ensures { result = Seq.get (Model0.model self) (UInt64.to_int ix) }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl3
+  type t   
+  use Type
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = t, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index0 with type t = t, function Model0.model = Model0.model
+  clone RhbSpecs_Prelude_Vec_Impl3_Output as Output0 with type t = t
+  clone Core_Ops_Index_Index_Index_Interface as Index1 with type self = Type.rhbspecs_prelude_vec_vec t,
+  type idx = usize, type Output0.output = Output0.output, val index = Index0.index
+  clone Core_Ops_Index_Index_Output as Output1 with type self = Type.rhbspecs_prelude_vec_vec t, type idx = usize,
+  type output = Output0.output
+end
+module RhbSpecs_KnightsTour_Min_Interface
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  val min [@cfg:stackify] (v : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)) : Type.core_option_option (usize, Type.rhbspecs_knightstour_point)
+    
+end
+module RhbSpecs_KnightsTour_Min
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  use mach.int.Int64
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = (usize, Type.rhbspecs_knightstour_point), axiom .
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = Type.core_option_option (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point),
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index0 with type t = (usize, Type.rhbspecs_knightstour_point),
+  function Model0.model = Model0.model
+  clone RhbSpecs_Prelude_Vec_Impl1_Len_Interface as Len0 with type t = (usize, Type.rhbspecs_knightstour_point),
+  function Model0.model = Model0.model
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  let rec cfg min [@cfg:stackify] (v : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)) : Type.core_option_option (usize, Type.rhbspecs_knightstour_point)
+    
+   = 
+  var _0 : Type.core_option_option (usize, Type.rhbspecs_knightstour_point);
+  var v_1 : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point);
+  var i_2 : usize;
+  var min_3 : Type.core_option_option (usize, Type.rhbspecs_knightstour_point);
+  var _4 : ();
+  var _5 : ();
+  var _6 : bool;
+  var _7 : usize;
+  var _8 : usize;
+  var _9 : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point);
+  var _10 : ();
+  var _11 : isize;
+  var _12 : Type.core_option_option (usize, Type.rhbspecs_knightstour_point);
+  var _13 : (usize, Type.rhbspecs_knightstour_point);
+  var _14 : (usize, Type.rhbspecs_knightstour_point);
+  var _15 : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point);
+  var _16 : usize;
+  var m_17 : (usize, Type.rhbspecs_knightstour_point);
+  var _18 : bool;
+  var _19 : usize;
+  var _20 : (usize, Type.rhbspecs_knightstour_point);
+  var _21 : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point);
+  var _22 : usize;
+  var _23 : usize;
+  var _24 : Type.core_option_option (usize, Type.rhbspecs_knightstour_point);
+  var _25 : (usize, Type.rhbspecs_knightstour_point);
+  var _26 : (usize, Type.rhbspecs_knightstour_point);
+  var _27 : (usize, Type.rhbspecs_knightstour_point);
+  var _28 : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point);
+  var _29 : usize;
+  var _30 : ();
+  var _31 : ();
+  var _32 : ();
+  {
+    v_1 <- v;
+    goto BB0
+  }
+  BB0 {
+    i_2 <- (0 : usize);
+    min_3 <- Type.Core_Option_Option_None;
+    goto BB1
+  }
+  BB1 {
+    assume { Resolve0.resolve _7 };
+    _7 <- i_2;
+    _9 <- v_1;
+    _8 <- Len0.len _9;
+    goto BB2
+  }
+  BB2 {
+    _6 <- _7 < _8;
+    switch (_6)
+      | False -> goto BB14
+      | _ -> goto BB3
+      end
+  }
+  BB3 {
+    switch (min_3)
+      | Type.Core_Option_Option_None -> goto BB6
+      | Type.Core_Option_Option_Some _ -> goto BB4
+      end
+  }
+  BB4 {
+    assume { Resolve3.resolve m_17 };
+    m_17 <- Type.core_option_option_Some_0 min_3;
+    _21 <- v_1;
+    assume { Resolve0.resolve _22 };
+    _22 <- i_2;
+    _20 <- Index0.index _21 _22;
+    goto BB8
+  }
+  BB5 {
+    assume { Resolve1.resolve v_1 };
+    assume { Resolve0.resolve i_2 };
+    assume { Resolve2.resolve min_3 };
+    absurd
+  }
+  BB6 {
+    assume { Resolve2.resolve min_3 };
+    _15 <- v_1;
+    assume { Resolve0.resolve _16 };
+    _16 <- i_2;
+    _14 <- Index0.index _15 _16;
+    goto BB7
+  }
+  BB7 {
+    _13 <- _14;
+    assume { Resolve3.resolve _14 };
+    _12 <- Type.Core_Option_Option_Some _13;
+    assume { Resolve2.resolve min_3 };
+    min_3 <- _12;
+    _10 <- ();
+    assume { Resolve4.resolve _10 };
+    goto BB13
+  }
+  BB8 {
+    assume { Resolve0.resolve _19 };
+    _19 <- (let (a, _) = _20 in a);
+    assume { Resolve3.resolve _20 };
+    assume { Resolve0.resolve _23 };
+    _23 <- (let (a, _) = m_17 in a);
+    assume { Resolve3.resolve m_17 };
+    _18 <- _19 < _23;
+    switch (_18)
+      | False -> goto BB11
+      | _ -> goto BB9
+      end
+  }
+  BB9 {
+    assume { Resolve2.resolve min_3 };
+    _28 <- v_1;
+    assume { Resolve0.resolve _29 };
+    _29 <- i_2;
+    _27 <- Index0.index _28 _29;
+    goto BB10
+  }
+  BB10 {
+    _26 <- _27;
+    assume { Resolve3.resolve _27 };
+    _25 <- _26;
+    assume { Resolve3.resolve _26 };
+    _24 <- Type.Core_Option_Option_Some _25;
+    assume { Resolve2.resolve min_3 };
+    min_3 <- _24;
+    _10 <- ();
+    assume { Resolve4.resolve _10 };
+    goto BB12
+  }
+  BB11 {
+    _10 <- ();
+    assume { Resolve4.resolve _10 };
+    goto BB12
+  }
+  BB12 {
+    goto BB13
+  }
+  BB13 {
+    i_2 <- i_2 + (1 : usize);
+    _5 <- ();
+    assume { Resolve4.resolve _5 };
+    goto BB1
+  }
+  BB14 {
+    assume { Resolve1.resolve v_1 };
+    assume { Resolve0.resolve i_2 };
+    _4 <- ();
+    assume { Resolve4.resolve _4 };
+    assume { Resolve2.resolve _0 };
+    _0 <- min_3;
+    assume { Resolve2.resolve min_3 };
+    return _0
+  }
+  
+end
+module RhbSpecs_Prelude_Vec_Impl1_New_Interface
+  type t   
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = t, axiom .
+  val new [@cfg:stackify] () : Type.rhbspecs_prelude_vec_vec t
+    ensures { Seq.length (Model0.model result) = 0 }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_New
+  type t   
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  val new [@cfg:stackify] () : Type.rhbspecs_prelude_vec_vec t
+    ensures { Seq.length (Model0.model result) = 0 }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_WithCapacity_Interface
+  type t   
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  use mach.int.UInt64
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = t, axiom .
+  val with_capacity [@cfg:stackify] (capacity : usize) : Type.rhbspecs_prelude_vec_vec t
+    ensures { Seq.length (Model0.model result) = 0 }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_WithCapacity
+  type t   
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  use mach.int.UInt64
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  val with_capacity [@cfg:stackify] (capacity : usize) : Type.rhbspecs_prelude_vec_vec t
+    ensures { Seq.length (Model0.model result) = 0 }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_Get_Interface
+  type t   
+  use Type
+  use prelude.Prelude
+  use mach.int.UInt64
+  use seq.Seq
+  use mach.int.Int
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = t, axiom .
+  val get [@cfg:stackify] (self : Type.rhbspecs_prelude_vec_vec t) (ix : usize) : Type.core_option_option t
+    ensures { match (result) with
+      | Type.Core_Option_Option_Some t -> t = Seq.get (Model0.model self) (UInt64.to_int ix)
+      | Type.Core_Option_Option_None -> Seq.length (Model0.model self) <= UInt64.to_int ix
+      end }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_Get
+  type t   
+  use Type
+  use prelude.Prelude
+  use mach.int.UInt64
+  use seq.Seq
+  use mach.int.Int
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  val get [@cfg:stackify] (self : Type.rhbspecs_prelude_vec_vec t) (ix : usize) : Type.core_option_option t
+    ensures { match (result) with
+      | Type.Core_Option_Option_Some t -> t = Seq.get (Model0.model self) (UInt64.to_int ix)
+      | Type.Core_Option_Option_None -> Seq.length (Model0.model self) <= UInt64.to_int ix
+      end }
+    
+end
+module CreusotContracts_Logic_Model_Impl1_ModelTy
+  type t   
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
+  type modelTy  = 
+    ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Model_Impl1_Model_Interface
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
+  function model (self : borrowed t) : ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Model_Impl1_Model
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
+  clone CreusotContracts_Logic_Model_Model_Model_Interface as Model0 with type self = t,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  function model (self : borrowed t) : ModelTy0.modelTy = 
+    Model0.model ( * self)
+end
+module CreusotContracts_Logic_Model_Impl1
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy2 with type self = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model2 with type self = t, type ModelTy0.modelTy = ModelTy2.modelTy
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy,
+  function Model0.model = Model2.model
+  clone CreusotContracts_Logic_Model_Impl1_ModelTy as ModelTy0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = borrowed t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function model = Model0.model
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = borrowed t,
+  type modelTy = ModelTy0.modelTy
+end
+module RhbSpecs_Prelude_Vec_Impl1_Push_Interface
+  type t   
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl1_Model_Interface as Model1 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = t, axiom .
+  val push [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) (v : t) : ()
+    ensures { Model0.model ( ^ self) = Seq.snoc (Model1.model self) v }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_Push
+  type t   
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model1 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model0.model
+  val push [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) (v : t) : ()
+    ensures { Model0.model ( ^ self) = Seq.snoc (Model1.model self) v }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_Swap_Interface
+  type t   
+  use mach.int.UInt64
+  use seq.Seq
+  use mach.int.Int
+  use seq.Permut
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model1 with type t = t, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl1_Model_Interface as Model0 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  val swap [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) (i : usize) (j : usize) : ()
+    requires {UInt64.to_int j < Seq.length (Model0.model self)}
+    requires {UInt64.to_int i < Seq.length (Model0.model self)}
+    ensures { Permut.exchange (Model1.model ( ^ self)) (Model1.model ( * self)) (UInt64.to_int i) (UInt64.to_int j) }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_Swap
+  type t   
+  use mach.int.UInt64
+  use seq.Seq
+  use mach.int.Int
+  use seq.Permut
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = t, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  val swap [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) (i : usize) (j : usize) : ()
+    requires {UInt64.to_int j < Seq.length (Model0.model self)}
+    requires {UInt64.to_int i < Seq.length (Model0.model self)}
+    ensures { Permut.exchange (Model1.model ( ^ self)) (Model1.model ( * self)) (UInt64.to_int i) (UInt64.to_int j) }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_Pop_Interface
+  type t   
+  use Type
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model1 with type t = t, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl1_Model_Interface as Model0 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  val pop [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) : Type.core_option_option t
+    ensures { match (result) with
+      | Type.Core_Option_Option_Some t -> Model0.model self = Seq.snoc (Model1.model ( ^ self)) t
+      | Type.Core_Option_Option_None -> Seq.length (Model0.model self) = Seq.length (Model1.model ( ^ self)) && Seq.length (Model0.model self) = 0
+      end }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_Pop
+  type t   
+  use Type
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = t, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  val pop [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) : Type.core_option_option t
+    ensures { match (result) with
+      | Type.Core_Option_Option_Some t -> Model0.model self = Seq.snoc (Model1.model ( ^ self)) t
+      | Type.Core_Option_Option_None -> Seq.length (Model0.model self) = Seq.length (Model1.model ( ^ self)) && Seq.length (Model0.model self) = 0
+      end }
+    
+end
+module RhbSpecs_Prelude_IterMut_Impl0_ModelTy
+  type t   
+  use seq.Seq
+  use prelude.Prelude
+  type modelTy  = 
+    Seq.seq (borrowed t)
+end
+module RhbSpecs_Prelude_IterMut_Impl0_Model_Interface
+  type t   
+  use Type
+  use seq.Seq
+  use prelude.Prelude
+  function model (self : Type.rhbspecs_prelude_itermut_itermut t) : Seq.seq (borrowed t)
+end
+module RhbSpecs_Prelude_IterMut_Impl0_Model
+  type t   
+  use Type
+  use seq.Seq
+  use prelude.Prelude
+  function model (self : Type.rhbspecs_prelude_itermut_itermut t) : Seq.seq (borrowed t)
+end
+module RhbSpecs_Prelude_IterMut_Impl0
+  type t   
+  use Type
+  clone RhbSpecs_Prelude_IterMut_Impl0_Model as Model0 with type t = t
+  clone RhbSpecs_Prelude_IterMut_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = Type.rhbspecs_prelude_itermut_itermut t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function model = Model0.model
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = Type.rhbspecs_prelude_itermut_itermut t,
+  type modelTy = ModelTy0.modelTy
+end
+module RhbSpecs_Prelude_Vec_Impl1_IterMut_Interface
+  type t   
+  use mach.int.Int
+  use mach.int.Int32
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_IterMut_Impl0_Model_Interface as Model1 with type t = t
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = t, axiom .
+  val iter_mut [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) : Type.rhbspecs_prelude_itermut_itermut t
+    ensures { forall i : (int) . 0 <= i && i <= Seq.length (Model0.model ( ^ self)) -> Seq.get (Model0.model ( ^ self)) i =  ^ Seq.get (Model1.model result) i }
+    ensures { forall i : (int) . 0 <= i && i <= Seq.length (Model0.model ( * self)) -> Seq.get (Model0.model ( * self)) i =  * Seq.get (Model1.model result) i }
+    ensures { Seq.length (Model0.model ( * self)) = Seq.length (Model1.model result) && Seq.length (Model0.model ( * self)) = Seq.length (Model0.model ( ^ self)) }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl1_IterMut
+  type t   
+  use mach.int.Int
+  use mach.int.Int32
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_IterMut_Impl0_Model as Model1 with type t = t
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  val iter_mut [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) : Type.rhbspecs_prelude_itermut_itermut t
+    ensures { forall i : (int) . 0 <= i && i <= Seq.length (Model0.model ( ^ self)) -> Seq.get (Model0.model ( ^ self)) i =  ^ Seq.get (Model1.model result) i }
+    ensures { forall i : (int) . 0 <= i && i <= Seq.length (Model0.model ( * self)) -> Seq.get (Model0.model ( * self)) i =  * Seq.get (Model1.model result) i }
+    ensures { Seq.length (Model0.model ( * self)) = Seq.length (Model1.model result) && Seq.length (Model0.model ( * self)) = Seq.length (Model0.model ( ^ self)) }
+    
+end
+module RhbSpecs_Prelude_Vec_FromElem_Interface
+  type t   
+  use mach.int.Int
+  use mach.int.Int32
+  use mach.int.UInt64
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = t, axiom .
+  val from_elem [@cfg:stackify] (elem : t) (n : usize) : Type.rhbspecs_prelude_vec_vec t
+    ensures { forall i : (int) . 0 <= i && i < UInt64.to_int n -> Seq.get (Model0.model result) i = elem }
+    ensures { Seq.length (Model0.model result) = UInt64.to_int n }
+    
+end
+module RhbSpecs_Prelude_Vec_FromElem
+  type t   
+  use mach.int.Int
+  use mach.int.Int32
+  use mach.int.UInt64
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  val from_elem [@cfg:stackify] (elem : t) (n : usize) : Type.rhbspecs_prelude_vec_vec t
+    ensures { forall i : (int) . 0 <= i && i < UInt64.to_int n -> Seq.get (Model0.model result) i = elem }
+    ensures { Seq.length (Model0.model result) = UInt64.to_int n }
+    
+end
+module Core_Ops_Index_IndexMut_IndexMut_Interface
+  type self   
+  type idx   
+  use prelude.Prelude
+  clone Core_Ops_Index_Index_Output as Output0 with type self = self, type idx = idx
+  val index_mut [@cfg:stackify] (self : borrowed self) (index : idx) : borrowed Output0.output
+    requires {false}
+    
+end
+module Core_Ops_Index_IndexMut_IndexMut
+  type self   
+  type idx   
+  use prelude.Prelude
+  clone Core_Ops_Index_Index_Output as Output0 with type self = self, type idx = idx
+  val index_mut [@cfg:stackify] (self : borrowed self) (index : idx) : borrowed Output0.output
+    requires {false}
+    
+end
+module RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface
+  type t   
+  use mach.int.UInt64
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Impl1_Model_Interface as Model1 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = t, axiom .
+  val index_mut [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) (ix : usize) : borrowed t
+    requires {UInt64.to_int ix < Seq.length (Model0.model ( * self))}
+    ensures { Seq.length (Model0.model ( * self)) = Seq.length (Model0.model ( ^ self)) }
+    ensures { forall j : (int) . 0 <= j && j < Seq.length (Model0.model ( ^ self)) -> not (j = UInt64.to_int ix) -> Seq.get (Model0.model ( ^ self)) j = Seq.get (Model0.model ( * self)) j }
+    ensures {  ^ result = Seq.get (Model0.model ( ^ self)) (UInt64.to_int ix) }
+    ensures {  * result = Seq.get (Model1.model self) (UInt64.to_int ix) }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl2_IndexMut
+  type t   
+  use mach.int.UInt64
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model1 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model0.model
+  val index_mut [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_vec_vec t)) (ix : usize) : borrowed t
+    requires {UInt64.to_int ix < Seq.length (Model0.model ( * self))}
+    ensures { Seq.length (Model0.model ( * self)) = Seq.length (Model0.model ( ^ self)) }
+    ensures { forall j : (int) . 0 <= j && j < Seq.length (Model0.model ( ^ self)) -> not (j = UInt64.to_int ix) -> Seq.get (Model0.model ( ^ self)) j = Seq.get (Model0.model ( * self)) j }
+    ensures {  ^ result = Seq.get (Model0.model ( ^ self)) (UInt64.to_int ix) }
+    ensures {  * result = Seq.get (Model1.model self) (UInt64.to_int ix) }
+    
+end
+module RhbSpecs_Prelude_Vec_Impl2
+  type t   
+  use Type
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  clone RhbSpecs_Prelude_Vec_Impl3_Output as Output0 with type t = t
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model1 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model0.model
+  clone RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface as IndexMut0 with type t = t,
+  function Model0.model = Model0.model, function Model1.model = Model1.model
+  clone Core_Ops_Index_IndexMut_IndexMut_Interface as IndexMut1 with type self = Type.rhbspecs_prelude_vec_vec t,
+  type idx = usize, type Output0.output = Output0.output, val index_mut = IndexMut0.index_mut
+end
+module RhbSpecs_Prelude_Mutex_Impl0_IntoInner_Interface
+  type t   
+  type i   
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv_Interface as Inv0 with type self = i, type t = t
+  val into_inner [@cfg:stackify] (self : Type.rhbspecs_prelude_mutex_mutex t i) : t
+    ensures { Inv0.inv (Type.rhbspecs_prelude_mutex_mutex_Mutex_1 self) result }
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl0_IntoInner
+  type t   
+  type i   
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv0 with type self = i, type t = t
+  val into_inner [@cfg:stackify] (self : Type.rhbspecs_prelude_mutex_mutex t i) : t
+    ensures { Inv0.inv (Type.rhbspecs_prelude_mutex_mutex_Mutex_1 self) result }
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl0_GetMut_Interface
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv_Interface as Inv0 with type self = i, type t = t
+  val get_mut [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_mutex_mutex t i)) : borrowed t
+    ensures { forall v : (t) . Inv0.inv (Type.rhbspecs_prelude_mutex_mutex_Mutex_1 ( ^ self)) v = true }
+    ensures { Inv0.inv (Type.rhbspecs_prelude_mutex_mutex_Mutex_1 ( * self)) ( * result) }
+    
+end
+module RhbSpecs_Prelude_Mutex_Impl0_GetMut
+  type t   
+  type i   
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv0 with type self = i, type t = t
+  val get_mut [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_mutex_mutex t i)) : borrowed t
+    ensures { forall v : (t) . Inv0.inv (Type.rhbspecs_prelude_mutex_mutex_Mutex_1 ( ^ self)) v = true }
+    ensures { Inv0.inv (Type.rhbspecs_prelude_mutex_mutex_Mutex_1 ( * self)) ( * result) }
+    
+end
+module RhbSpecs_Prelude_Mem_Replace_Interface
+  type t   
+  use prelude.Prelude
+  val replace [@cfg:stackify] (dest : borrowed t) (src : t) : t
+    ensures { result =  * dest }
+    ensures {  ^ dest = src }
+    
+end
+module RhbSpecs_Prelude_Mem_Replace
+  type t   
+  use prelude.Prelude
+  val replace [@cfg:stackify] (dest : borrowed t) (src : t) : t
+    ensures { result =  * dest }
+    ensures {  ^ dest = src }
+    
+end
+module CreusotContracts_Logic_Seq_Impl1_Tail_Interface
+  type t   
+  use seq.Seq
+  function tail (self : Seq.seq t) : Seq.seq t
+end
+module CreusotContracts_Logic_Seq_Impl1_Tail
+  type t   
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use seq_ext.SeqExt
+  function tail (self : Seq.seq t) : Seq.seq t = 
+    SeqExt.subsequence self 1 (Seq.length self)
+end
+module CreusotContracts_Logic_Seq_Impl1_Get_Interface
+  type t   
+  use seq.Seq
+  use mach.int.Int
+  use Type
+  function get (self : Seq.seq t) (ix : int) : Type.core_option_option t
+end
+module CreusotContracts_Logic_Seq_Impl1_Get
+  type t   
+  use seq.Seq
+  use mach.int.Int
+  use Type
+  function get (self : Seq.seq t) (ix : int) : Type.core_option_option t = 
+    if ix < Seq.length self then Type.Core_Option_Option_Some (Seq.get self ix) else Type.Core_Option_Option_None
+end
+module RhbSpecs_Prelude_IterMut_Impl1_Next_Interface
+  type t   
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  use Type
+  clone CreusotContracts_Logic_Seq_Impl1_Get_Interface as Get0 with type t = borrowed t
+  clone CreusotContracts_Logic_Seq_Impl1_Tail_Interface as Tail0 with type t = borrowed t
+  clone RhbSpecs_Prelude_IterMut_Impl0_Model_Interface as Model0 with type t = t
+  val next [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_itermut_itermut t)) : Type.core_option_option (borrowed t)
+    ensures { Model0.model ( ^ self) = Tail0.tail (Model0.model ( * self)) }
+    ensures { result = Get0.get (Model0.model ( * self)) 0 }
+    
+end
+module RhbSpecs_Prelude_IterMut_Impl1_Next
+  type t   
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  use Type
+  clone CreusotContracts_Logic_Seq_Impl1_Get as Get0 with type t = borrowed t
+  clone CreusotContracts_Logic_Seq_Impl1_Tail as Tail0 with type t = borrowed t
+  clone RhbSpecs_Prelude_IterMut_Impl0_Model as Model0 with type t = t
+  val next [@cfg:stackify] (self : borrowed (Type.rhbspecs_prelude_itermut_itermut t)) : Type.core_option_option (borrowed t)
+    ensures { Model0.model ( ^ self) = Tail0.tail (Model0.model ( * self)) }
+    ensures { result = Get0.get (Model0.model ( * self)) 0 }
+    
+end
+module CreusotContracts_Logic_Ghost_Impl1_Record_Interface
+  type t   
+  use prelude.Prelude
+  use Type
+  clone CreusotContracts_Logic_Ghost_Impl0_Model_Interface as Model0 with type t = t
+  val record [@cfg:stackify] (a : t) : Type.creusotcontracts_logic_ghost_ghost t
+    ensures { Model0.model result = a }
+    
+end
+module CreusotContracts_Logic_Ghost_Impl1_Record
+  type t   
+  use prelude.Prelude
+  use Type
+  clone CreusotContracts_Logic_Ghost_Impl0_Model_Interface as Model0 with type t = t
+  val record [@cfg:stackify] (a : t) : Type.creusotcontracts_logic_ghost_ghost t
+    ensures { Model0.model result = a }
+    
+end
+module RhbSpecs_AllZero_AllZero_Interface
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use mach.int.UInt32
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = uint32, axiom .
+  val all_zero [@cfg:stackify] (v : borrowed (Type.rhbspecs_prelude_vec_vec uint32)) : ()
+    ensures { Seq.length (Model0.model ( * v)) = Seq.length (Model0.model ( ^ v)) }
+    ensures { forall i : (int) . 0 <= i && i < Seq.length (Model0.model ( ^ v)) -> Seq.get (Model0.model ( ^ v)) i = (0 : uint32) }
+    
+end
+module RhbSpecs_AllZero_AllZero
+  use seq.Seq
+  use mach.int.Int
+  use mach.int.Int32
+  use mach.int.UInt64
+  use mach.int.UInt32
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = uint32, axiom .
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve5 with type t = Type.rhbspecs_prelude_vec_vec uint32
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve3 with type t = uint32
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = uint32
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.creusotcontracts_logic_ghost_ghost (borrowed (Type.rhbspecs_prelude_vec_vec uint32))
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model3 with type t = Type.rhbspecs_prelude_vec_vec uint32,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  clone RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface as IndexMut0 with type t = uint32,
+  function Model0.model = Model1.model, function Model1.model = Model3.model
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model2 with type t = Type.rhbspecs_prelude_vec_vec uint32,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  clone RhbSpecs_Prelude_Vec_Impl1_Len_Interface as Len0 with type t = uint32, function Model0.model = Model2.model
+  clone CreusotContracts_Logic_Ghost_Impl1_Record_Interface as Record0 with type t = borrowed (Type.rhbspecs_prelude_vec_vec uint32),
+  function Model0.model = Model0.model
+  let rec cfg all_zero [@cfg:stackify] (v : borrowed (Type.rhbspecs_prelude_vec_vec uint32)) : ()
+    ensures { Seq.length (Model1.model ( * v)) = Seq.length (Model1.model ( ^ v)) }
+    ensures { forall i : (int) . 0 <= i && i < Seq.length (Model1.model ( ^ v)) -> Seq.get (Model1.model ( ^ v)) i = (0 : uint32) }
+    
+   = 
+  var _0 : ();
+  var v_1 : borrowed (Type.rhbspecs_prelude_vec_vec uint32);
+  var i_2 : usize;
+  var old_v_3 : Type.creusotcontracts_logic_ghost_ghost (borrowed (Type.rhbspecs_prelude_vec_vec uint32));
+  var _4 : borrowed (Type.rhbspecs_prelude_vec_vec uint32);
+  var _5 : borrowed (Type.rhbspecs_prelude_vec_vec uint32);
+  var _6 : ();
+  var _7 : bool;
+  var _8 : usize;
+  var _9 : usize;
+  var _10 : Type.rhbspecs_prelude_vec_vec uint32;
+  var _11 : borrowed uint32;
+  var _12 : borrowed (Type.rhbspecs_prelude_vec_vec uint32);
+  var _13 : usize;
+  var _14 : ();
+  var _15 : ();
+  var _16 : ();
+  {
+    v_1 <- v;
+    goto BB0
+  }
+  BB0 {
+    i_2 <- (0 : usize);
+    _5 <- v_1;
+    _4 <- _5;
+    assume { Resolve0.resolve _5 };
+    old_v_3 <- Record0.record _4;
+    goto BB1
+  }
+  BB1 {
+    assume { Resolve1.resolve old_v_3 };
+    goto BB2
+  }
+  BB2 {
+    invariant proph_const {  ^ v_1 =  ^ Model0.model old_v_3 };
+    invariant in_bounds { Seq.length (Model1.model ( * v_1)) = Seq.length (Model1.model ( * Model0.model old_v_3)) };
+    invariant all_zero { forall j : (int) . 0 <= j && j < UInt64.to_int i_2 -> Seq.get (Model1.model ( * v_1)) j = (0 : uint32) };
+    assume { Resolve2.resolve _8 };
+    _8 <- i_2;
+    _10 <-  * v_1;
+    _9 <- Len0.len _10;
+    goto BB3
+  }
+  BB3 {
+    _7 <- _8 < _9;
+    switch (_7)
+      | False -> goto BB6
+      | _ -> goto BB4
+      end
+  }
+  BB4 {
+    _12 <- borrow_mut ( * v_1);
+    v_1 <- { v_1 with current = ( ^ _12) };
+    assume { Resolve2.resolve _13 };
+    _13 <- i_2;
+    _11 <- IndexMut0.index_mut _12 _13;
+    goto BB5
+  }
+  BB5 {
+    _11 <- { _11 with current = (0 : uint32) };
+    assume { Resolve3.resolve _11 };
+    i_2 <- i_2 + (1 : usize);
+    _6 <- ();
+    assume { Resolve4.resolve _6 };
+    goto BB2
+  }
+  BB6 {
+    assume { Resolve5.resolve v_1 };
+    assume { Resolve2.resolve i_2 };
+    _0 <- ();
+    return _0
+  }
+  
+end
+module RhbSpecs_FibCell_Fib_Interface
+  use mach.int.Int
+  function fib (i : int) : int
+end
+module RhbSpecs_FibCell_Fib
+  use mach.int.Int
+  use mach.int.Int32
+  function fib (i : int) : int
+  axiom def : forall i : int . fib i = (if i <= 0 then 0 else if i = 1 then 1 else fib (i - 1) + fib (i - 2))
+  axiom fib_spec : forall i : int . true
+end
+module RhbSpecs_FibCell_Fib_Impl
+  use mach.int.Int
+  use mach.int.Int32
+  let rec ghost function fib (i : int) : int
+    variant {i}
+    
+   = 
+    if i <= 0 then 0 else if i = 1 then 1 else fib (i - 1) + fib (i - 2)
+end
+module RhbSpecs_FibCell_LemmaFibBound_Interface
+  use mach.int.Int
+  use mach.int.Int32
+  use int.Power
+  clone RhbSpecs_FibCell_Fib_Interface as Fib0 with axiom .
+  function lemma_fib_bound (i : int) : ()
+end
+module RhbSpecs_FibCell_LemmaFibBound
+  use mach.int.Int
+  use mach.int.Int32
+  use int.Power
+  clone RhbSpecs_FibCell_Fib_Interface as Fib0 with axiom .
+  function lemma_fib_bound (i : int) : ()
+  axiom def : forall i : int . lemma_fib_bound i = (if i = 0 then
+    ()
+  else
+    if i = 1 then () else let _ = lemma_fib_bound (i - 2) in lemma_fib_bound (i - 1)
+  )
+  axiom lemma_fib_bound_spec : forall i : int . 0 <= i -> Fib0.fib i <= Power.power 2 i
+end
+module RhbSpecs_FibCell_LemmaFibBound_Impl
+  use mach.int.Int
+  use mach.int.Int32
+  use int.Power
+  clone RhbSpecs_FibCell_Fib as Fib0 with axiom .
+  let rec ghost function lemma_fib_bound (i : int) : ()
+    requires {0 <= i}
+    ensures { Fib0.fib i <= Power.power 2 i }
+    variant {i}
+    
+   = 
+    if i = 0 then () else if i = 1 then () else let _ = lemma_fib_bound (i - 2) in lemma_fib_bound (i - 1)
+end
+module RhbSpecs_FibCell_LemmaMaxInt_Interface
+  use mach.int.Int
+  use mach.int.Int32
+  use int.Power
+  use prelude.Prelude
+  use mach.int.UInt64
+  function lemma_max_int () : ()
+end
+module RhbSpecs_FibCell_LemmaMaxInt
+  use mach.int.Int
+  use mach.int.Int32
+  use int.Power
+  use prelude.Prelude
+  use mach.int.UInt64
+  function lemma_max_int () : ()
+  axiom lemma_max_int_spec : Power.power 2 63 < 18446744073709551615
+end
+module RhbSpecs_FibCell_Impl0_Inv_Interface
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  predicate inv (self : Type.rhbspecs_fibcell_fib) (v : Type.core_option_option usize)
+end
+module RhbSpecs_FibCell_Impl0_Inv
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  clone RhbSpecs_FibCell_Fib_Interface as Fib0 with axiom .
+  predicate inv (self : Type.rhbspecs_fibcell_fib) (v : Type.core_option_option usize) = 
+    match (v) with
+      | Type.Core_Option_Option_None -> true
+      | Type.Core_Option_Option_Some i -> UInt64.to_int i = Fib0.fib (UInt64.to_int (Type.rhbspecs_fibcell_fib_Fib_ix self))
+      end
+end
+module RhbSpecs_FibCell_Impl0
+  use Type
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  clone RhbSpecs_FibCell_Fib as Fib0 with axiom .
+  clone RhbSpecs_FibCell_Impl0_Inv as Inv0 with function Fib0.fib = Fib0.fib
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv1 with type self = Type.rhbspecs_fibcell_fib,
+  type t = Type.core_option_option usize, predicate inv = Inv0.inv
+end
+module RhbSpecs_FibCell_FibCell_Interface
+  use Type
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  predicate fib_cell (v : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib)))
+    
+end
+module RhbSpecs_FibCell_FibCell
+  use Type
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  use seq.Seq
+  clone CreusotContracts_Logic_Ghost_Impl0_Model_Interface as Model1 with type t = Type.rhbspecs_fibcell_fib
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib),
+  axiom .
+  predicate fib_cell (v : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib)))
+    
+   = 
+    forall i : (int) . UInt64.to_int (Type.rhbspecs_fibcell_fib_Fib_ix (Model1.model (Type.rhbspecs_prelude_cell_cell_Cell_ghost_inv (Seq.get (Model0.model v) i)))) = i
+end
+module RhbSpecs_FibCell_FibMemo_Interface
+  use mach.int.UInt64
+  use mach.int.Int
+  use mach.int.Int32
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_FibCell_Fib_Interface as Fib0 with axiom .
+  clone RhbSpecs_FibCell_FibCell_Interface as FibCell0
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib)
+  clone CreusotContracts_Logic_Model_Impl0_Model_Interface as Model0 with type t = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib)),
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  val fib_memo [@cfg:stackify] (mem : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib))) (i : usize) : usize
+    requires {UInt64.to_int i <= 63}
+    requires {UInt64.to_int i < Seq.length (Model0.model mem)}
+    requires {FibCell0.fib_cell mem}
+    ensures { UInt64.to_int result = Fib0.fib (UInt64.to_int i) }
+    
+end
+module RhbSpecs_FibCell_FibMemo
+  use mach.int.Int
+  use mach.int.Int32
+  use mach.int.UInt64
+  use seq.Seq
+  use prelude.Prelude
+  use Type
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model2 with type t = Type.rhbspecs_fibcell_fib
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib),
+  axiom .
+  clone RhbSpecs_FibCell_FibCell as FibCell0 with function Model0.model = Model1.model,
+  function Model1.model = Model2.model
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib)
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib)),
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  clone RhbSpecs_FibCell_Fib as Fib0 with axiom .
+  clone RhbSpecs_FibCell_LemmaFibBound as LemmaFibBound0 with function Fib0.fib = Fib0.fib, axiom .
+  clone RhbSpecs_FibCell_LemmaMaxInt as LemmaMaxInt0 with axiom .
+  use mach.int.Int64
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.core_option_option usize
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib))
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index0 with type t = Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib),
+  function Model0.model = Model0.model
+  clone RhbSpecs_FibCell_Impl0_Inv as Inv0 with function Fib0.fib = Fib0.fib
+  clone RhbSpecs_Prelude_Cell_Impl0_Set_Interface as Set0 with type t = Type.core_option_option usize,
+  type i = Type.rhbspecs_fibcell_fib, function Model0.model = Model2.model, predicate Inv0.inv = Inv0.inv
+  clone RhbSpecs_Prelude_Cell_Impl0_Get_Interface as Get0 with type t = Type.core_option_option usize,
+  type i = Type.rhbspecs_fibcell_fib, function Model0.model = Model2.model, predicate Inv0.inv = Inv0.inv
+  let rec cfg fib_memo [@cfg:stackify] (mem : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib))) (i : usize) : usize
+    requires {UInt64.to_int i <= 63}
+    requires {UInt64.to_int i < Seq.length (Model0.model mem)}
+    requires {FibCell0.fib_cell mem}
+    ensures { UInt64.to_int result = Fib0.fib (UInt64.to_int i) }
+    
+   = 
+  var _0 : usize;
+  var mem_1 : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib));
+  var i_2 : usize;
+  var _3 : Type.core_option_option usize;
+  var _4 : Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib);
+  var _5 : Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib);
+  var _6 : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib));
+  var _7 : usize;
+  var _8 : isize;
+  var v_9 : usize;
+  var fib_i_10 : usize;
+  var _11 : bool;
+  var _12 : usize;
+  var _13 : bool;
+  var _14 : usize;
+  var _15 : ();
+  var _16 : ();
+  var _17 : usize;
+  var _18 : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib));
+  var _19 : usize;
+  var _20 : usize;
+  var _21 : usize;
+  var _22 : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib));
+  var _23 : usize;
+  var _24 : usize;
+  var _25 : ();
+  var _26 : ();
+  var _27 : Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib);
+  var _28 : Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib);
+  var _29 : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib));
+  var _30 : usize;
+  var _31 : Type.core_option_option usize;
+  var _32 : usize;
+  {
+    mem_1 <- mem;
+    i_2 <- i;
+    goto BB0
+  }
+  BB0 {
+    _6 <- mem_1;
+    assume { Resolve0.resolve _7 };
+    _7 <- i_2;
+    _5 <- Index0.index _6 _7;
+    goto BB1
+  }
+  BB1 {
+    _4 <- _5;
+    assume { Resolve1.resolve _5 };
+    _3 <- Get0.get _4;
+    goto BB2
+  }
+  BB2 {
+    switch (_3)
+      | Type.Core_Option_Option_None -> goto BB3
+      | Type.Core_Option_Option_Some _ -> goto BB5
+      end
+  }
+  BB3 {
+    assume { Resolve3.resolve _3 };
+    assume { Resolve0.resolve _12 };
+    _12 <- i_2;
+    _11 <- _12 = (0 : usize);
+    switch (_11)
+      | False -> goto BB7
+      | _ -> goto BB6
+      end
+  }
+  BB4 {
+    assume { Resolve2.resolve mem_1 };
+    assume { Resolve0.resolve i_2 };
+    assume { Resolve3.resolve _3 };
+    absurd
+  }
+  BB5 {
+    assume { Resolve2.resolve mem_1 };
+    assume { Resolve0.resolve i_2 };
+    assume { Resolve0.resolve v_9 };
+    v_9 <- Type.core_option_option_Some_0 _3;
+    assume { Resolve3.resolve _3 };
+    assume { Resolve0.resolve _0 };
+    _0 <- v_9;
+    assume { Resolve0.resolve v_9 };
+    goto BB16
+  }
+  BB6 {
+    fib_i_10 <- (0 : usize);
+    goto BB13
+  }
+  BB7 {
+    assume { Resolve0.resolve _14 };
+    _14 <- i_2;
+    _13 <- _14 = (1 : usize);
+    switch (_13)
+      | False -> goto BB9
+      | _ -> goto BB8
+      end
+  }
+  BB8 {
+    fib_i_10 <- (1 : usize);
+    goto BB12
+  }
+  BB9 {
+    assert { let _ = LemmaMaxInt0.lemma_max_int () in true };
+    _15 <- ();
+    assume { Resolve4.resolve _15 };
+    assert { let _ = LemmaFibBound0.lemma_fib_bound 0 in true };
+    _16 <- ();
+    assume { Resolve4.resolve _16 };
+    _18 <- mem_1;
+    assume { Resolve0.resolve _20 };
+    _20 <- i_2;
+    _19 <- _20 - (1 : usize);
+    _17 <- fib_memo _18 _19;
+    goto BB10
+  }
+  BB10 {
+    _22 <- mem_1;
+    assume { Resolve0.resolve _24 };
+    _24 <- i_2;
+    _23 <- _24 - (2 : usize);
+    _21 <- fib_memo _22 _23;
+    goto BB11
+  }
+  BB11 {
+    fib_i_10 <- _17 + _21;
+    goto BB12
+  }
+  BB12 {
+    goto BB13
+  }
+  BB13 {
+    assert { UInt64.to_int fib_i_10 = Fib0.fib (UInt64.to_int i_2) };
+    _25 <- ();
+    assume { Resolve4.resolve _25 };
+    _29 <- mem_1;
+    assume { Resolve2.resolve mem_1 };
+    assume { Resolve0.resolve _30 };
+    _30 <- i_2;
+    assume { Resolve0.resolve i_2 };
+    _28 <- Index0.index _29 _30;
+    goto BB14
+  }
+  BB14 {
+    _27 <- _28;
+    assume { Resolve1.resolve _28 };
+    assume { Resolve0.resolve _32 };
+    _32 <- fib_i_10;
+    _31 <- Type.Core_Option_Option_Some _32;
+    _26 <- Set0.set _27 _31;
+    goto BB15
+  }
+  BB15 {
+    assume { Resolve0.resolve _0 };
+    _0 <- fib_i_10;
+    assume { Resolve0.resolve fib_i_10 };
+    goto BB16
+  }
+  BB16 {
+    return _0
+  }
+  
+end
+module RhbSpecs_IncVec_IncVec_Interface
+  use mach.int.Int
+  use mach.int.Int32
+  use seq.Seq
+  use mach.int.UInt32
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = uint32
+  clone CreusotContracts_Logic_Model_Impl1_Model_Interface as Model1 with type t = Type.rhbspecs_prelude_vec_vec uint32,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = uint32, axiom .
+  val inc_vec [@cfg:stackify] (v : borrowed (Type.rhbspecs_prelude_vec_vec uint32)) : ()
+    requires {forall i : (int) . 0 <= i && i < Seq.length (Model0.model ( ^ v)) -> UInt32.to_int (Seq.get (Model1.model v) i) <= 10}
+    ensures { forall i : (int) . 0 <= i && i < Seq.length (Model0.model ( ^ v)) -> UInt32.to_int (Seq.get (Model0.model ( ^ v)) i) = UInt32.to_int (Seq.get (Model1.model v) i) + 5 }
+    ensures { Seq.length (Model0.model ( ^ v)) = Seq.length (Model1.model v) }
+    
+end
+module RhbSpecs_IncVec_IncVec
+  use mach.int.Int
+  use mach.int.Int32
+  use mach.int.UInt64
+  use seq.Seq
+  use mach.int.UInt32
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_Prelude_IterMut_Impl0_Model as Model3 with type t = uint32
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = uint32
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = uint32, axiom .
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model2 with type t = Type.rhbspecs_prelude_vec_vec uint32,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
+  use mach.int.Int64
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve7 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve6 with type t = uint32
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = Type.core_option_option (borrowed uint32)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_prelude_itermut_itermut uint32
+  clone CreusotContracts_Logic_Seq_Impl1_Get as Get0 with type t = borrowed uint32
+  clone CreusotContracts_Logic_Seq_Impl1_Tail as Tail0 with type t = borrowed uint32
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve2 with type t = Type.rhbspecs_prelude_vec_vec uint32
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.creusotcontracts_logic_ghost_ghost (borrowed (Type.rhbspecs_prelude_vec_vec uint32))
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
+  clone RhbSpecs_Prelude_IterMut_Impl1_Next_Interface as Next0 with type t = uint32,
+  function Model0.model = Model3.model, function Tail0.tail = Tail0.tail, function Get0.get = Get0.get
+  clone RhbSpecs_Prelude_Vec_Impl1_IterMut_Interface as IterMut0 with type t = uint32,
+  function Model0.model = Model1.model, function Model1.model = Model3.model
+  clone CreusotContracts_Logic_Ghost_Impl1_Record_Interface as Record0 with type t = borrowed (Type.rhbspecs_prelude_vec_vec uint32),
+  function Model0.model = Model0.model
+  let rec cfg inc_vec [@cfg:stackify] (v : borrowed (Type.rhbspecs_prelude_vec_vec uint32)) : ()
+    requires {forall i : (int) . 0 <= i && i < Seq.length (Model1.model ( ^ v)) -> UInt32.to_int (Seq.get (Model2.model v) i) <= 10}
+    ensures { forall i : (int) . 0 <= i && i < Seq.length (Model1.model ( ^ v)) -> UInt32.to_int (Seq.get (Model1.model ( ^ v)) i) = UInt32.to_int (Seq.get (Model2.model v) i) + 5 }
+    ensures { Seq.length (Model1.model ( ^ v)) = Seq.length (Model2.model v) }
+    
+   = 
+  var _0 : ();
+  var v_1 : borrowed (Type.rhbspecs_prelude_vec_vec uint32);
+  var old_v_2 : Type.creusotcontracts_logic_ghost_ghost (borrowed (Type.rhbspecs_prelude_vec_vec uint32));
+  var _3 : borrowed (Type.rhbspecs_prelude_vec_vec uint32);
+  var _4 : borrowed (Type.rhbspecs_prelude_vec_vec uint32);
+  var it_5 : Type.rhbspecs_prelude_itermut_itermut uint32;
+  var _6 : borrowed (Type.rhbspecs_prelude_vec_vec uint32);
+  var _ghost_seen_7 : usize;
+  var _8 : ();
+  var _9 : Type.core_option_option (borrowed uint32);
+  var _10 : borrowed (Type.rhbspecs_prelude_itermut_itermut uint32);
+  var _11 : isize;
+  var r_12 : borrowed uint32;
+  var _13 : ();
+  var _14 : ();
+  var _15 : ();
+  {
+    v_1 <- v;
+    goto BB0
+  }
+  BB0 {
+    _4 <- v_1;
+    _3 <- _4;
+    assume { Resolve0.resolve _4 };
+    old_v_2 <- Record0.record _3;
+    goto BB1
+  }
+  BB1 {
+    assume { Resolve1.resolve old_v_2 };
+    _6 <- borrow_mut ( * v_1);
+    v_1 <- { v_1 with current = ( ^ _6) };
+    it_5 <- IterMut0.iter_mut _6;
+    goto BB2
+  }
+  BB2 {
+    assume { Resolve2.resolve v_1 };
+    _ghost_seen_7 <- (0 : usize);
+    goto BB3
+  }
+  BB3 {
+    invariant incremented { forall i : (int) . 0 <= i && i < UInt64.to_int _ghost_seen_7 -> UInt32.to_int (Seq.get (Model1.model ( ^ Model0.model old_v_2)) i) = UInt32.to_int (Seq.get (Model2.model (Model0.model old_v_2)) i) + 5 };
+    invariant to_come { forall i : (int) . 0 <= i && i < Seq.length (Model3.model it_5) ->  * Seq.get (Model3.model it_5) i = Seq.get (Model2.model (Model0.model old_v_2)) (i + UInt64.to_int _ghost_seen_7) &&  ^ Seq.get (Model3.model it_5) i = Seq.get (Model1.model ( ^ Model0.model old_v_2)) (i + UInt64.to_int _ghost_seen_7) };
+    invariant _ghost_seen { UInt64.to_int _ghost_seen_7 + Seq.length (Model3.model it_5) = Seq.length (Model2.model (Model0.model old_v_2)) };
+    _10 <- borrow_mut it_5;
+    it_5 <-  ^ _10;
+    _9 <- Next0.next _10;
+    goto BB4
+  }
+  BB4 {
+    switch (_9)
+      | Type.Core_Option_Option_Some _ -> goto BB5
+      | _ -> goto BB6
+      end
+  }
+  BB5 {
+    assume { Resolve6.resolve r_12 };
+    r_12 <- Type.core_option_option_Some_0 _9;
+    assume { Resolve5.resolve _9 };
+    r_12 <- { r_12 with current = ( * r_12 + (5 : uint32)) };
+    assume { Resolve6.resolve r_12 };
+    _ghost_seen_7 <- _ghost_seen_7 + (1 : usize);
+    _8 <- ();
+    assume { Resolve7.resolve _8 };
+    goto BB3
+  }
+  BB6 {
+    assume { Resolve3.resolve it_5 };
+    assume { Resolve4.resolve _ghost_seen_7 };
+    assume { Resolve5.resolve _9 };
+    _0 <- ();
+    return _0
+  }
+  
+end
+module RhbSpecs_Reversal_RevAppend_Interface
+  type t   
+  use Type
+  function rev_append (n : Type.rhbspecs_reversal_list t) (o : Type.rhbspecs_reversal_list t) : Type.rhbspecs_reversal_list t
+    
+end
+module RhbSpecs_Reversal_RevAppend
+  type t   
+  use Type
+  function rev_append (n : Type.rhbspecs_reversal_list t) (o : Type.rhbspecs_reversal_list t) : Type.rhbspecs_reversal_list t
+    
+   = 
+    match (n) with
+      | Type.RhbSpecs_Reversal_List_Nil -> o
+      | Type.RhbSpecs_Reversal_List_Cons (hd, tl) -> rev_append tl (Type.RhbSpecs_Reversal_List_Cons (hd, o))
+      end
+end
+module RhbSpecs_Reversal_Rev_Interface
+  type t   
+  use Type
+  use prelude.Prelude
+  clone RhbSpecs_Reversal_RevAppend_Interface as RevAppend0 with type t = t
+  val rev [@cfg:stackify] (l : borrowed (Type.rhbspecs_reversal_list t)) : ()
+    ensures {  ^ l = RevAppend0.rev_append ( * l) (Type.RhbSpecs_Reversal_List_Nil) }
+    
+end
+module RhbSpecs_Reversal_Rev
+  type t   
+  use Type
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = Type.rhbspecs_reversal_list t
+  clone RhbSpecs_Reversal_RevAppend as RevAppend0 with type t = t
+  use mach.int.Int
+  use mach.int.Int64
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = (t, Type.rhbspecs_reversal_list t)
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve4 with type t = Type.rhbspecs_reversal_list t
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_reversal_list t
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = ()
+  clone RhbSpecs_Prelude_Mem_Replace_Interface as Replace0 with type t = Type.rhbspecs_reversal_list t
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.creusotcontracts_logic_ghost_ghost (Type.rhbspecs_reversal_list t)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = Type.rhbspecs_reversal_list t
+  clone CreusotContracts_Logic_Ghost_Impl1_Record_Interface as Record0 with type t = Type.rhbspecs_reversal_list t,
+  function Model0.model = Model0.model
+  let rec cfg rev [@cfg:stackify] (l : borrowed (Type.rhbspecs_reversal_list t)) : ()
+    ensures {  ^ l = RevAppend0.rev_append ( * l) (Type.RhbSpecs_Reversal_List_Nil) }
+    
+   = 
+  var _0 : ();
+  var l_1 : borrowed (Type.rhbspecs_reversal_list t);
+  var old_l_2 : Type.creusotcontracts_logic_ghost_ghost (Type.rhbspecs_reversal_list t);
+  var _3 : Type.rhbspecs_reversal_list t;
+  var _4 : Type.rhbspecs_reversal_list t;
+  var prev_5 : Type.rhbspecs_reversal_list t;
+  var head_6 : Type.rhbspecs_reversal_list t;
+  var _7 : borrowed (Type.rhbspecs_reversal_list t);
+  var _8 : Type.rhbspecs_reversal_list t;
+  var _9 : ();
+  var _10 : ();
+  var _11 : isize;
+  var curr_12 : (t, Type.rhbspecs_reversal_list t);
+  var next_13 : Type.rhbspecs_reversal_list t;
+  var _14 : Type.rhbspecs_reversal_list t;
+  var _15 : Type.rhbspecs_reversal_list t;
+  var _16 : (t, Type.rhbspecs_reversal_list t);
+  var _17 : Type.rhbspecs_reversal_list t;
+  var _18 : ();
+  var _19 : ();
+  var _20 : ();
+  var _21 : Type.rhbspecs_reversal_list t;
+  {
+    l_1 <- l;
+    goto BB0
+  }
+  BB0 {
+    _4 <-  * l_1;
+    _3 <- _4;
+    assume { Resolve0.resolve _4 };
+    old_l_2 <- Record0.record _3;
+    goto BB1
+  }
+  BB1 {
+    assume { Resolve1.resolve old_l_2 };
+    prev_5 <- Type.RhbSpecs_Reversal_List_Nil;
+    _7 <- borrow_mut ( * l_1);
+    l_1 <- { l_1 with current = ( ^ _7) };
+    _8 <- Type.RhbSpecs_Reversal_List_Nil;
+    head_6 <- Replace0.replace _7 _8;
+    goto BB2
+  }
+  BB2 {
+    goto BB3
+  }
+  BB3 {
+    goto BB4
+  }
+  BB4 {
+    invariant x { RevAppend0.rev_append head_6 prev_5 = RevAppend0.rev_append (Model0.model old_l_2) (Type.RhbSpecs_Reversal_List_Nil) };
+    switch (head_6)
+      | Type.RhbSpecs_Reversal_List_Cons _ -> goto BB5
+      | _ -> goto BB14
+      end
+  }
+  BB5 {
+    assume { Resolve5.resolve curr_12 };
+    curr_12 <- Type.rhbspecs_reversal_list_Cons_0 head_6;
+    assume { Resolve3.resolve next_13 };
+    next_13 <- (let (_, a) = curr_12 in a);
+    assume { Resolve3.resolve _14 };
+    _14 <- prev_5;
+    assume { Resolve3.resolve (let (_, a) = curr_12 in a) };
+    curr_12 <- (let (a, b) = curr_12 in (a, _14));
+    goto BB6
+  }
+  BB6 {
+    goto BB7
+  }
+  BB7 {
+    assume { Resolve5.resolve _16 };
+    _16 <- curr_12;
+    _15 <- Type.RhbSpecs_Reversal_List_Cons _16;
+    goto BB8
+  }
+  BB8 {
+    assume { Resolve3.resolve prev_5 };
+    prev_5 <- _15;
+    goto BB9
+  }
+  BB9 {
+    goto BB10
+  }
+  BB10 {
+    assume { Resolve3.resolve _17 };
+    _17 <- next_13;
+    assume { Resolve3.resolve head_6 };
+    head_6 <- _17;
+    goto BB11
+  }
+  BB11 {
+    goto BB12
+  }
+  BB12 {
+    _10 <- ();
+    assume { Resolve2.resolve _10 };
+    goto BB13
+  }
+  BB13 {
+    goto BB15
+  }
+  BB14 {
+    _9 <- ();
+    assume { Resolve2.resolve _9 };
+    assume { Resolve3.resolve _21 };
+    _21 <- prev_5;
+    assume { Resolve3.resolve ( * l_1) };
+    l_1 <- { l_1 with current = _21 };
+    goto BB16
+  }
+  BB15 {
+    goto BB4
+  }
+  BB16 {
+    assume { Resolve4.resolve l_1 };
+    goto BB17
+  }
+  BB17 {
+    _0 <- ();
+    goto BB18
+  }
+  BB18 {
+    assume { Resolve3.resolve head_6 };
+    goto BB19
+  }
+  BB19 {
+    return _0
+  }
+  
+end
+module Core_Clone_Clone_Clone_Interface
+  type self   
+  use prelude.Prelude
+  val clone' [@cfg:stackify] (self : self) : self
+    requires {false}
+    
+end
+module Core_Clone_Clone_Clone
+  type self   
+  use prelude.Prelude
+  val clone' [@cfg:stackify] (self : self) : self
+    requires {false}
+    
+end
+module Core_Clone_Clone_CloneFrom_Interface
+  type self   
+  use prelude.Prelude
+  val clone_from [@cfg:stackify] (self : borrowed self) (source : self) : ()
+    requires {false}
+    
+end
+module Core_Clone_Clone_CloneFrom
+  type self   
+  use prelude.Prelude
+  val clone_from [@cfg:stackify] (self : borrowed self) (source : self) : ()
+    requires {false}
+    
+end
+module RhbSpecs_KnightsTour_Impl3_Clone_Interface
+  use prelude.Prelude
+  use Type
+  val clone' [@cfg:stackify] (self : Type.rhbspecs_knightstour_point) : Type.rhbspecs_knightstour_point
+end
+module RhbSpecs_KnightsTour_Impl3_Clone
+  use prelude.Prelude
+  use Type
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = Type.rhbspecs_knightstour_point
+  let rec cfg clone' [@cfg:stackify] (self : Type.rhbspecs_knightstour_point) : Type.rhbspecs_knightstour_point = 
+  var _0 : Type.rhbspecs_knightstour_point;
+  var self_1 : Type.rhbspecs_knightstour_point;
+  {
+    self_1 <- self;
+    goto BB0
+  }
+  BB0 {
+    assume { Resolve0.resolve _0 };
+    _0 <- self_1;
+    assume { Resolve1.resolve self_1 };
+    return _0
+  }
+  
+end
+module RhbSpecs_KnightsTour_Impl3
+  use Type
+  clone RhbSpecs_KnightsTour_Impl3_Clone_Interface as Clone0
+  clone Core_Clone_Clone_Clone_Interface as Clone1 with type self = Type.rhbspecs_knightstour_point,
+  val clone' = Clone0.clone'
+end
+module RhbSpecs_KnightsTour_Impl0_Mov_Interface
+  use mach.int.Int
+  use mach.int.Int32
+  use mach.int.Int64
+  use prelude.Prelude
+  use Type
+  val mov [@cfg:stackify] (self : Type.rhbspecs_knightstour_point) (p : (isize, isize)) : Type.rhbspecs_knightstour_point
+    requires {- 10000 <= Int64.to_int (let (_, a) = p in a) && Int64.to_int (let (_, a) = p in a) <= 10000}
+    requires {- 10000 <= Int64.to_int (let (a, _) = p in a) && Int64.to_int (let (a, _) = p in a) <= 10000}
+    requires {- 10000 <= Int64.to_int (Type.rhbspecs_knightstour_point_Point_y self) && Int64.to_int (Type.rhbspecs_knightstour_point_Point_y self) <= 10000}
+    requires {- 10000 <= Int64.to_int (Type.rhbspecs_knightstour_point_Point_x self) && Int64.to_int (Type.rhbspecs_knightstour_point_Point_x self) <= 10000}
+    ensures { Int64.to_int (Type.rhbspecs_knightstour_point_Point_y result) = Int64.to_int (Type.rhbspecs_knightstour_point_Point_y self) + Int64.to_int (let (_, a) = p in a) }
+    ensures { Int64.to_int (Type.rhbspecs_knightstour_point_Point_x result) = Int64.to_int (Type.rhbspecs_knightstour_point_Point_x self) + Int64.to_int (let (a, _) = p in a) }
+    
+end
+module RhbSpecs_KnightsTour_Impl0_Mov
+  use mach.int.Int
+  use mach.int.Int32
+  use mach.int.Int64
+  use prelude.Prelude
+  use Type
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = (isize, isize)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = isize
+  let rec cfg mov [@cfg:stackify] (self : Type.rhbspecs_knightstour_point) (p : (isize, isize)) : Type.rhbspecs_knightstour_point
+    requires {- 10000 <= Int64.to_int (let (_, a) = p in a) && Int64.to_int (let (_, a) = p in a) <= 10000}
+    requires {- 10000 <= Int64.to_int (let (a, _) = p in a) && Int64.to_int (let (a, _) = p in a) <= 10000}
+    requires {- 10000 <= Int64.to_int (Type.rhbspecs_knightstour_point_Point_y self) && Int64.to_int (Type.rhbspecs_knightstour_point_Point_y self) <= 10000}
+    requires {- 10000 <= Int64.to_int (Type.rhbspecs_knightstour_point_Point_x self) && Int64.to_int (Type.rhbspecs_knightstour_point_Point_x self) <= 10000}
+    ensures { Int64.to_int (Type.rhbspecs_knightstour_point_Point_y result) = Int64.to_int (Type.rhbspecs_knightstour_point_Point_y self) + Int64.to_int (let (_, a) = p in a) }
+    ensures { Int64.to_int (Type.rhbspecs_knightstour_point_Point_x result) = Int64.to_int (Type.rhbspecs_knightstour_point_Point_x self) + Int64.to_int (let (a, _) = p in a) }
+    
+   = 
+  var _0 : Type.rhbspecs_knightstour_point;
+  var self_1 : Type.rhbspecs_knightstour_point;
+  var p_2 : (isize, isize);
+  var _3 : isize;
+  var _4 : isize;
+  var _5 : isize;
+  var _6 : isize;
+  var _7 : isize;
+  var _8 : isize;
+  {
+    self_1 <- self;
+    p_2 <- p;
+    goto BB0
+  }
+  BB0 {
+    assume { Resolve0.resolve _4 };
+    _4 <- Type.rhbspecs_knightstour_point_Point_x self_1;
+    assume { Resolve0.resolve _5 };
+    _5 <- (let (a, _) = p_2 in a);
+    _3 <- _4 + _5;
+    assume { Resolve0.resolve _7 };
+    _7 <- Type.rhbspecs_knightstour_point_Point_y self_1;
+    assume { Resolve1.resolve self_1 };
+    assume { Resolve0.resolve _8 };
+    _8 <- (let (_, a) = p_2 in a);
+    assume { Resolve2.resolve p_2 };
+    _6 <- _7 + _8;
+    _0 <- Type.RhbSpecs_KnightsTour_Point _3 _6;
+    return _0
+  }
+  
+end
+module RhbSpecs_KnightsTour_Impl1_Wf_Interface
+  use Type
+  predicate wf (self : Type.rhbspecs_knightstour_board)
+end
+module RhbSpecs_KnightsTour_Impl1_Wf
+  use Type
+  use mach.int.UInt64
+  use mach.int.Int
+  use mach.int.Int32
+  use seq.Seq
+  use prelude.Prelude
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model1 with type t = usize, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = Type.rhbspecs_prelude_vec_vec usize, axiom .
+  predicate wf (self : Type.rhbspecs_knightstour_board) = 
+    UInt64.to_int (Type.rhbspecs_knightstour_board_Board_size self) <= 1000 && Seq.length (Model0.model (Type.rhbspecs_knightstour_board_Board_field self)) = UInt64.to_int (Type.rhbspecs_knightstour_board_Board_size self) && (forall i : (int) . 0 <= i && i < UInt64.to_int (Type.rhbspecs_knightstour_board_Board_size self) -> Seq.length (Model1.model (Seq.get (Model0.model (Type.rhbspecs_knightstour_board_Board_field self)) i)) = UInt64.to_int (Type.rhbspecs_knightstour_board_Board_size self))
+end
+module RhbSpecs_KnightsTour_Impl1_New_Interface
+  use mach.int.UInt64
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_KnightsTour_Impl1_Wf_Interface as Wf0
+  val new [@cfg:stackify] (size : usize) : Type.rhbspecs_knightstour_board
+    requires {UInt64.to_int size <= 1000}
+    ensures { Wf0.wf result }
+    ensures { Type.rhbspecs_knightstour_board_Board_size result = size }
+    
+end
+module RhbSpecs_KnightsTour_Impl1_New
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  use mach.int.Int32
+  use seq.Seq
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = usize, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec usize, axiom .
+  clone RhbSpecs_KnightsTour_Impl1_Wf as Wf0 with function Model0.model = Model0.model,
+  function Model1.model = Model1.model
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = ()
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = Type.rhbspecs_prelude_vec_vec usize
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone RhbSpecs_Prelude_Vec_FromElem_Interface as FromElem0 with type t = usize, function Model0.model = Model1.model
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model2 with type t = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize),
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model0.model
+  clone RhbSpecs_Prelude_Vec_Impl1_Push_Interface as Push0 with type t = Type.rhbspecs_prelude_vec_vec usize,
+  function Model0.model = Model0.model, function Model1.model = Model2.model
+  clone RhbSpecs_Prelude_Vec_Impl1_WithCapacity_Interface as WithCapacity0 with type t = Type.rhbspecs_prelude_vec_vec usize,
+  function Model0.model = Model0.model
+  let rec cfg new [@cfg:stackify] (size : usize) : Type.rhbspecs_knightstour_board
+    requires {UInt64.to_int size <= 1000}
+    ensures { Wf0.wf result }
+    ensures { Type.rhbspecs_knightstour_board_Board_size result = size }
+    
+   = 
+  var _0 : Type.rhbspecs_knightstour_board;
+  var size_1 : usize;
+  var rows_2 : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize);
+  var _3 : usize;
+  var i_4 : usize;
+  var _5 : ();
+  var _6 : ();
+  var _7 : bool;
+  var _8 : usize;
+  var _9 : usize;
+  var _10 : ();
+  var _11 : borrowed (Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize));
+  var _12 : Type.rhbspecs_prelude_vec_vec usize;
+  var _13 : usize;
+  var _14 : ();
+  var _15 : ();
+  var _16 : ();
+  var _17 : usize;
+  var _18 : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize);
+  {
+    size_1 <- size;
+    goto BB0
+  }
+  BB0 {
+    assume { Resolve0.resolve _3 };
+    _3 <- size_1;
+    rows_2 <- WithCapacity0.with_capacity _3;
+    goto BB1
+  }
+  BB1 {
+    i_4 <- (0 : usize);
+    goto BB2
+  }
+  BB2 {
+    goto BB3
+  }
+  BB3 {
+    goto BB4
+  }
+  BB4 {
+    invariant i_size { i_4 <= size_1 };
+    invariant rows { forall j : (int) . 0 <= j && j < UInt64.to_int i_4 -> Seq.length (Model1.model (Seq.get (Model0.model rows_2) j)) = UInt64.to_int size_1 };
+    invariant row_len { Seq.length (Model0.model rows_2) = UInt64.to_int i_4 };
+    assume { Resolve0.resolve _8 };
+    _8 <- i_4;
+    assume { Resolve0.resolve _9 };
+    _9 <- size_1;
+    _7 <- _8 < _9;
+    switch (_7)
+      | False -> goto BB8
+      | _ -> goto BB5
+      end
+  }
+  BB5 {
+    _11 <- borrow_mut rows_2;
+    rows_2 <-  ^ _11;
+    assume { Resolve0.resolve _13 };
+    _13 <- size_1;
+    _12 <- FromElem0.from_elem (0 : usize) _13;
+    goto BB6
+  }
+  BB6 {
+    _10 <- Push0.push _11 _12;
+    goto BB7
+  }
+  BB7 {
+    i_4 <- i_4 + (1 : usize);
+    _6 <- ();
+    assume { Resolve1.resolve _6 };
+    goto BB4
+  }
+  BB8 {
+    assume { Resolve0.resolve i_4 };
+    _5 <- ();
+    assume { Resolve1.resolve _5 };
+    assume { Resolve0.resolve _17 };
+    _17 <- size_1;
+    assume { Resolve0.resolve size_1 };
+    assume { Resolve2.resolve _18 };
+    _18 <- rows_2;
+    _0 <- Type.RhbSpecs_KnightsTour_Board _17 _18;
+    goto BB9
+  }
+  BB9 {
+    goto BB10
+  }
+  BB10 {
+    return _0
+  }
+  
+end
+module RhbSpecs_KnightsTour_Impl1_InBounds_Interface
+  use Type
+  predicate in_bounds (self : Type.rhbspecs_knightstour_board) (p : Type.rhbspecs_knightstour_point)
+end
+module RhbSpecs_KnightsTour_Impl1_InBounds
+  use Type
+  use mach.int.Int
+  use mach.int.Int32
+  use mach.int.Int64
+  use mach.int.UInt64
+  predicate in_bounds (self : Type.rhbspecs_knightstour_board) (p : Type.rhbspecs_knightstour_point) = 
+    0 <= Int64.to_int (Type.rhbspecs_knightstour_point_Point_x p) && Int64.to_int (Type.rhbspecs_knightstour_point_Point_x p) < UInt64.to_int (Type.rhbspecs_knightstour_board_Board_size self) && 0 <= Int64.to_int (Type.rhbspecs_knightstour_point_Point_y p) && Int64.to_int (Type.rhbspecs_knightstour_point_Point_y p) < UInt64.to_int (Type.rhbspecs_knightstour_board_Board_size self)
+end
+module RhbSpecs_KnightsTour_Impl1_Available_Interface
+  use prelude.Prelude
+  use Type
+  clone RhbSpecs_KnightsTour_Impl1_InBounds_Interface as InBounds0
+  clone RhbSpecs_KnightsTour_Impl1_Wf_Interface as Wf0
+  val available [@cfg:stackify] (self : Type.rhbspecs_knightstour_board) (p : Type.rhbspecs_knightstour_point) : bool
+    requires {Wf0.wf self}
+    ensures { result -> InBounds0.in_bounds self p }
+    
+end
+module RhbSpecs_KnightsTour_Impl1_Available
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  clone RhbSpecs_KnightsTour_Impl1_InBounds as InBounds0
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = usize, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec usize, axiom .
+  clone RhbSpecs_KnightsTour_Impl1_Wf as Wf0 with function Model0.model = Model0.model,
+  function Model1.model = Model1.model
+  use mach.int.Int64
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve6 with type self = usize
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy1 with type t = usize
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = Type.rhbspecs_prelude_vec_vec usize
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = Type.rhbspecs_prelude_vec_vec usize
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_knightstour_board
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = bool
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = isize
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model3 with type t = Type.rhbspecs_prelude_vec_vec usize,
+  type ModelTy0.modelTy = ModelTy1.modelTy, function Model0.model = Model1.model
+  clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index1 with type t = usize, function Model0.model = Model3.model
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model2 with type t = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize),
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model0.model
+  clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index0 with type t = Type.rhbspecs_prelude_vec_vec usize,
+  function Model0.model = Model2.model
+  let rec cfg available [@cfg:stackify] (self : Type.rhbspecs_knightstour_board) (p : Type.rhbspecs_knightstour_point) : bool
+    requires {Wf0.wf self}
+    ensures { result -> InBounds0.in_bounds self p }
+    
+   = 
+  var _0 : bool;
+  var self_1 : Type.rhbspecs_knightstour_board;
+  var p_2 : Type.rhbspecs_knightstour_point;
+  var _3 : bool;
+  var _4 : bool;
+  var _5 : bool;
+  var _6 : bool;
+  var _7 : isize;
+  var _8 : bool;
+  var _9 : usize;
+  var _10 : isize;
+  var _11 : usize;
+  var _12 : bool;
+  var _13 : isize;
+  var _14 : bool;
+  var _15 : usize;
+  var _16 : isize;
+  var _17 : usize;
+  var _18 : bool;
+  var _19 : usize;
+  var _20 : usize;
+  var _21 : Type.rhbspecs_prelude_vec_vec usize;
+  var _22 : Type.rhbspecs_prelude_vec_vec usize;
+  var _23 : Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize);
+  var _24 : usize;
+  var _25 : isize;
+  var _26 : usize;
+  var _27 : isize;
+  {
+    self_1 <- self;
+    p_2 <- p;
+    goto BB0
+  }
+  BB0 {
+    assume { Resolve0.resolve _7 };
+    _7 <- Type.rhbspecs_knightstour_point_Point_x p_2;
+    _6 <- (0 : isize) <= _7;
+    switch (_6)
+      | False -> goto BB10
+      | _ -> goto BB11
+      end
+  }
+  BB1 {
+    assume { Resolve3.resolve self_1 };
+    assume { Resolve5.resolve p_2 };
+    _0 <- false;
+    goto BB3
+  }
+  BB2 {
+    _23 <- Type.rhbspecs_knightstour_board_Board_field self_1;
+    assume { Resolve3.resolve self_1 };
+    assume { Resolve0.resolve _25 };
+    _25 <- Type.rhbspecs_knightstour_point_Point_x p_2;
+    _24 <- UInt64.of_int (Int64.to_int _25);
+    _22 <- Index0.index _23 _24;
+    goto BB13
+  }
+  BB3 {
+    return _0
+  }
+  BB4 {
+    _3 <- false;
+    goto BB6
+  }
+  BB5 {
+    assume { Resolve0.resolve _16 };
+    _16 <- Type.rhbspecs_knightstour_point_Point_y p_2;
+    _15 <- UInt64.of_int (Int64.to_int _16);
+    assume { Resolve1.resolve _17 };
+    _17 <- Type.rhbspecs_knightstour_board_Board_size self_1;
+    _14 <- _15 < _17;
+    assume { Resolve2.resolve _3 };
+    _3 <- _14;
+    goto BB6
+  }
+  BB6 {
+    switch (_3)
+      | False -> goto BB1
+      | _ -> goto BB2
+      end
+  }
+  BB7 {
+    _4 <- false;
+    goto BB9
+  }
+  BB8 {
+    assume { Resolve0.resolve _13 };
+    _13 <- Type.rhbspecs_knightstour_point_Point_y p_2;
+    _12 <- (0 : isize) <= _13;
+    assume { Resolve2.resolve _4 };
+    _4 <- _12;
+    goto BB9
+  }
+  BB9 {
+    switch (_4)
+      | False -> goto BB4
+      | _ -> goto BB5
+      end
+  }
+  BB10 {
+    _5 <- false;
+    goto BB12
+  }
+  BB11 {
+    assume { Resolve0.resolve _10 };
+    _10 <- Type.rhbspecs_knightstour_point_Point_x p_2;
+    _9 <- UInt64.of_int (Int64.to_int _10);
+    assume { Resolve1.resolve _11 };
+    _11 <- Type.rhbspecs_knightstour_board_Board_size self_1;
+    _8 <- _9 < _11;
+    assume { Resolve2.resolve _5 };
+    _5 <- _8;
+    goto BB12
+  }
+  BB12 {
+    switch (_5)
+      | False -> goto BB7
+      | _ -> goto BB8
+      end
+  }
+  BB13 {
+    _21 <- _22;
+    assume { Resolve4.resolve _22 };
+    assume { Resolve0.resolve _27 };
+    _27 <- Type.rhbspecs_knightstour_point_Point_y p_2;
+    assume { Resolve5.resolve p_2 };
+    _26 <- UInt64.of_int (Int64.to_int _27);
+    _20 <- Index1.index _21 _26;
+    goto BB14
+  }
+  BB14 {
+    assume { Resolve1.resolve _19 };
+    _19 <- _20;
+    assume { Resolve6.resolve _20 };
+    _18 <- _19 = (0 : usize);
+    assume { Resolve2.resolve _0 };
+    _0 <- _18;
+    goto BB3
+  }
+  
+end
+module RhbSpecs_KnightsTour_Moves_Interface
+  use mach.int.Int
+  use mach.int.Int32
+  use seq.Seq
+  use mach.int.Int64
+  use Type
+  use prelude.Prelude
+  clone RhbSpecs_Prelude_Vec_Impl0_Model_Interface as Model0 with type t = (isize, isize), axiom .
+  val moves [@cfg:stackify] () : Type.rhbspecs_prelude_vec_vec (isize, isize)
+    ensures { forall i : (int) . 0 <= i && i < 8 -> - 2 <= Int64.to_int (let (a, _) = Seq.get (Model0.model result) i in a) && Int64.to_int (let (a, _) = Seq.get (Model0.model result) i in a) <= 2 && - 2 <= Int64.to_int (let (_, a) = Seq.get (Model0.model result) i in a) && Int64.to_int (let (_, a) = Seq.get (Model0.model result) i in a) <= 2 }
+    ensures { Seq.length (Model0.model result) = 8 }
+    
+end
+module RhbSpecs_KnightsTour_Moves
+  use mach.int.Int
+  use mach.int.Int32
+  use seq.Seq
+  use mach.int.Int64
+  use Type
+  use prelude.Prelude
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = (isize, isize), axiom .
+  val moves [@cfg:stackify] () : Type.rhbspecs_prelude_vec_vec (isize, isize)
+    ensures { forall i : (int) . 0 <= i && i < 8 -> - 2 <= Int64.to_int (let (a, _) = Seq.get (Model0.model result) i in a) && Int64.to_int (let (a, _) = Seq.get (Model0.model result) i in a) <= 2 && - 2 <= Int64.to_int (let (_, a) = Seq.get (Model0.model result) i in a) && Int64.to_int (let (_, a) = Seq.get (Model0.model result) i in a) <= 2 }
+    ensures { Seq.length (Model0.model result) = 8 }
+    
+end
+module RhbSpecs_KnightsTour_Impl1_CountDegree_Interface
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  clone RhbSpecs_KnightsTour_Impl1_Wf_Interface as Wf0
+  clone RhbSpecs_KnightsTour_Impl1_InBounds_Interface as InBounds0
+  val count_degree [@cfg:stackify] (self : Type.rhbspecs_knightstour_board) (p : Type.rhbspecs_knightstour_point) : usize
+    requires {InBounds0.in_bounds self p}
+    requires {Wf0.wf self}
+    
+end
+module RhbSpecs_KnightsTour_Impl1_CountDegree
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = usize, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec usize, axiom .
+  clone RhbSpecs_KnightsTour_Impl1_Wf as Wf0 with function Model0.model = Model0.model,
+  function Model1.model = Model1.model
+  clone RhbSpecs_KnightsTour_Impl1_InBounds as InBounds0
+  use mach.int.Int64
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = Type.rhbspecs_knightstour_board
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_knightstour_point
+  clone RhbSpecs_KnightsTour_Impl0_Mov_Interface as Mov0
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = (isize, isize)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_vec_vec (isize, isize)
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = (isize, isize)
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model2 with type t = (isize, isize), axiom .
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model3 with type t = Type.rhbspecs_prelude_vec_vec (isize, isize),
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model2.model
+  clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index0 with type t = (isize, isize),
+  function Model0.model = Model3.model
+  clone RhbSpecs_Prelude_Vec_Impl1_Len_Interface as Len0 with type t = (isize, isize),
+  function Model0.model = Model3.model
+  clone RhbSpecs_KnightsTour_Moves_Interface as Moves0 with function Model0.model = Model2.model
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone RhbSpecs_KnightsTour_Impl1_Available_Interface as Available0 with predicate Wf0.wf = Wf0.wf,
+  predicate InBounds0.in_bounds = InBounds0.in_bounds
+  let rec cfg count_degree [@cfg:stackify] (self : Type.rhbspecs_knightstour_board) (p : Type.rhbspecs_knightstour_point) : usize
+    requires {InBounds0.in_bounds self p}
+    requires {Wf0.wf self}
+    
+   = 
+  var _0 : usize;
+  var self_1 : Type.rhbspecs_knightstour_board;
+  var p_2 : Type.rhbspecs_knightstour_point;
+  var count_3 : usize;
+  var i_4 : usize;
+  var _5 : ();
+  var _6 : ();
+  var _7 : bool;
+  var _8 : usize;
+  var _9 : usize;
+  var _10 : Type.rhbspecs_prelude_vec_vec (isize, isize);
+  var _11 : Type.rhbspecs_prelude_vec_vec (isize, isize);
+  var next_12 : Type.rhbspecs_knightstour_point;
+  var _13 : Type.rhbspecs_knightstour_point;
+  var _14 : (isize, isize);
+  var _15 : (isize, isize);
+  var _16 : (isize, isize);
+  var _17 : Type.rhbspecs_prelude_vec_vec (isize, isize);
+  var _18 : Type.rhbspecs_prelude_vec_vec (isize, isize);
+  var _19 : usize;
+  var _20 : ();
+  var _21 : bool;
+  var _22 : Type.rhbspecs_knightstour_board;
+  var _23 : Type.rhbspecs_knightstour_point;
+  var _24 : ();
+  var _25 : ();
+  var _26 : ();
+  {
+    self_1 <- self;
+    p_2 <- p;
+    goto BB0
+  }
+  BB0 {
+    count_3 <- (0 : usize);
+    i_4 <- (0 : usize);
+    goto BB1
+  }
+  BB1 {
+    invariant count { count_3 <= i_4 };
+    assume { Resolve0.resolve _8 };
+    _8 <- i_4;
+    _11 <- Moves0.moves ();
+    goto BB2
+  }
+  BB2 {
+    _10 <- _11;
+    _9 <- Len0.len _10;
+    goto BB3
+  }
+  BB3 {
+    _7 <- _8 < _9;
+    goto BB4
+  }
+  BB4 {
+    assume { Resolve1.resolve _11 };
+    switch (_7)
+      | False -> goto BB14
+      | _ -> goto BB5
+      end
+  }
+  BB5 {
+    _13 <- p_2;
+    _18 <- Moves0.moves ();
+    goto BB6
+  }
+  BB6 {
+    _17 <- _18;
+    assume { Resolve0.resolve _19 };
+    _19 <- i_4;
+    _16 <- Index0.index _17 _19;
+    goto BB7
+  }
+  BB7 {
+    _15 <- _16;
+    assume { Resolve2.resolve _16 };
+    _14 <- _15;
+    assume { Resolve2.resolve _15 };
+    next_12 <- Mov0.mov _13 _14;
+    goto BB8
+  }
+  BB8 {
+    goto BB9
+  }
+  BB9 {
+    assume { Resolve1.resolve _18 };
+    _22 <- self_1;
+    assume { Resolve3.resolve _23 };
+    _23 <- next_12;
+    assume { Resolve3.resolve next_12 };
+    _21 <- Available0.available _22 _23;
+    goto BB10
+  }
+  BB10 {
+    switch (_21)
+      | False -> goto BB12
+      | _ -> goto BB11
+      end
+  }
+  BB11 {
+    count_3 <- count_3 + (1 : usize);
+    _20 <- ();
+    assume { Resolve4.resolve _20 };
+    goto BB13
+  }
+  BB12 {
+    _20 <- ();
+    assume { Resolve4.resolve _20 };
+    goto BB13
+  }
+  BB13 {
+    i_4 <- i_4 + (1 : usize);
+    _6 <- ();
+    assume { Resolve4.resolve _6 };
+    goto BB1
+  }
+  BB14 {
+    assume { Resolve5.resolve self_1 };
+    assume { Resolve3.resolve p_2 };
+    assume { Resolve0.resolve i_4 };
+    _5 <- ();
+    assume { Resolve4.resolve _5 };
+    assume { Resolve0.resolve _0 };
+    _0 <- count_3;
+    assume { Resolve0.resolve count_3 };
+    return _0
+  }
+  
+end
+module RhbSpecs_KnightsTour_Impl1_Set_Interface
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  clone RhbSpecs_KnightsTour_Impl1_Wf_Interface as Wf0
+  clone RhbSpecs_KnightsTour_Impl1_InBounds_Interface as InBounds0
+  val set [@cfg:stackify] (self : borrowed (Type.rhbspecs_knightstour_board)) (p : Type.rhbspecs_knightstour_point) (v : usize) : ()
+    requires {InBounds0.in_bounds ( * self) p}
+    requires {Wf0.wf ( * self)}
+    ensures { Type.rhbspecs_knightstour_board_Board_size ( ^ self) = Type.rhbspecs_knightstour_board_Board_size ( * self) }
+    ensures { Wf0.wf ( ^ self) }
+    
+end
+module RhbSpecs_KnightsTour_Impl1_Set
+  use prelude.Prelude
+  use Type
+  use mach.int.Int
+  use mach.int.UInt64
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = usize, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec usize, axiom .
+  clone RhbSpecs_KnightsTour_Impl1_Wf as Wf0 with function Model0.model = Model0.model,
+  function Model1.model = Model1.model
+  clone RhbSpecs_KnightsTour_Impl1_InBounds as InBounds0
+  use mach.int.Int64
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve5 with type t = usize
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy1 with type t = usize
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve3 with type t = Type.rhbspecs_prelude_vec_vec usize
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = Type.rhbspecs_prelude_vec_vec usize
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = isize
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve1 with type t = Type.rhbspecs_knightstour_board
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model3 with type t = Type.rhbspecs_prelude_vec_vec usize,
+  type ModelTy0.modelTy = ModelTy1.modelTy, function Model0.model = Model1.model
+  clone RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface as IndexMut1 with type t = usize,
+  function Model0.model = Model1.model, function Model1.model = Model3.model
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model2 with type t = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize),
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model0.model
+  clone RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface as IndexMut0 with type t = Type.rhbspecs_prelude_vec_vec usize,
+  function Model0.model = Model0.model, function Model1.model = Model2.model
+  let rec cfg set [@cfg:stackify] (self : borrowed (Type.rhbspecs_knightstour_board)) (p : Type.rhbspecs_knightstour_point) (v : usize) : ()
+    requires {InBounds0.in_bounds ( * self) p}
+    requires {Wf0.wf ( * self)}
+    ensures { Type.rhbspecs_knightstour_board_Board_size ( ^ self) = Type.rhbspecs_knightstour_board_Board_size ( * self) }
+    ensures { Wf0.wf ( ^ self) }
+    
+   = 
+  var _0 : ();
+  var self_1 : borrowed (Type.rhbspecs_knightstour_board);
+  var p_2 : Type.rhbspecs_knightstour_point;
+  var v_3 : usize;
+  var _4 : usize;
+  var _5 : borrowed usize;
+  var _6 : borrowed (Type.rhbspecs_prelude_vec_vec usize);
+  var _7 : borrowed (Type.rhbspecs_prelude_vec_vec usize);
+  var _8 : borrowed (Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize));
+  var _9 : usize;
+  var _10 : isize;
+  var _11 : usize;
+  var _12 : isize;
+  {
+    self_1 <- self;
+    p_2 <- p;
+    v_3 <- v;
+    goto BB0
+  }
+  BB0 {
+    assume { Resolve0.resolve _4 };
+    _4 <- v_3;
+    assume { Resolve0.resolve v_3 };
+    _8 <- borrow_mut (Type.rhbspecs_knightstour_board_Board_field ( * self_1));
+    self_1 <- { self_1 with current = (let Type.RhbSpecs_KnightsTour_Board a b =  * self_1 in Type.RhbSpecs_KnightsTour_Board a ( ^ _8)) };
+    assume { Resolve1.resolve self_1 };
+    assume { Resolve2.resolve _10 };
+    _10 <- Type.rhbspecs_knightstour_point_Point_x p_2;
+    _9 <- UInt64.of_int (Int64.to_int _10);
+    _7 <- IndexMut0.index_mut _8 _9;
+    goto BB1
+  }
+  BB1 {
+    _6 <- borrow_mut ( * _7);
+    _7 <- { _7 with current = ( ^ _6) };
+    assume { Resolve3.resolve _7 };
+    assume { Resolve2.resolve _12 };
+    _12 <- Type.rhbspecs_knightstour_point_Point_y p_2;
+    assume { Resolve4.resolve p_2 };
+    _11 <- UInt64.of_int (Int64.to_int _12);
+    _5 <- IndexMut1.index_mut _6 _11;
+    goto BB2
+  }
+  BB2 {
+    assume { Resolve0.resolve ( * _5) };
+    _5 <- { _5 with current = _4 };
+    assume { Resolve5.resolve _5 };
+    _0 <- ();
+    return _0
+  }
+  
+end
+module RhbSpecs_KnightsTour_DumbNonlinearArith_Interface
+  use mach.int.UInt64
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  function dumb_nonlinear_arith (a : usize) : ()
+end
+module RhbSpecs_KnightsTour_DumbNonlinearArith
+  use mach.int.UInt64
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  function dumb_nonlinear_arith (a : usize) : () = 
+    ()
+  axiom dumb_nonlinear_arith_spec : forall a : usize . UInt64.to_int a <= 1000 -> UInt64.to_int a * UInt64.to_int a <= 1000000
+end
+module RhbSpecs_KnightsTour_DumbNonlinearArith_Impl
+  use mach.int.UInt64
+  use mach.int.Int
+  use mach.int.Int32
+  use prelude.Prelude
+  let rec ghost function dumb_nonlinear_arith (a : usize) : ()
+    requires {UInt64.to_int a <= 1000}
+    ensures { UInt64.to_int a * UInt64.to_int a <= 1000000 }
+    
+   = 
+    ()
+end
+module RhbSpecs_KnightsTour_KnightsTour_Interface
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  use mach.int.Int32
+  use Type
+  val knights_tour [@cfg:stackify] (size : usize) (x : usize) (y : usize) : Type.core_option_option (Type.rhbspecs_knightstour_board)
+    requires {y < size}
+    requires {x < size}
+    requires {0 < UInt64.to_int size && UInt64.to_int size <= 1000}
+    
+end
+module RhbSpecs_KnightsTour_KnightsTour
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  use mach.int.Int32
+  use Type
+  clone RhbSpecs_KnightsTour_Impl1_InBounds as InBounds0
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = usize, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec usize, axiom .
+  clone RhbSpecs_KnightsTour_Impl1_Wf as Wf0 with function Model0.model = Model0.model,
+  function Model1.model = Model1.model
+  clone RhbSpecs_KnightsTour_DumbNonlinearArith as DumbNonlinearArith0 with axiom .
+  use mach.int.Int64
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve8 with type self = Type.core_option_option (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve7 with type self = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve6 with type self = Type.rhbspecs_knightstour_board
+  clone RhbSpecs_KnightsTour_Min_Interface as Min0
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy1 with type t = (usize, Type.rhbspecs_knightstour_point)
+  clone RhbSpecs_KnightsTour_Impl0_Mov_Interface as Mov0
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = (isize, isize)
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_prelude_vec_vec (isize, isize)
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = (isize, isize)
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model3 with type t = (isize, isize), axiom .
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model4 with type t = Type.rhbspecs_prelude_vec_vec (isize, isize),
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model3.model
+  clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index0 with type t = (isize, isize),
+  function Model0.model = Model4.model
+  clone RhbSpecs_Prelude_Vec_Impl1_Len_Interface as Len0 with type t = (isize, isize),
+  function Model0.model = Model4.model
+  clone RhbSpecs_KnightsTour_Moves_Interface as Moves0 with function Model0.model = Model3.model
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model2 with type t = (usize, Type.rhbspecs_knightstour_point), axiom .
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model5 with type t = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point),
+  type ModelTy0.modelTy = ModelTy1.modelTy, function Model0.model = Model2.model
+  clone RhbSpecs_Prelude_Vec_Impl1_Push_Interface as Push0 with type t = (usize, Type.rhbspecs_knightstour_point),
+  function Model0.model = Model2.model, function Model1.model = Model5.model
+  clone RhbSpecs_Prelude_Vec_Impl1_New_Interface as New1 with type t = (usize, Type.rhbspecs_knightstour_point),
+  function Model0.model = Model2.model
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone RhbSpecs_KnightsTour_Impl1_CountDegree_Interface as CountDegree0 with predicate InBounds0.in_bounds = InBounds0.in_bounds,
+  predicate Wf0.wf = Wf0.wf
+  clone RhbSpecs_KnightsTour_Impl1_Available_Interface as Available0 with predicate Wf0.wf = Wf0.wf,
+  predicate InBounds0.in_bounds = InBounds0.in_bounds
+  clone RhbSpecs_KnightsTour_Impl1_Set_Interface as Set0 with predicate InBounds0.in_bounds = InBounds0.in_bounds,
+  predicate Wf0.wf = Wf0.wf
+  clone RhbSpecs_KnightsTour_Impl1_New_Interface as New0 with predicate Wf0.wf = Wf0.wf
+  let rec cfg knights_tour [@cfg:stackify] (size : usize) (x : usize) (y : usize) : Type.core_option_option (Type.rhbspecs_knightstour_board)
+    requires {y < size}
+    requires {x < size}
+    requires {0 < UInt64.to_int size && UInt64.to_int size <= 1000}
+    
+   = 
+  var _0 : Type.core_option_option (Type.rhbspecs_knightstour_board);
+  var size_1 : usize;
+  var x_2 : usize;
+  var y_3 : usize;
+  var board_4 : Type.rhbspecs_knightstour_board;
+  var _5 : usize;
+  var p_6 : Type.rhbspecs_knightstour_point;
+  var _7 : isize;
+  var _8 : usize;
+  var _9 : isize;
+  var _10 : usize;
+  var step_11 : usize;
+  var _12 : ();
+  var _13 : borrowed (Type.rhbspecs_knightstour_board);
+  var _14 : Type.rhbspecs_knightstour_point;
+  var _15 : usize;
+  var _16 : ();
+  var _17 : ();
+  var _18 : ();
+  var _19 : bool;
+  var _20 : usize;
+  var _21 : usize;
+  var _22 : usize;
+  var _23 : usize;
+  var candidates_24 : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point);
+  var i_25 : usize;
+  var _26 : ();
+  var _27 : bool;
+  var _28 : usize;
+  var _29 : usize;
+  var _30 : Type.rhbspecs_prelude_vec_vec (isize, isize);
+  var _31 : Type.rhbspecs_prelude_vec_vec (isize, isize);
+  var _32 : ();
+  var adj_33 : Type.rhbspecs_knightstour_point;
+  var _34 : Type.rhbspecs_knightstour_point;
+  var _35 : (isize, isize);
+  var _36 : (isize, isize);
+  var _37 : (isize, isize);
+  var _38 : Type.rhbspecs_prelude_vec_vec (isize, isize);
+  var _39 : Type.rhbspecs_prelude_vec_vec (isize, isize);
+  var _40 : usize;
+  var _41 : bool;
+  var _42 : Type.rhbspecs_knightstour_board;
+  var _43 : Type.rhbspecs_knightstour_point;
+  var degree_44 : usize;
+  var _45 : Type.rhbspecs_knightstour_board;
+  var _46 : Type.rhbspecs_knightstour_point;
+  var _47 : ();
+  var _48 : borrowed (Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point));
+  var _49 : (usize, Type.rhbspecs_knightstour_point);
+  var _50 : usize;
+  var _51 : Type.rhbspecs_knightstour_point;
+  var _52 : ();
+  var _53 : ();
+  var _54 : ();
+  var _55 : ();
+  var _56 : Type.core_option_option (usize, Type.rhbspecs_knightstour_point);
+  var _57 : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point);
+  var _58 : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point);
+  var _59 : isize;
+  var adj_60 : Type.rhbspecs_knightstour_point;
+  var _61 : Type.rhbspecs_knightstour_point;
+  var _62 : ();
+  var _63 : ();
+  var _64 : borrowed (Type.rhbspecs_knightstour_board);
+  var _65 : Type.rhbspecs_knightstour_point;
+  var _66 : usize;
+  var _67 : ();
+  var _68 : ();
+  var _69 : ();
+  var _70 : Type.rhbspecs_knightstour_board;
+  {
+    size_1 <- size;
+    x_2 <- x;
+    y_3 <- y;
+    goto BB0
+  }
+  BB0 {
+    assume { Resolve0.resolve _5 };
+    _5 <- size_1;
+    board_4 <- New0.new _5;
+    goto BB1
+  }
+  BB1 {
+    assume { Resolve0.resolve _8 };
+    _8 <- x_2;
+    assume { Resolve0.resolve x_2 };
+    _7 <- Int64.of_int (UInt64.to_int _8);
+    assume { Resolve0.resolve _10 };
+    _10 <- y_3;
+    assume { Resolve0.resolve y_3 };
+    _9 <- Int64.of_int (UInt64.to_int _10);
+    p_6 <- Type.RhbSpecs_KnightsTour_Point _7 _9;
+    step_11 <- (1 : usize);
+    _13 <- borrow_mut board_4;
+    board_4 <-  ^ _13;
+    assume { Resolve1.resolve _14 };
+    _14 <- p_6;
+    assume { Resolve0.resolve _15 };
+    _15 <- step_11;
+    _12 <- Set0.set _13 _14 _15;
+    goto BB2
+  }
+  BB2 {
+    step_11 <- step_11 + (1 : usize);
+    assert { let _ = DumbNonlinearArith0.dumb_nonlinear_arith size_1 in true };
+    _16 <- ();
+    assume { Resolve2.resolve _16 };
+    goto BB3
+  }
+  BB3 {
+    goto BB4
+  }
+  BB4 {
+    goto BB5
+  }
+  BB5 {
+    invariant b { Type.rhbspecs_knightstour_board_Board_size board_4 = size_1 };
+    invariant b { Wf0.wf board_4 };
+    invariant p { InBounds0.in_bounds board_4 p_6 };
+    assume { Resolve0.resolve _20 };
+    _20 <- step_11;
+    assume { Resolve0.resolve _22 };
+    _22 <- size_1;
+    assume { Resolve0.resolve _23 };
+    _23 <- size_1;
+    _21 <- _22 * _23;
+    _19 <- _20 <= _21;
+    switch (_19)
+      | False -> goto BB31
+      | _ -> goto BB6
+      end
+  }
+  BB6 {
+    candidates_24 <- New1.new ();
+    goto BB7
+  }
+  BB7 {
+    i_25 <- (0 : usize);
+    goto BB8
+  }
+  BB8 {
+    assume { Resolve0.resolve _28 };
+    _28 <- i_25;
+    _31 <- Moves0.moves ();
+    goto BB9
+  }
+  BB9 {
+    _30 <- _31;
+    _29 <- Len0.len _30;
+    goto BB10
+  }
+  BB10 {
+    _27 <- _28 < _29;
+    goto BB11
+  }
+  BB11 {
+    assume { Resolve3.resolve _31 };
+    switch (_27)
+      | False -> goto BB24
+      | _ -> goto BB12
+      end
+  }
+  BB12 {
+    assert { InBounds0.in_bounds board_4 p_6 };
+    goto BB13
+  }
+  BB13 {
+    _32 <- ();
+    assume { Resolve2.resolve _32 };
+    _34 <- p_6;
+    _39 <- Moves0.moves ();
+    goto BB14
+  }
+  BB14 {
+    _38 <- _39;
+    assume { Resolve0.resolve _40 };
+    _40 <- i_25;
+    _37 <- Index0.index _38 _40;
+    goto BB15
+  }
+  BB15 {
+    _36 <- _37;
+    assume { Resolve4.resolve _37 };
+    _35 <- _36;
+    assume { Resolve4.resolve _36 };
+    adj_33 <- Mov0.mov _34 _35;
+    goto BB16
+  }
+  BB16 {
+    goto BB17
+  }
+  BB17 {
+    assume { Resolve3.resolve _39 };
+    _42 <- board_4;
+    assume { Resolve1.resolve _43 };
+    _43 <- adj_33;
+    _41 <- Available0.available _42 _43;
+    goto BB18
+  }
+  BB18 {
+    switch (_41)
+      | False -> goto BB22
+      | _ -> goto BB19
+      end
+  }
+  BB19 {
+    _45 <- board_4;
+    assume { Resolve1.resolve _46 };
+    _46 <- adj_33;
+    degree_44 <- CountDegree0.count_degree _45 _46;
+    goto BB20
+  }
+  BB20 {
+    _48 <- borrow_mut candidates_24;
+    candidates_24 <-  ^ _48;
+    assume { Resolve0.resolve _50 };
+    _50 <- degree_44;
+    assume { Resolve0.resolve degree_44 };
+    assume { Resolve1.resolve _51 };
+    _51 <- adj_33;
+    assume { Resolve1.resolve adj_33 };
+    _49 <- (_50, _51);
+    _47 <- Push0.push _48 _49;
+    goto BB21
+  }
+  BB21 {
+    _18 <- ();
+    assume { Resolve2.resolve _18 };
+    goto BB23
+  }
+  BB22 {
+    assume { Resolve1.resolve adj_33 };
+    _18 <- ();
+    assume { Resolve2.resolve _18 };
+    goto BB23
+  }
+  BB23 {
+    goto BB8
+  }
+  BB24 {
+    assume { Resolve1.resolve p_6 };
+    assume { Resolve0.resolve i_25 };
+    _26 <- ();
+    assume { Resolve2.resolve _26 };
+    _58 <- candidates_24;
+    _57 <- _58;
+    assume { Resolve5.resolve _58 };
+    _56 <- Min0.min _57;
+    goto BB25
+  }
+  BB25 {
+    switch (_56)
+      | Type.Core_Option_Option_None -> goto BB26
+      | Type.Core_Option_Option_Some _ -> goto BB28
+      end
+  }
+  BB26 {
+    assume { Resolve0.resolve size_1 };
+    assume { Resolve0.resolve step_11 };
+    assume { Resolve8.resolve _56 };
+    _0 <- Type.Core_Option_Option_None;
+    goto BB34
+  }
+  BB27 {
+    assume { Resolve0.resolve size_1 };
+    assume { Resolve6.resolve board_4 };
+    assume { Resolve0.resolve step_11 };
+    assume { Resolve7.resolve candidates_24 };
+    assume { Resolve8.resolve _56 };
+    absurd
+  }
+  BB28 {
+    assume { Resolve1.resolve adj_60 };
+    adj_60 <- (let (_, a) = Type.core_option_option_Some_0 _56 in a);
+    assume { Resolve8.resolve _56 };
+    assume { Resolve1.resolve _61 };
+    _61 <- adj_60;
+    assume { Resolve1.resolve adj_60 };
+    assume { Resolve1.resolve p_6 };
+    p_6 <- _61;
+    _55 <- ();
+    assume { Resolve2.resolve _55 };
+    _64 <- borrow_mut board_4;
+    board_4 <-  ^ _64;
+    assume { Resolve1.resolve _65 };
+    _65 <- p_6;
+    assume { Resolve0.resolve _66 };
+    _66 <- step_11;
+    _63 <- Set0.set _64 _65 _66;
+    goto BB29
+  }
+  BB29 {
+    step_11 <- step_11 + (1 : usize);
+    _18 <- ();
+    assume { Resolve2.resolve _18 };
+    goto BB30
+  }
+  BB30 {
+    assume { Resolve7.resolve candidates_24 };
+    goto BB5
+  }
+  BB31 {
+    assume { Resolve0.resolve size_1 };
+    assume { Resolve1.resolve p_6 };
+    assume { Resolve0.resolve step_11 };
+    _17 <- ();
+    assume { Resolve2.resolve _17 };
+    assume { Resolve6.resolve _70 };
+    _70 <- board_4;
+    _0 <- Type.Core_Option_Option_Some _70;
+    goto BB32
+  }
+  BB32 {
+    goto BB33
+  }
+  BB33 {
+    goto BB36
+  }
+  BB34 {
+    assume { Resolve7.resolve candidates_24 };
+    goto BB35
+  }
+  BB35 {
+    assume { Resolve6.resolve board_4 };
+    goto BB36
+  }
+  BB36 {
+    return _0
+  }
+  
+end
+module RhbSpecs_KnightsTour_Impl2
+  
+end
