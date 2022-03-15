@@ -42,7 +42,7 @@ why3 config detect
 4. Then compile the crate using Creusot:
 
 ```
-CREUSOT_CONTINUE=1 cargo creusot --features=contracts > proofs.mlcfg
+make proofs
 ```
 
 5. Finally, load the proofs in why3
