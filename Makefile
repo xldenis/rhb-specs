@@ -1,4 +1,4 @@
-.PHONY: clean proofs reset-session
+.PHONY: clean proofs reset-session build-lib build
 
 clean: reset-session
 	cargo clean
@@ -11,6 +11,6 @@ build-lib:
 	cargo clean -p rhb-specs
 
 build: build-lib
-	cargo creusot --features=contracts > proofs.mlcfg
+	CREUSOT_CONTINUE=1 cargo creusot --features=contracts > proofs.mlcfg
 
-proofs: build-lib
+proofs: build
