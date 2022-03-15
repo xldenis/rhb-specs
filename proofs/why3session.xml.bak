@@ -4,229 +4,229 @@
 <why3session shape_version="6">
 <prover id="0" name="CVC4" version="1.8" timelimit="1" steplimit="0" memlimit="1000"/>
 <prover id="1" name="Z3" version="4.8.10" timelimit="1" steplimit="0" memlimit="1000"/>
-<file format="mlcfg" proved="true">
+<file format="mlcfg">
 <path name=".."/><path name="proofs.mlcfg"/>
-<theory name="RhbSpecs_EvenCell_AddsTwo" proved="true">
- <goal name="adds_two&#39;vc" expl="VC for adds_two" proved="true">
- <proof prover="1"><result status="valid" time="0.03" steps="125495"/></proof>
+<theory name="RhbSpecs_EvenCell_AddsTwo">
+ <goal name="adds_two&#39;vc" expl="VC for adds_two">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.03" steps="125495"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_Concurrent_Impl1_Call" proved="true">
- <goal name="call&#39;vc" expl="VC for call" proved="true">
- <proof prover="1"><result status="valid" time="0.10" steps="535538"/></proof>
+<theory name="RhbSpecs_Concurrent_Impl1_Call">
+ <goal name="call&#39;vc" expl="VC for call">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.10" steps="535538"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_Concurrent_Impl1" proved="true">
- <goal name="Call1.call&#39;refn&#39;vc" expl="VC for call&#39;refn" proved="true">
- <proof prover="1"><result status="valid" time="0.01" steps="9045"/></proof>
+<theory name="RhbSpecs_Concurrent_Impl1">
+ <goal name="Call1.call&#39;refn&#39;vc" expl="VC for call&#39;refn">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="9045"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_Concurrent_Concurrent" proved="true">
- <goal name="concurrent&#39;vc" expl="VC for concurrent" proved="true">
- <proof prover="1"><result status="valid" time="0.02" steps="114349"/></proof>
+<theory name="RhbSpecs_Concurrent_Concurrent">
+ <goal name="concurrent&#39;vc" expl="VC for concurrent">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="114349"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_Prelude_Vec_Impl3" proved="true">
- <goal name="Index1.index&#39;refn&#39;vc" expl="VC for index&#39;refn" proved="true">
- <proof prover="1"><result status="valid" time="0.01" steps="11084"/></proof>
+<theory name="RhbSpecs_Prelude_Vec_Impl3">
+ <goal name="Index1.index&#39;refn&#39;vc" expl="VC for index&#39;refn">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="11084"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_Min" proved="true">
- <goal name="min&#39;vc" expl="VC for min" proved="true">
- <proof prover="0"><result status="valid" time="0.19" steps="49724"/></proof>
+<theory name="RhbSpecs_KnightsTour_Min">
+ <goal name="min&#39;vc" expl="VC for min">
+ <proof prover="0" obsolete="true"><result status="valid" time="0.19" steps="49724"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_Prelude_Vec_Impl2" proved="true">
- <goal name="IndexMut1.index_mut&#39;refn&#39;vc" expl="VC for index_mut&#39;refn" proved="true">
- <proof prover="1"><result status="valid" time="0.01" steps="11259"/></proof>
+<theory name="RhbSpecs_Prelude_Vec_Impl2">
+ <goal name="IndexMut1.index_mut&#39;refn&#39;vc" expl="VC for index_mut&#39;refn">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="11259"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_AllZero_AllZero" proved="true">
- <goal name="all_zero&#39;vc" expl="VC for all_zero" proved="true">
- <proof prover="1"><result status="valid" time="0.55" steps="1983316"/></proof>
+<theory name="RhbSpecs_AllZero_AllZero">
+ <goal name="all_zero&#39;vc" expl="VC for all_zero">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.55" steps="1983316"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_FibCell_Fib_Impl" proved="true">
- <goal name="fib&#39;vc" expl="VC for fib" proved="true">
- <proof prover="1"><result status="valid" time="0.01" steps="8307"/></proof>
+<theory name="RhbSpecs_FibCell_Fib_Impl">
+ <goal name="fib&#39;vc" expl="VC for fib">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="8307"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_FibCell_LemmaFibBound_Impl" proved="true">
- <goal name="lemma_fib_bound&#39;vc" expl="VC for lemma_fib_bound" proved="true">
- <proof prover="1"><result status="valid" time="0.01" steps="59994"/></proof>
+<theory name="RhbSpecs_FibCell_LemmaFibBound_Impl">
+ <goal name="lemma_fib_bound&#39;vc" expl="VC for lemma_fib_bound">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="59994"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_FibCell_FibMemo" proved="true">
- <goal name="fib_memo&#39;vc" expl="VC for fib_memo" proved="true">
- <transf name="split_vc" proved="true" >
-  <goal name="fib_memo&#39;vc.0" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="102976"/></proof>
+<theory name="RhbSpecs_FibCell_FibMemo">
+ <goal name="fib_memo&#39;vc" expl="VC for fib_memo">
+ <transf name="split_vc" >
+  <goal name="fib_memo&#39;vc.0" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="102976"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.1" expl="assertion" proved="true">
-  <proof prover="1"><result status="valid" time="0.01" steps="14662"/></proof>
+  <goal name="fib_memo&#39;vc.1" expl="assertion">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="14662"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.2" expl="assertion" proved="true">
-  <proof prover="1"><result status="valid" time="0.01" steps="14669"/></proof>
+  <goal name="fib_memo&#39;vc.2" expl="assertion">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="14669"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.3" expl="integer overflow" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="229302"/></proof>
+  <goal name="fib_memo&#39;vc.3" expl="integer overflow">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="229302"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.4" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="229504"/></proof>
+  <goal name="fib_memo&#39;vc.4" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="229504"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.5" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="229799"/></proof>
+  <goal name="fib_memo&#39;vc.5" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="229799"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.6" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="120010"/></proof>
+  <goal name="fib_memo&#39;vc.6" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="120010"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.7" expl="integer overflow" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="230262"/></proof>
+  <goal name="fib_memo&#39;vc.7" expl="integer overflow">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="230262"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.8" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="230445"/></proof>
+  <goal name="fib_memo&#39;vc.8" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="230445"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.9" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="230775"/></proof>
+  <goal name="fib_memo&#39;vc.9" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="230775"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.10" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="120412"/></proof>
+  <goal name="fib_memo&#39;vc.10" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="120412"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.11" expl="integer overflow" proved="true">
-  <proof prover="1"><result status="valid" time="0.06" steps="319739"/></proof>
+  <goal name="fib_memo&#39;vc.11" expl="integer overflow">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.06" steps="319739"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.12" expl="assertion" proved="true">
-  <proof prover="0"><result status="valid" time="0.21" steps="47633"/></proof>
+  <goal name="fib_memo&#39;vc.12" expl="assertion">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.21" steps="47633"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.13" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="120872"/></proof>
+  <goal name="fib_memo&#39;vc.13" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="120872"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.14" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="248843"/></proof>
+  <goal name="fib_memo&#39;vc.14" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="248843"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.15" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="122154"/></proof>
+  <goal name="fib_memo&#39;vc.15" expl="postcondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="122154"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.16" expl="assertion" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="235920"/></proof>
+  <goal name="fib_memo&#39;vc.16" expl="assertion">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="235920"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.17" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="119860"/></proof>
+  <goal name="fib_memo&#39;vc.17" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="119860"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.18" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="243201"/></proof>
+  <goal name="fib_memo&#39;vc.18" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="243201"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.19" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="121142"/></proof>
+  <goal name="fib_memo&#39;vc.19" expl="postcondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="121142"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.20" expl="assertion" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="235356"/></proof>
+  <goal name="fib_memo&#39;vc.20" expl="assertion">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="235356"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.21" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="119497"/></proof>
+  <goal name="fib_memo&#39;vc.21" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="119497"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.22" expl="precondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="242686"/></proof>
+  <goal name="fib_memo&#39;vc.22" expl="precondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="242686"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.23" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="120779"/></proof>
+  <goal name="fib_memo&#39;vc.23" expl="postcondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="120779"/></proof>
   </goal>
-  <goal name="fib_memo&#39;vc.24" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.22" steps="885116"/></proof>
+  <goal name="fib_memo&#39;vc.24" expl="postcondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.22" steps="885116"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="RhbSpecs_IncVec_IncVec" proved="true">
- <goal name="inc_vec&#39;vc" expl="VC for inc_vec" proved="true">
- <transf name="split_vc" proved="true" >
-  <goal name="inc_vec&#39;vc.0" expl="loop invariant init" proved="true">
-  <proof prover="1"><result status="valid" time="0.02" steps="124883"/></proof>
+<theory name="RhbSpecs_IncVec_IncVec">
+ <goal name="inc_vec&#39;vc" expl="VC for inc_vec">
+ <transf name="split_vc" >
+  <goal name="inc_vec&#39;vc.0" expl="loop invariant init">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="124883"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.1" expl="loop invariant init" proved="true">
-  <proof prover="0"><result status="valid" time="0.21" steps="50205"/></proof>
+  <goal name="inc_vec&#39;vc.1" expl="loop invariant init">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.21" steps="50205"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.2" expl="loop invariant init" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="258187"/></proof>
+  <goal name="inc_vec&#39;vc.2" expl="loop invariant init">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="258187"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.3" expl="integer overflow" proved="true">
-  <proof prover="0"><result status="valid" time="0.25" steps="58364"/></proof>
+  <goal name="inc_vec&#39;vc.3" expl="integer overflow">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.25" steps="58364"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.4" expl="integer overflow" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="278557"/></proof>
+  <goal name="inc_vec&#39;vc.4" expl="integer overflow">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="278557"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.5" expl="loop invariant preservation" proved="true">
-  <proof prover="0"><result status="valid" time="0.29" steps="67155"/></proof>
+  <goal name="inc_vec&#39;vc.5" expl="loop invariant preservation">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.29" steps="67155"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.6" expl="loop invariant preservation" proved="true">
-  <proof prover="0"><result status="valid" time="0.48" steps="123863"/></proof>
+  <goal name="inc_vec&#39;vc.6" expl="loop invariant preservation">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.48" steps="123863"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.7" expl="loop invariant preservation" proved="true">
-  <proof prover="1" timelimit="5"><result status="valid" time="2.61" steps="5309727"/></proof>
+  <goal name="inc_vec&#39;vc.7" expl="loop invariant preservation">
+  <proof prover="1" timelimit="5" obsolete="true"><result status="valid" time="2.61" steps="5309727"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.8" expl="postcondition" proved="true">
-  <proof prover="0"><result status="valid" time="0.24" steps="53898"/></proof>
+  <goal name="inc_vec&#39;vc.8" expl="postcondition">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.24" steps="53898"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.9" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.04" steps="267130"/></proof>
+  <goal name="inc_vec&#39;vc.9" expl="postcondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="267130"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.10" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.01" steps="8327"/></proof>
+  <goal name="inc_vec&#39;vc.10" expl="postcondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="8327"/></proof>
   </goal>
-  <goal name="inc_vec&#39;vc.11" expl="postcondition" proved="true">
-  <proof prover="1"><result status="valid" time="0.01" steps="8326"/></proof>
+  <goal name="inc_vec&#39;vc.11" expl="postcondition">
+  <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="8326"/></proof>
   </goal>
  </transf>
  </goal>
 </theory>
-<theory name="RhbSpecs_Reversal_Rev" proved="true">
- <goal name="rev&#39;vc" expl="VC for rev" proved="true">
- <proof prover="0"><result status="valid" time="0.14" steps="39563"/></proof>
+<theory name="RhbSpecs_Reversal_Rev">
+ <goal name="rev&#39;vc" expl="VC for rev">
+ <proof prover="0" obsolete="true"><result status="valid" time="0.14" steps="39563"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_Impl3_Clone" proved="true">
- <goal name="clone&#39;&#39;vc" expl="VC for clone&#39;" proved="true">
- <proof prover="1"><result status="valid" time="0.01" steps="9045"/></proof>
+<theory name="RhbSpecs_KnightsTour_Impl3_Clone">
+ <goal name="clone&#39;&#39;vc" expl="VC for clone&#39;">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="9045"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_Impl3" proved="true">
- <goal name="Clone1.clone&#39;&#39;refn&#39;vc" expl="VC for clone&#39;&#39;refn" proved="true">
- <proof prover="1"><result status="valid" time="0.01" steps="9045"/></proof>
+<theory name="RhbSpecs_KnightsTour_Impl3">
+ <goal name="Clone1.clone&#39;&#39;refn&#39;vc" expl="VC for clone&#39;&#39;refn">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="9045"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_Impl0_Mov" proved="true">
- <goal name="mov&#39;vc" expl="VC for mov" proved="true">
- <proof prover="1"><result status="valid" time="0.04" steps="240696"/></proof>
+<theory name="RhbSpecs_KnightsTour_Impl0_Mov">
+ <goal name="mov&#39;vc" expl="VC for mov">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.04" steps="240696"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_Impl1_New" proved="true">
- <goal name="new&#39;vc" expl="VC for new" proved="true">
- <proof prover="0"><result status="valid" time="0.27" steps="69075"/></proof>
+<theory name="RhbSpecs_KnightsTour_Impl1_New">
+ <goal name="new&#39;vc" expl="VC for new">
+ <proof prover="0" obsolete="true"><result status="valid" time="0.27" steps="69075"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_Impl1_Available" proved="true">
- <goal name="available&#39;vc" expl="VC for available" proved="true">
- <proof prover="1"><result status="valid" time="0.80" steps="2751690"/></proof>
+<theory name="RhbSpecs_KnightsTour_Impl1_Available">
+ <goal name="available&#39;vc" expl="VC for available">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.80" steps="2751690"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_Impl1_CountDegree" proved="true">
- <goal name="count_degree&#39;vc" expl="VC for count_degree" proved="true">
- <proof prover="1"><result status="valid" time="0.72" steps="2565668"/></proof>
+<theory name="RhbSpecs_KnightsTour_Impl1_CountDegree">
+ <goal name="count_degree&#39;vc" expl="VC for count_degree">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.72" steps="2565668"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_Impl1_Set" proved="true">
- <goal name="set&#39;vc" expl="VC for set" proved="true">
- <proof prover="1"><result status="valid" time="0.56" steps="2278901"/></proof>
+<theory name="RhbSpecs_KnightsTour_Impl1_Set">
+ <goal name="set&#39;vc" expl="VC for set">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.56" steps="2278901"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_DumbNonlinearArith_Impl" proved="true">
- <goal name="dumb_nonlinear_arith&#39;vc" expl="VC for dumb_nonlinear_arith" proved="true">
- <proof prover="1"><result status="valid" time="0.02" steps="58305"/></proof>
+<theory name="RhbSpecs_KnightsTour_DumbNonlinearArith_Impl">
+ <goal name="dumb_nonlinear_arith&#39;vc" expl="VC for dumb_nonlinear_arith">
+ <proof prover="1" obsolete="true"><result status="valid" time="0.02" steps="58305"/></proof>
  </goal>
 </theory>
-<theory name="RhbSpecs_KnightsTour_KnightsTour" proved="true">
- <goal name="knights_tour&#39;vc" expl="VC for knights_tour" proved="true">
- <proof prover="0"><result status="valid" time="0.41" steps="132122"/></proof>
+<theory name="RhbSpecs_KnightsTour_KnightsTour">
+ <goal name="knights_tour&#39;vc" expl="VC for knights_tour">
+ <proof prover="0" obsolete="true"><result status="valid" time="0.41" steps="132122"/></proof>
  </goal>
 </theory>
 </file>
