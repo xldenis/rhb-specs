@@ -10,6 +10,7 @@ impl Inv<u64> for Even {
     }
 }
 
+// Given a cell which holds an even value, either increment it or reset it to 0.
 fn adds_two(c: &Cell<u64, Even>) {
     let v = c.get();
     // To shut up overflow checking

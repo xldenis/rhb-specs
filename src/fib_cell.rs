@@ -1,6 +1,7 @@
 // SPEC LINES 11 + 14 + 4 + 11 + 6 + 7
 use crate::prelude::*;
 
+// Naive, mathematical fibonacci
 #[logic]
 #[variant(i)]
 fn fib(i: Int) -> Int {
@@ -13,6 +14,7 @@ fn fib(i: Int) -> Int {
     }
 }
 
+// Show a weak upper bound on the value of a fibonacci number
 #[logic]
 #[requires(0 <= i)]
 #[ensures(fib(i) <= 2.pow(i))]
@@ -36,6 +38,8 @@ fn lemma_max_int() {}
 struct Fib {
     ix: usize,
 }
+// An invariant which depends on a value `ix` over an option of usize.
+// If a value is present, then it is the ix-th fibonacci number.
 impl Inv<Option<usize>> for Fib {
     #[predicate]
     fn inv(&self, v: Option<usize>) -> bool {
@@ -50,6 +54,7 @@ impl Inv<Option<usize>> for Fib {
 
 type FibCache = Vec<Cell<Option<usize>, Fib>>;
 
+// The cell invariants have the correct indices
 #[predicate]
 fn fib_cell(v: FibCache) -> bool {
     pearlite! {
@@ -57,10 +62,13 @@ fn fib_cell(v: FibCache) -> bool {
     }
 }
 
+// Given a cache with the proper invariants
 #[requires(fib_cell(*mem))]
 #[requires(@i < (@mem).len())]
-#[ensures(@result === fib(@i))]
+// Purely for overflow reasons
 #[requires(@i <= 63)]
+// Return the ith fibonacci number
+#[ensures(@result === fib(@i))]
 fn fib_memo(mem: &FibCache, i: usize) -> usize {
     match mem[i].get() {
         Some(v) => v,
@@ -70,10 +78,12 @@ fn fib_memo(mem: &FibCache, i: usize) -> usize {
             } else if i == 1 {
                 1
             } else {
+                // Load the lemmas to prove safety of addition
                 proof_assert! { {lemma_max_int(); true} };
                 proof_assert! { {lemma_fib_bound(0); true} };
                 fib_memo(mem, i - 1) + fib_memo(mem, i - 2)
             };
+            // assert we have the correct result.
             proof_assert! { @fib_i === fib(@i)};
             mem[i].set(Some(fib_i));
             fib_i

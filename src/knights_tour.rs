@@ -7,12 +7,13 @@ struct Point {
     y: isize,
 }
 
-// ISSUE: patterns in function binders are unsupported!
 impl Point {
+    // Require that points are bounded by +- 10_000 in all dimensions for overflow reasons
     #[requires(-10000 <= @(self.x) && @(self.x) <= 10000)]
     #[requires(-10000 <= @(self.y) && @(self.y) <= 10000)]
     #[requires(-10000 <= @(p.0) && @(p.0) <= 10000)]
     #[requires(-10000 <= @(p.1) && @(p.1) <= 10000)]
+    // The result is just the sum of the inputs
     #[ensures(@(result.x) === @(self.x) + @(p.0))]
     #[ensures(@(result.y) === @(self.y) + @(p.1))]
     fn mov(&self, p: &(isize, isize)) -> Self {
@@ -28,6 +29,9 @@ struct Board {
 impl Board {
     #[predicate]
     fn wf(self) -> bool {
+        // A board is well formed if:
+        //  1. it at most 1_000 x 1_000 (overflow)
+        //  2. self.field holds a square vector of vectors of size `self.size`
         pearlite! {
             @(self.size) <= 1_000 &&
             (@(self.field)).len() === @self.size &&
@@ -35,6 +39,7 @@ impl Board {
         }
     }
 
+    // Produces a well-formed board of size `size`
     #[requires(@size <= 1000)]
     #[ensures(result.size === size)]
     #[ensures(result.wf())]
@@ -43,6 +48,7 @@ impl Board {
 
         let mut i = 0;
         #[invariant(i_size, i <= size)]
+        // All the created rows are of size `size`
         #[invariant(rows,
             forall<j : Int> 0 <= j && j < @i ==> (@((@rows)[j])).len() === @size)]
         #[invariant(row_len, (@rows).len() === @i )]
@@ -54,6 +60,7 @@ impl Board {
         Self { size, field: rows }
     }
 
+    // given a well formed board, find if a point is available in the board: it must be inbounds and also unset
     #[requires(self.wf())]
     #[ensures(result ==> self.in_bounds(p))]
     fn available(&self, p: Point) -> bool {
@@ -64,6 +71,7 @@ impl Board {
             && self.field[p.x as usize][p.y as usize] == 0
     }
 
+    // Check if a point is within the bounds of teh board.
     #[predicate]
     fn in_bounds(self, p: Point) -> bool {
         pearlite! {
@@ -88,7 +96,7 @@ impl Board {
         }
         count
     }
-
+    // Given a valid point and board, set produces a well-formed board.
     #[requires(self.wf())]
     #[requires(self.in_bounds(p))]
     #[ensures((^self).wf())]
@@ -132,11 +140,13 @@ fn min(v: &Vec<(usize, Point)>) -> Option<&(usize, Point)> {
     min
 }
 
+// A simple lemma we need to convince why3 that 1_000^2 is within the bounds of a u64
 #[logic]
 #[requires(@a <= 1_000)]
 #[ensures(@a * @a <= 1_000_000)]
 fn dumb_nonlinear_arith(a: usize) {}
 
+// require a board size and a valid position in the board.
 #[requires(0 < @size && @size <= 1000)]
 #[requires(x < size)]
 #[requires(y < size)]
@@ -148,7 +158,9 @@ fn knights_tour(size: usize, x: usize, y: usize) -> Option<Board> {
     board.set(p, step);
     step += 1;
 
+    // call the lemma to convince why3 our board size won't overflow
     proof_assert! {{ dumb_nonlinear_arith(size); true }}
+    // Invariants just state the board keeps it size, stys valid and the point we're currently at is within bounds.
     #[invariant(b, board.size === size)]
     #[invariant(b, board.wf())]
     #[invariant(p, board.in_bounds(p))]
