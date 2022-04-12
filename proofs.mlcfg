@@ -168,6 +168,18 @@ module Type
     
   axiom rhbspecs_knightstour_board_Board_field_acc : forall a : usize, b : rhbspecs_prelude_vec_vec (rhbspecs_prelude_vec_vec usize) . rhbspecs_knightstour_board_Board_field (RhbSpecs_KnightsTour_Board a b : rhbspecs_knightstour_board) = b
 end
+module RhbSpecs_Prelude_Cell_Inv_Inv_Interface
+  type self   
+  type t   
+  use prelude.Prelude
+  predicate inv (self : self) (x : t)
+end
+module RhbSpecs_Prelude_Cell_Inv_Inv
+  type self   
+  type t   
+  use prelude.Prelude
+  predicate inv (self : self) (x : t)
+end
 module RhbSpecs_Prelude_Fn_FakeFnOnce_Return
   type self   
   type return'   
@@ -183,12 +195,12 @@ end
 module RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition_Interface
   type self   
   clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return0 with type self = self
-  predicate postcondition (self : self) (_2 : Return0.return')
+  predicate postcondition (self : self) (_2' : Return0.return')
 end
 module RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition
   type self   
   clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return0 with type self = self
-  predicate postcondition (self : self) (_2 : Return0.return')
+  predicate postcondition (self : self) (_2' : Return0.return')
 end
 module RhbSpecs_Prelude_Fn_FakeFnOnce_Call_Interface
   type self   
@@ -212,37 +224,6 @@ module RhbSpecs_Prelude_Fn_FakeFnOnce_Call
     ensures { Postcondition0.postcondition self result }
     
 end
-module RhbSpecs_Prelude_Cell_Inv_Inv_Interface
-  type self   
-  type t   
-  use prelude.Prelude
-  predicate inv (self : self) (x : t)
-end
-module RhbSpecs_Prelude_Cell_Inv_Inv
-  type self   
-  type t   
-  use prelude.Prelude
-  predicate inv (self : self) (x : t)
-end
-module CreusotContracts_Logic_Model_Model_ModelTy
-  type self   
-  type modelTy   
-end
-module CreusotContracts_Logic_Model_Model_Model_Interface
-  type self   
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = self
-  function model (self : self) : ModelTy0.modelTy
-end
-module CreusotContracts_Logic_Model_Model_Model
-  type self   
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = self
-  function model (self : self) : ModelTy0.modelTy
-end
-module CreusotContracts_Logic_Ghost_Impl0_ModelTy
-  type t   
-  type modelTy  = 
-    t
-end
 module CreusotContracts_Logic_Ghost_Impl0_Model_Interface
   type t   
   use Type
@@ -252,16 +233,6 @@ module CreusotContracts_Logic_Ghost_Impl0_Model
   type t   
   use Type
   function model (self : Type.creusotcontracts_logic_ghost_ghost t) : t
-end
-module CreusotContracts_Logic_Ghost_Impl0
-  type t   
-  use Type
-  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = t
-  clone CreusotContracts_Logic_Ghost_Impl0_ModelTy as ModelTy0 with type t = t
-  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = Type.creusotcontracts_logic_ghost_ghost t,
-  type ModelTy0.modelTy = ModelTy0.modelTy, function model = Model0.model
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = Type.creusotcontracts_logic_ghost_ghost t,
-  type modelTy = ModelTy0.modelTy
 end
 module RhbSpecs_Prelude_Cell_Impl0_Get_Interface
   type t   
@@ -285,13 +256,14 @@ module RhbSpecs_Prelude_Cell_Impl0_Get
     ensures { Inv0.inv (Model0.model (Type.rhbspecs_prelude_cell_cell_Cell_ghost_inv self)) result }
     
 end
-module CreusotContracts_Logic_Resolve_Resolve_Resolve_Interface
-  type self   
-  predicate resolve (self : self)
+module CreusotContracts_Logic_Resolve_Impl2_Resolve_Interface
+  type t   
+  predicate resolve (self : t)
 end
-module CreusotContracts_Logic_Resolve_Resolve_Resolve
-  type self   
-  predicate resolve (self : self)
+module CreusotContracts_Logic_Resolve_Impl2_Resolve
+  type t   
+  predicate resolve (self : t) = 
+    true
 end
 module RhbSpecs_Prelude_Cell_Impl0_Set_Interface
   type t   
@@ -314,6 +286,49 @@ module RhbSpecs_Prelude_Cell_Impl0_Set
   val set [@cfg:stackify] (self : Type.rhbspecs_prelude_cell_cell t i) (v : t) : ()
     requires {Inv0.inv (Model0.model (Type.rhbspecs_prelude_cell_cell_Cell_ghost_inv self)) v}
     
+end
+module CreusotContracts_Logic_Resolve_Resolve_Resolve_Interface
+  type self   
+  predicate resolve (self : self)
+end
+module CreusotContracts_Logic_Resolve_Resolve_Resolve
+  type self   
+  predicate resolve (self : self)
+end
+module CreusotContracts_Logic_Resolve_Impl2
+  type t   
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = t
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = t,
+  predicate resolve = Resolve0.resolve
+end
+module CreusotContracts_Logic_Model_Model_ModelTy
+  type self   
+  type modelTy   
+end
+module CreusotContracts_Logic_Model_Model_Model_Interface
+  type self   
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = self
+  function model (self : self) : ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Model_Model_Model
+  type self   
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = self
+  function model (self : self) : ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Ghost_Impl0_ModelTy
+  type t   
+  type modelTy  = 
+    t
+end
+module CreusotContracts_Logic_Ghost_Impl0
+  type t   
+  use Type
+  clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = t
+  clone CreusotContracts_Logic_Ghost_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = Type.creusotcontracts_logic_ghost_ghost t,
+  function model = Model0.model, type ModelTy0.modelTy = ModelTy0.modelTy
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = Type.creusotcontracts_logic_ghost_ghost t,
+  type modelTy = ModelTy0.modelTy
 end
 module RhbSpecs_EvenCell_Impl0_Inv_Interface
   use prelude.Prelude
@@ -350,8 +365,8 @@ module RhbSpecs_EvenCell_AddsTwo
   use Type
   use mach.int.Int
   use mach.int.UInt64
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_cell_cell uint64 (Type.rhbspecs_evencell_even)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = uint64
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.rhbspecs_prelude_cell_cell uint64 (Type.rhbspecs_evencell_even)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = uint64
   clone RhbSpecs_EvenCell_Impl0_Inv as Inv0
   clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = Type.rhbspecs_evencell_even
   clone RhbSpecs_Prelude_Cell_Impl0_Set_Interface as Set0 with type t = uint64, type i = Type.rhbspecs_evencell_even,
@@ -419,28 +434,6 @@ module RhbSpecs_EvenCell_AddsTwo
     return _0
   }
   
-end
-module RhbSpecs_Concurrent_Impl1_Return
-  type return'  = 
-    ()
-end
-module RhbSpecs_Concurrent_Impl1_Precondition_Interface
-  use Type
-  predicate precondition (self : Type.rhbspecs_concurrent_addstwo)
-end
-module RhbSpecs_Concurrent_Impl1_Precondition
-  use Type
-  predicate precondition (self : Type.rhbspecs_concurrent_addstwo) = 
-    true
-end
-module RhbSpecs_Concurrent_Impl1_Postcondition_Interface
-  use Type
-  predicate postcondition (self : Type.rhbspecs_concurrent_addstwo) (_2 : ())
-end
-module RhbSpecs_Concurrent_Impl1_Postcondition
-  use Type
-  predicate postcondition (self : Type.rhbspecs_concurrent_addstwo) (_2 : ()) = 
-    true
 end
 module RhbSpecs_Prelude_Mutex_Impl0_Lock_Interface
   type t   
@@ -538,9 +531,9 @@ module RhbSpecs_Concurrent_Impl1_Call
   use mach.int.Int
   use mach.int.UInt32
   use prelude.Prelude
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_prelude_mutex_mutexguard uint32 (Type.rhbspecs_concurrent_even)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = uint32
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = uint32
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve3 with type t = Type.rhbspecs_prelude_mutex_mutexguard uint32 (Type.rhbspecs_concurrent_even)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = uint32
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = uint32
   clone RhbSpecs_Concurrent_Impl0_Inv as Inv0
   clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = Type.rhbspecs_concurrent_even
   clone RhbSpecs_Prelude_Mutex_Impl1_Set_Interface as Set0 with type t = uint32, type i = Type.rhbspecs_concurrent_even,
@@ -549,7 +542,7 @@ module RhbSpecs_Concurrent_Impl1_Call
   type i = Type.rhbspecs_concurrent_even, function Model0.model = Model0.model, predicate Inv0.inv = Inv0.inv
   clone RhbSpecs_Prelude_Mutex_Impl0_Lock_Interface as Lock0 with type t = uint32,
   type i = Type.rhbspecs_concurrent_even, function Model0.model = Model0.model
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = Type.rhbspecs_concurrent_addstwo
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = Type.rhbspecs_concurrent_addstwo
   let rec cfg call [@cfg:stackify] (self : Type.rhbspecs_concurrent_addstwo) : () = 
   var _0 : ();
   var self_1 : Type.rhbspecs_concurrent_addstwo;
@@ -627,23 +620,6 @@ module RhbSpecs_Concurrent_Impl1_Call
   }
   
 end
-module RhbSpecs_Concurrent_Impl1
-  use Type
-  clone RhbSpecs_Concurrent_Impl1_Call_Interface as Call0
-  clone RhbSpecs_Concurrent_Impl1_Postcondition as Postcondition0
-  clone RhbSpecs_Concurrent_Impl1_Precondition as Precondition0
-  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Precondition as Precondition1 with type self = Type.rhbspecs_concurrent_addstwo,
-  predicate precondition = Precondition0.precondition
-  clone RhbSpecs_Concurrent_Impl1_Return as Return0
-  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Call_Interface as Call1 with type self = Type.rhbspecs_concurrent_addstwo,
-  predicate Precondition0.precondition = Precondition0.precondition,
-  predicate Postcondition0.postcondition = Postcondition0.postcondition, type Return0.return' = Return0.return',
-  val call = Call0.call
-  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition as Postcondition1 with type self = Type.rhbspecs_concurrent_addstwo,
-  type Return0.return' = Return0.return', predicate postcondition = Postcondition0.postcondition
-  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return1 with type self = Type.rhbspecs_concurrent_addstwo,
-  type return' = Return0.return'
-end
 module RhbSpecs_Prelude_Mutex_Impl0_New_Interface
   type t   
   type i   
@@ -686,13 +662,6 @@ module CreusotContracts_Logic_Resolve_Impl1_Resolve
   use prelude.Prelude
   predicate resolve (self : borrowed t) = 
      ^ self =  * self
-end
-module CreusotContracts_Logic_Resolve_Impl1
-  type t   
-  use prelude.Prelude
-  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve0 with type t = t
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = borrowed t,
-  predicate resolve = Resolve0.resolve
 end
 module RhbSpecs_Prelude_Thread_Spawn_Interface
   type t   
@@ -738,6 +707,51 @@ module RhbSpecs_Prelude_Mutex_Impl2_Join
       end }
     
 end
+module CreusotContracts_Logic_Resolve_Impl1
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve0 with type t = t
+  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = borrowed t,
+  predicate resolve = Resolve0.resolve
+end
+module RhbSpecs_Concurrent_Impl1_Precondition_Interface
+  use Type
+  predicate precondition (self : Type.rhbspecs_concurrent_addstwo)
+end
+module RhbSpecs_Concurrent_Impl1_Precondition
+  use Type
+  predicate precondition (self : Type.rhbspecs_concurrent_addstwo) = 
+    true
+end
+module RhbSpecs_Concurrent_Impl1_Return
+  type return'  = 
+    ()
+end
+module RhbSpecs_Concurrent_Impl1_Postcondition_Interface
+  use Type
+  predicate postcondition (self : Type.rhbspecs_concurrent_addstwo) (_2' : ())
+end
+module RhbSpecs_Concurrent_Impl1_Postcondition
+  use Type
+  predicate postcondition (self : Type.rhbspecs_concurrent_addstwo) (_2' : ()) = 
+    true
+end
+module RhbSpecs_Concurrent_Impl1
+  use Type
+  clone RhbSpecs_Concurrent_Impl1_Call_Interface as Call0
+  clone RhbSpecs_Concurrent_Impl1_Postcondition as Postcondition0
+  clone RhbSpecs_Concurrent_Impl1_Precondition as Precondition0
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Precondition as Precondition1 with type self = Type.rhbspecs_concurrent_addstwo,
+  predicate precondition = Precondition0.precondition
+  clone RhbSpecs_Concurrent_Impl1_Return as Return0
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Call_Interface as Call1 with type self = Type.rhbspecs_concurrent_addstwo,
+  val call = Call0.call, predicate Precondition0.precondition = Precondition0.precondition,
+  predicate Postcondition0.postcondition = Postcondition0.postcondition, type Return0.return' = Return0.return'
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Postcondition as Postcondition1 with type self = Type.rhbspecs_concurrent_addstwo,
+  predicate postcondition = Postcondition0.postcondition, type Return0.return' = Return0.return'
+  clone RhbSpecs_Prelude_Fn_FakeFnOnce_Return as Return1 with type self = Type.rhbspecs_concurrent_addstwo,
+  type return' = Return0.return'
+end
 module RhbSpecs_Prelude_Thread_Impl0_Inv_Interface
   type f   
   use prelude.Prelude
@@ -782,13 +796,13 @@ module RhbSpecs_Concurrent_Concurrent
   clone RhbSpecs_Prelude_Mutex_Impl2_Join_Interface as Join0 with type t = (),
   type i = Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo),
   function Model0.model = Model0.model, predicate Inv0.inv = Inv1.inv
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = Type.rhbspecs_prelude_mutex_joinhandle () (Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo))
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve4 with type t = Type.rhbspecs_prelude_mutex_joinhandle () (Type.rhbspecs_prelude_thread_spawnpostcond (Type.rhbspecs_concurrent_addstwo))
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve3 with type t = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
   clone RhbSpecs_Concurrent_Impl1_Precondition as Precondition0
   clone RhbSpecs_Prelude_Thread_Spawn_Interface as Spawn0 with type t = (), type f = Type.rhbspecs_concurrent_addstwo,
   predicate Precondition0.precondition = Precondition0.precondition
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = Type.rhbspecs_concurrent_addstwo
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = Type.rhbspecs_concurrent_addstwo
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
   clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve0 with type t = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
   clone RhbSpecs_Prelude_Box_Leak_Interface as Leak0 with type t = Type.rhbspecs_prelude_mutex_mutex uint32 (Type.rhbspecs_concurrent_even)
   clone RhbSpecs_Concurrent_Impl0_Inv as Inv0
@@ -878,12 +892,6 @@ module RhbSpecs_Concurrent_Concurrent
   }
   
 end
-module CreusotContracts_Logic_Model_Impl0_ModelTy
-  type t   
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
-  type modelTy  = 
-    ModelTy0.modelTy
-end
 module CreusotContracts_Logic_Model_Impl0_Model_Interface
   type t   
   use prelude.Prelude
@@ -898,18 +906,6 @@ module CreusotContracts_Logic_Model_Impl0_Model
   type ModelTy0.modelTy = ModelTy0.modelTy
   function model (self : t) : ModelTy0.modelTy = 
     Model0.model self
-end
-module CreusotContracts_Logic_Model_Impl0
-  type t   
-  use prelude.Prelude
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy2 with type self = t
-  clone CreusotContracts_Logic_Model_Model_Model as Model2 with type self = t, type ModelTy0.modelTy = ModelTy2.modelTy
-  clone CreusotContracts_Logic_Model_Impl0_Model as Model0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy,
-  function Model0.model = Model2.model
-  clone CreusotContracts_Logic_Model_Impl0_ModelTy as ModelTy0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy
-  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = t, type ModelTy0.modelTy = ModelTy0.modelTy,
-  function model = Model0.model
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = t, type modelTy = ModelTy0.modelTy
 end
 module RhbSpecs_Prelude_Vec_Impl0_ModelTy
   type t   
@@ -935,16 +931,6 @@ module RhbSpecs_Prelude_Vec_Impl0_Model
   use Type
   function model (self : Type.rhbspecs_prelude_vec_vec t) : Seq.seq t
   axiom model_spec : forall self : Type.rhbspecs_prelude_vec_vec t . Seq.length (model self) <= 18446744073709551615
-end
-module RhbSpecs_Prelude_Vec_Impl0
-  type t   
-  use Type
-  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
-  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
-  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = Type.rhbspecs_prelude_vec_vec t,
-  type ModelTy0.modelTy = ModelTy0.modelTy, function model = Model0.model
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = Type.rhbspecs_prelude_vec_vec t,
-  type modelTy = ModelTy0.modelTy
 end
 module RhbSpecs_Prelude_Vec_Impl1_Len_Interface
   type t   
@@ -998,11 +984,6 @@ module Core_Ops_Index_Index_Index
     requires {false}
     
 end
-module RhbSpecs_Prelude_Vec_Impl3_Output
-  type t   
-  type output  = 
-    t
-end
 module RhbSpecs_Prelude_Vec_Impl3_Index_Interface
   type t   
   use mach.int.UInt64
@@ -1034,6 +1015,11 @@ module RhbSpecs_Prelude_Vec_Impl3_Index
     ensures { result = Seq.get (Model0.model self) (UInt64.to_int ix) }
     
 end
+module RhbSpecs_Prelude_Vec_Impl3_Output
+  type t   
+  type output  = 
+    t
+end
 module RhbSpecs_Prelude_Vec_Impl3
   type t   
   use Type
@@ -1047,9 +1033,37 @@ module RhbSpecs_Prelude_Vec_Impl3
   clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index0 with type t = t, function Model0.model = Model0.model
   clone RhbSpecs_Prelude_Vec_Impl3_Output as Output0 with type t = t
   clone Core_Ops_Index_Index_Index_Interface as Index1 with type self = Type.rhbspecs_prelude_vec_vec t,
-  type idx = usize, type Output0.output = Output0.output, val index = Index0.index
+  type idx = usize, val index = Index0.index, type Output0.output = Output0.output
   clone Core_Ops_Index_Index_Output as Output1 with type self = Type.rhbspecs_prelude_vec_vec t, type idx = usize,
   type output = Output0.output
+end
+module CreusotContracts_Logic_Model_Impl0_ModelTy
+  type t   
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
+  type modelTy  = 
+    ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Model_Impl0
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy2 with type self = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model2 with type self = t, type ModelTy0.modelTy = ModelTy2.modelTy
+  clone CreusotContracts_Logic_Model_Impl0_Model as Model0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy,
+  function Model0.model = Model2.model
+  clone CreusotContracts_Logic_Model_Impl0_ModelTy as ModelTy0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = t, function model = Model0.model,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = t, type modelTy = ModelTy0.modelTy
+end
+module RhbSpecs_Prelude_Vec_Impl0
+  type t   
+  use Type
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = Type.rhbspecs_prelude_vec_vec t,
+  function model = Model0.model, type ModelTy0.modelTy = ModelTy0.modelTy
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = Type.rhbspecs_prelude_vec_vec t,
+  type modelTy = ModelTy0.modelTy
 end
 module RhbSpecs_KnightsTour_Min_Interface
   use prelude.Prelude
@@ -1066,10 +1080,10 @@ module RhbSpecs_KnightsTour_Min
   use mach.int.UInt64
   use mach.int.Int64
   clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = (usize, Type.rhbspecs_knightstour_point), axiom .
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = ()
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = (usize, Type.rhbspecs_knightstour_point)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = Type.core_option_option (usize, Type.rhbspecs_knightstour_point)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve4 with type t = ()
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve3 with type t = (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = Type.core_option_option (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = (usize, Type.rhbspecs_knightstour_point)
   clone CreusotContracts_Logic_Model_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point),
   type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
@@ -1077,7 +1091,7 @@ module RhbSpecs_KnightsTour_Min
   function Model0.model = Model0.model
   clone RhbSpecs_Prelude_Vec_Impl1_Len_Interface as Len0 with type t = (usize, Type.rhbspecs_knightstour_point),
   function Model0.model = Model0.model
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = usize
   let rec cfg min [@cfg:stackify] (v : Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)) : Type.core_option_option (usize, Type.rhbspecs_knightstour_point)
     
    = 
@@ -1313,12 +1327,6 @@ module RhbSpecs_Prelude_Vec_Impl1_Get
       end }
     
 end
-module CreusotContracts_Logic_Model_Impl1_ModelTy
-  type t   
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
-  type modelTy  = 
-    ModelTy0.modelTy
-end
 module CreusotContracts_Logic_Model_Impl1_Model_Interface
   type t   
   use prelude.Prelude
@@ -1333,19 +1341,6 @@ module CreusotContracts_Logic_Model_Impl1_Model
   type ModelTy0.modelTy = ModelTy0.modelTy
   function model (self : borrowed t) : ModelTy0.modelTy = 
     Model0.model ( * self)
-end
-module CreusotContracts_Logic_Model_Impl1
-  type t   
-  use prelude.Prelude
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy2 with type self = t
-  clone CreusotContracts_Logic_Model_Model_Model as Model2 with type self = t, type ModelTy0.modelTy = ModelTy2.modelTy
-  clone CreusotContracts_Logic_Model_Impl1_Model as Model0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy,
-  function Model0.model = Model2.model
-  clone CreusotContracts_Logic_Model_Impl1_ModelTy as ModelTy0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy
-  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = borrowed t,
-  type ModelTy0.modelTy = ModelTy0.modelTy, function model = Model0.model
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = borrowed t,
-  type modelTy = ModelTy0.modelTy
 end
 module RhbSpecs_Prelude_Vec_Impl1_Push_Interface
   type t   
@@ -1445,13 +1440,6 @@ module RhbSpecs_Prelude_Vec_Impl1_Pop
       end }
     
 end
-module RhbSpecs_Prelude_IterMut_Impl0_ModelTy
-  type t   
-  use seq.Seq
-  use prelude.Prelude
-  type modelTy  = 
-    Seq.seq (borrowed t)
-end
 module RhbSpecs_Prelude_IterMut_Impl0_Model_Interface
   type t   
   use Type
@@ -1465,16 +1453,6 @@ module RhbSpecs_Prelude_IterMut_Impl0_Model
   use seq.Seq
   use prelude.Prelude
   function model (self : Type.rhbspecs_prelude_itermut_itermut t) : Seq.seq (borrowed t)
-end
-module RhbSpecs_Prelude_IterMut_Impl0
-  type t   
-  use Type
-  clone RhbSpecs_Prelude_IterMut_Impl0_Model as Model0 with type t = t
-  clone RhbSpecs_Prelude_IterMut_Impl0_ModelTy as ModelTy0 with type t = t
-  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = Type.rhbspecs_prelude_itermut_itermut t,
-  type ModelTy0.modelTy = ModelTy0.modelTy, function model = Model0.model
-  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = Type.rhbspecs_prelude_itermut_itermut t,
-  type modelTy = ModelTy0.modelTy
 end
 module RhbSpecs_Prelude_Vec_Impl1_IterMut_Interface
   type t   
@@ -1534,24 +1512,6 @@ module RhbSpecs_Prelude_Vec_FromElem
     ensures { Seq.length (Model0.model result) = UInt64.to_int n }
     
 end
-module Core_Ops_Index_IndexMut_IndexMut_Interface
-  type self   
-  type idx   
-  use prelude.Prelude
-  clone Core_Ops_Index_Index_Output as Output0 with type self = self, type idx = idx
-  val index_mut [@cfg:stackify] (self : borrowed self) (index : idx) : borrowed Output0.output
-    requires {false}
-    
-end
-module Core_Ops_Index_IndexMut_IndexMut
-  type self   
-  type idx   
-  use prelude.Prelude
-  clone Core_Ops_Index_Index_Output as Output0 with type self = self, type idx = idx
-  val index_mut [@cfg:stackify] (self : borrowed self) (index : idx) : borrowed Output0.output
-    requires {false}
-    
-end
 module RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface
   type t   
   use mach.int.UInt64
@@ -1591,22 +1551,6 @@ module RhbSpecs_Prelude_Vec_Impl2_IndexMut
     ensures {  ^ result = Seq.get (Model0.model ( ^ self)) (UInt64.to_int ix) }
     ensures {  * result = Seq.get (Model1.model self) (UInt64.to_int ix) }
     
-end
-module RhbSpecs_Prelude_Vec_Impl2
-  type t   
-  use Type
-  use mach.int.Int
-  use prelude.Prelude
-  use mach.int.UInt64
-  clone RhbSpecs_Prelude_Vec_Impl3_Output as Output0 with type t = t
-  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
-  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
-  clone CreusotContracts_Logic_Model_Impl1_Model as Model1 with type t = Type.rhbspecs_prelude_vec_vec t,
-  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model0.model
-  clone RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface as IndexMut0 with type t = t,
-  function Model0.model = Model0.model, function Model1.model = Model1.model
-  clone Core_Ops_Index_IndexMut_IndexMut_Interface as IndexMut1 with type self = Type.rhbspecs_prelude_vec_vec t,
-  type idx = usize, type Output0.output = Output0.output, val index_mut = IndexMut0.index_mut
 end
 module RhbSpecs_Prelude_Mutex_Impl0_IntoInner_Interface
   type t   
@@ -1739,6 +1683,59 @@ module CreusotContracts_Logic_Ghost_Impl1_Record
     ensures { Model0.model result = a }
     
 end
+module Core_Ops_Index_IndexMut_IndexMut_Interface
+  type self   
+  type idx   
+  use prelude.Prelude
+  clone Core_Ops_Index_Index_Output as Output0 with type self = self, type idx = idx
+  val index_mut [@cfg:stackify] (self : borrowed self) (index : idx) : borrowed Output0.output
+    requires {false}
+    
+end
+module Core_Ops_Index_IndexMut_IndexMut
+  type self   
+  type idx   
+  use prelude.Prelude
+  clone Core_Ops_Index_Index_Output as Output0 with type self = self, type idx = idx
+  val index_mut [@cfg:stackify] (self : borrowed self) (index : idx) : borrowed Output0.output
+    requires {false}
+    
+end
+module RhbSpecs_Prelude_Vec_Impl2
+  type t   
+  use Type
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  clone RhbSpecs_Prelude_Vec_Impl3_Output as Output0 with type t = t
+  clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = t
+  clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = t, axiom .
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model1 with type t = Type.rhbspecs_prelude_vec_vec t,
+  type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model0.model
+  clone RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface as IndexMut0 with type t = t,
+  function Model0.model = Model0.model, function Model1.model = Model1.model
+  clone Core_Ops_Index_IndexMut_IndexMut_Interface as IndexMut1 with type self = Type.rhbspecs_prelude_vec_vec t,
+  type idx = usize, val index_mut = IndexMut0.index_mut, type Output0.output = Output0.output
+end
+module CreusotContracts_Logic_Model_Impl1_ModelTy
+  type t   
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy0 with type self = t
+  type modelTy  = 
+    ModelTy0.modelTy
+end
+module CreusotContracts_Logic_Model_Impl1
+  type t   
+  use prelude.Prelude
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy2 with type self = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model2 with type self = t, type ModelTy0.modelTy = ModelTy2.modelTy
+  clone CreusotContracts_Logic_Model_Impl1_Model as Model0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy,
+  function Model0.model = Model2.model
+  clone CreusotContracts_Logic_Model_Impl1_ModelTy as ModelTy0 with type t = t, type ModelTy0.modelTy = ModelTy2.modelTy
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = borrowed t, function model = Model0.model,
+  type ModelTy0.modelTy = ModelTy0.modelTy
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = borrowed t,
+  type modelTy = ModelTy0.modelTy
+end
 module RhbSpecs_AllZero_AllZero_Interface
   use seq.Seq
   use mach.int.Int
@@ -1763,12 +1760,12 @@ module RhbSpecs_AllZero_AllZero
   clone RhbSpecs_Prelude_Vec_Impl0_Model as Model1 with type t = uint32, axiom .
   clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
   clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve5 with type t = Type.rhbspecs_prelude_vec_vec uint32
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve4 with type t = ()
   clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve3 with type t = uint32
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = uint32
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = usize
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.creusotcontracts_logic_ghost_ghost (borrowed (Type.rhbspecs_prelude_vec_vec uint32))
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.creusotcontracts_logic_ghost_ghost (borrowed (Type.rhbspecs_prelude_vec_vec uint32))
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
   clone CreusotContracts_Logic_Model_Impl1_Model as Model3 with type t = Type.rhbspecs_prelude_vec_vec uint32,
   type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
   clone RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface as IndexMut0 with type t = uint32,
@@ -1946,16 +1943,6 @@ module RhbSpecs_FibCell_Impl0_Inv
       | Type.Core_Option_Option_Some i -> UInt64.to_int i = Fib0.fib (UInt64.to_int (Type.rhbspecs_fibcell_fib_Fib_ix self))
       end
 end
-module RhbSpecs_FibCell_Impl0
-  use Type
-  use mach.int.Int
-  use prelude.Prelude
-  use mach.int.UInt64
-  clone RhbSpecs_FibCell_Fib as Fib0 with axiom .
-  clone RhbSpecs_FibCell_Impl0_Inv as Inv0 with function Fib0.fib = Fib0.fib
-  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv1 with type self = Type.rhbspecs_fibcell_fib,
-  type t = Type.core_option_option usize, predicate inv = Inv0.inv
-end
 module RhbSpecs_FibCell_FibCell_Interface
   use Type
   use mach.int.Int
@@ -1977,6 +1964,16 @@ module RhbSpecs_FibCell_FibCell
     
    = 
     forall i : (int) . UInt64.to_int (Type.rhbspecs_fibcell_fib_Fib_ix (Model1.model (Type.rhbspecs_prelude_cell_cell_Cell_ghost_inv (Seq.get (Model0.model v) i)))) = i
+end
+module RhbSpecs_FibCell_Impl0
+  use Type
+  use mach.int.Int
+  use prelude.Prelude
+  use mach.int.UInt64
+  clone RhbSpecs_FibCell_Fib as Fib0 with axiom .
+  clone RhbSpecs_FibCell_Impl0_Inv as Inv0 with function Fib0.fib = Fib0.fib
+  clone RhbSpecs_Prelude_Cell_Inv_Inv as Inv1 with type self = Type.rhbspecs_fibcell_fib,
+  type t = Type.core_option_option usize, predicate inv = Inv0.inv
 end
 module RhbSpecs_FibCell_FibMemo_Interface
   use mach.int.UInt64
@@ -2016,11 +2013,11 @@ module RhbSpecs_FibCell_FibMemo
   clone RhbSpecs_FibCell_LemmaFibBound as LemmaFibBound0 with function Fib0.fib = Fib0.fib, axiom .
   clone RhbSpecs_FibCell_LemmaMaxInt as LemmaMaxInt0 with axiom .
   use mach.int.Int64
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = ()
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.core_option_option usize
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib))
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve4 with type t = ()
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve3 with type t = Type.core_option_option usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib))
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = usize
   clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index0 with type t = Type.rhbspecs_prelude_cell_cell (Type.core_option_option usize) (Type.rhbspecs_fibcell_fib),
   function Model0.model = Model0.model
   clone RhbSpecs_FibCell_Impl0_Inv as Inv0 with function Fib0.fib = Fib0.fib
@@ -2197,6 +2194,23 @@ module RhbSpecs_FibCell_FibMemo
   }
   
 end
+module RhbSpecs_Prelude_IterMut_Impl0_ModelTy
+  type t   
+  use seq.Seq
+  use prelude.Prelude
+  type modelTy  = 
+    Seq.seq (borrowed t)
+end
+module RhbSpecs_Prelude_IterMut_Impl0
+  type t   
+  use Type
+  clone RhbSpecs_Prelude_IterMut_Impl0_Model as Model0 with type t = t
+  clone RhbSpecs_Prelude_IterMut_Impl0_ModelTy as ModelTy0 with type t = t
+  clone CreusotContracts_Logic_Model_Model_Model as Model1 with type self = Type.rhbspecs_prelude_itermut_itermut t,
+  function model = Model0.model, type ModelTy0.modelTy = ModelTy0.modelTy
+  clone CreusotContracts_Logic_Model_Model_ModelTy as ModelTy1 with type self = Type.rhbspecs_prelude_itermut_itermut t,
+  type modelTy = ModelTy0.modelTy
+end
 module RhbSpecs_IncVec_IncVec_Interface
   use mach.int.Int
   use mach.int.Int32
@@ -2229,16 +2243,16 @@ module RhbSpecs_IncVec_IncVec
   type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model1.model
   clone CreusotContracts_Logic_Ghost_Impl0_Model as Model0 with type t = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
   use mach.int.Int64
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve7 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve7 with type t = ()
   clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve6 with type t = uint32
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = Type.core_option_option (borrowed uint32)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = usize
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_prelude_itermut_itermut uint32
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve5 with type t = Type.core_option_option (borrowed uint32)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve4 with type t = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve3 with type t = Type.rhbspecs_prelude_itermut_itermut uint32
   clone CreusotContracts_Logic_Seq_Impl1_Get as Get0 with type t = borrowed uint32
   clone CreusotContracts_Logic_Seq_Impl1_Tail as Tail0 with type t = borrowed uint32
   clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve2 with type t = Type.rhbspecs_prelude_vec_vec uint32
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.creusotcontracts_logic_ghost_ghost (borrowed (Type.rhbspecs_prelude_vec_vec uint32))
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.creusotcontracts_logic_ghost_ghost (borrowed (Type.rhbspecs_prelude_vec_vec uint32))
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = borrowed (Type.rhbspecs_prelude_vec_vec uint32)
   clone RhbSpecs_Prelude_IterMut_Impl1_Next_Interface as Next0 with type t = uint32,
   function Model0.model = Model3.model, function Tail0.tail = Tail0.tail, function Get0.get = Get0.get
   clone RhbSpecs_Prelude_Vec_Impl1_IterMut_Interface as IterMut0 with type t = uint32,
@@ -2362,7 +2376,7 @@ module RhbSpecs_Reversal_Rev
   clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = (t, Type.rhbspecs_reversal_list t)
   clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve4 with type t = Type.rhbspecs_reversal_list t
   clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_reversal_list t
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = ()
   clone RhbSpecs_Prelude_Mem_Replace_Interface as Replace0 with type t = Type.rhbspecs_reversal_list t
   clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.creusotcontracts_logic_ghost_ghost (Type.rhbspecs_reversal_list t)
   clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = Type.rhbspecs_reversal_list t
@@ -2502,34 +2516,6 @@ module RhbSpecs_Reversal_Rev
   }
   
 end
-module Core_Clone_Clone_Clone_Interface
-  type self   
-  use prelude.Prelude
-  val clone' [@cfg:stackify] (self : self) : self
-    requires {false}
-    
-end
-module Core_Clone_Clone_Clone
-  type self   
-  use prelude.Prelude
-  val clone' [@cfg:stackify] (self : self) : self
-    requires {false}
-    
-end
-module Core_Clone_Clone_CloneFrom_Interface
-  type self   
-  use prelude.Prelude
-  val clone_from [@cfg:stackify] (self : borrowed self) (source : self) : ()
-    requires {false}
-    
-end
-module Core_Clone_Clone_CloneFrom
-  type self   
-  use prelude.Prelude
-  val clone_from [@cfg:stackify] (self : borrowed self) (source : self) : ()
-    requires {false}
-    
-end
 module RhbSpecs_KnightsTour_Impl3_Clone_Interface
   use prelude.Prelude
   use Type
@@ -2538,8 +2524,8 @@ end
 module RhbSpecs_KnightsTour_Impl3_Clone
   use prelude.Prelude
   use Type
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_knightstour_point
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = Type.rhbspecs_knightstour_point
   let rec cfg clone' [@cfg:stackify] (self : Type.rhbspecs_knightstour_point) : Type.rhbspecs_knightstour_point = 
   var _0 : Type.rhbspecs_knightstour_point;
   var self_1 : Type.rhbspecs_knightstour_point;
@@ -2554,12 +2540,6 @@ module RhbSpecs_KnightsTour_Impl3_Clone
     return _0
   }
   
-end
-module RhbSpecs_KnightsTour_Impl3
-  use Type
-  clone RhbSpecs_KnightsTour_Impl3_Clone_Interface as Clone0
-  clone Core_Clone_Clone_Clone_Interface as Clone1 with type self = Type.rhbspecs_knightstour_point,
-  val clone' = Clone0.clone'
 end
 module RhbSpecs_KnightsTour_Impl0_Mov_Interface
   use mach.int.Int
@@ -2582,9 +2562,9 @@ module RhbSpecs_KnightsTour_Impl0_Mov
   use mach.int.Int64
   use prelude.Prelude
   use Type
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = (isize, isize)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_knightstour_point
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = isize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = (isize, isize)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = isize
   let rec cfg mov [@cfg:stackify] (self : Type.rhbspecs_knightstour_point) (p : (isize, isize)) : Type.rhbspecs_knightstour_point
     requires {- 10000 <= Int64.to_int (let (_, a) = p in a) && Int64.to_int (let (_, a) = p in a) <= 10000}
     requires {- 10000 <= Int64.to_int (let (a, _) = p in a) && Int64.to_int (let (a, _) = p in a) <= 10000}
@@ -2666,10 +2646,10 @@ module RhbSpecs_KnightsTour_Impl1_New
   clone RhbSpecs_Prelude_Vec_Impl0_Model as Model0 with type t = Type.rhbspecs_prelude_vec_vec usize, axiom .
   clone RhbSpecs_KnightsTour_Impl1_Wf as Wf0 with function Model0.model = Model0.model,
   function Model1.model = Model1.model
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = ()
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = ()
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = Type.rhbspecs_prelude_vec_vec usize
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = usize
   clone RhbSpecs_Prelude_Vec_FromElem_Interface as FromElem0 with type t = usize, function Model0.model = Model1.model
   clone CreusotContracts_Logic_Model_Impl1_Model as Model2 with type t = Type.rhbspecs_prelude_vec_vec (Type.rhbspecs_prelude_vec_vec usize),
   type ModelTy0.modelTy = ModelTy0.modelTy, function Model0.model = Model0.model
@@ -2808,15 +2788,15 @@ module RhbSpecs_KnightsTour_Impl1_Available
   clone RhbSpecs_KnightsTour_Impl1_Wf as Wf0 with function Model0.model = Model0.model,
   function Model1.model = Model1.model
   use mach.int.Int64
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve6 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve6 with type t = usize
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy1 with type t = usize
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = Type.rhbspecs_knightstour_point
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = Type.rhbspecs_prelude_vec_vec usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve5 with type t = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve4 with type t = Type.rhbspecs_prelude_vec_vec usize
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = Type.rhbspecs_prelude_vec_vec usize
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_knightstour_board
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = bool
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = usize
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = isize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve3 with type t = Type.rhbspecs_knightstour_board
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = bool
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = isize
   clone CreusotContracts_Logic_Model_Impl0_Model as Model3 with type t = Type.rhbspecs_prelude_vec_vec usize,
   type ModelTy0.modelTy = ModelTy1.modelTy, function Model0.model = Model1.model
   clone RhbSpecs_Prelude_Vec_Impl3_Index_Interface as Index1 with type t = usize, function Model0.model = Model3.model
@@ -3019,12 +2999,12 @@ module RhbSpecs_KnightsTour_Impl1_CountDegree
   function Model1.model = Model1.model
   clone RhbSpecs_KnightsTour_Impl1_InBounds as InBounds0
   use mach.int.Int64
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = Type.rhbspecs_knightstour_board
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = ()
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve5 with type t = Type.rhbspecs_knightstour_board
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve4 with type t = ()
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve3 with type t = Type.rhbspecs_knightstour_point
   clone RhbSpecs_KnightsTour_Impl0_Mov_Interface as Mov0
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = (isize, isize)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_prelude_vec_vec (isize, isize)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = (isize, isize)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.rhbspecs_prelude_vec_vec (isize, isize)
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = (isize, isize)
   clone RhbSpecs_Prelude_Vec_Impl0_Model as Model2 with type t = (isize, isize), axiom .
   clone CreusotContracts_Logic_Model_Impl0_Model as Model3 with type t = Type.rhbspecs_prelude_vec_vec (isize, isize),
@@ -3034,7 +3014,7 @@ module RhbSpecs_KnightsTour_Impl1_CountDegree
   clone RhbSpecs_Prelude_Vec_Impl1_Len_Interface as Len0 with type t = (isize, isize),
   function Model0.model = Model3.model
   clone RhbSpecs_KnightsTour_Moves_Interface as Moves0 with function Model0.model = Model2.model
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = usize
   clone RhbSpecs_KnightsTour_Impl1_Available_Interface as Available0 with predicate Wf0.wf = Wf0.wf,
   predicate InBounds0.in_bounds = InBounds0.in_bounds
   let rec cfg count_degree [@cfg:stackify] (self : Type.rhbspecs_knightstour_board) (p : Type.rhbspecs_knightstour_point) : usize
@@ -3197,12 +3177,12 @@ module RhbSpecs_KnightsTour_Impl1_Set
   use mach.int.Int64
   clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve5 with type t = usize
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy1 with type t = usize
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve4 with type t = Type.rhbspecs_knightstour_point
   clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve3 with type t = Type.rhbspecs_prelude_vec_vec usize
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = Type.rhbspecs_prelude_vec_vec usize
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = isize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = isize
   clone CreusotContracts_Logic_Resolve_Impl1_Resolve as Resolve1 with type t = Type.rhbspecs_knightstour_board
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = usize
   clone CreusotContracts_Logic_Model_Impl1_Model as Model3 with type t = Type.rhbspecs_prelude_vec_vec usize,
   type ModelTy0.modelTy = ModelTy1.modelTy, function Model0.model = Model1.model
   clone RhbSpecs_Prelude_Vec_Impl2_IndexMut_Interface as IndexMut1 with type t = usize,
@@ -3323,15 +3303,15 @@ module RhbSpecs_KnightsTour_KnightsTour
   function Model1.model = Model1.model
   clone RhbSpecs_KnightsTour_DumbNonlinearArith as DumbNonlinearArith0 with axiom .
   use mach.int.Int64
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve8 with type self = Type.core_option_option (usize, Type.rhbspecs_knightstour_point)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve7 with type self = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve6 with type self = Type.rhbspecs_knightstour_board
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve8 with type t = Type.core_option_option (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve7 with type t = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve6 with type t = Type.rhbspecs_knightstour_board
   clone RhbSpecs_KnightsTour_Min_Interface as Min0
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve5 with type self = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve5 with type t = Type.rhbspecs_prelude_vec_vec (usize, Type.rhbspecs_knightstour_point)
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy1 with type t = (usize, Type.rhbspecs_knightstour_point)
   clone RhbSpecs_KnightsTour_Impl0_Mov_Interface as Mov0
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve4 with type self = (isize, isize)
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve3 with type self = Type.rhbspecs_prelude_vec_vec (isize, isize)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve4 with type t = (isize, isize)
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve3 with type t = Type.rhbspecs_prelude_vec_vec (isize, isize)
   clone RhbSpecs_Prelude_Vec_Impl0_ModelTy as ModelTy0 with type t = (isize, isize)
   clone RhbSpecs_Prelude_Vec_Impl0_Model as Model3 with type t = (isize, isize), axiom .
   clone CreusotContracts_Logic_Model_Impl0_Model as Model4 with type t = Type.rhbspecs_prelude_vec_vec (isize, isize),
@@ -3348,9 +3328,9 @@ module RhbSpecs_KnightsTour_KnightsTour
   function Model0.model = Model2.model, function Model1.model = Model5.model
   clone RhbSpecs_Prelude_Vec_Impl1_New_Interface as New1 with type t = (usize, Type.rhbspecs_knightstour_point),
   function Model0.model = Model2.model
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve2 with type self = ()
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve1 with type self = Type.rhbspecs_knightstour_point
-  clone CreusotContracts_Logic_Resolve_Resolve_Resolve as Resolve0 with type self = usize
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve2 with type t = ()
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve1 with type t = Type.rhbspecs_knightstour_point
+  clone CreusotContracts_Logic_Resolve_Impl2_Resolve as Resolve0 with type t = usize
   clone RhbSpecs_KnightsTour_Impl1_CountDegree_Interface as CountDegree0 with predicate InBounds0.in_bounds = InBounds0.in_bounds,
   predicate Wf0.wf = Wf0.wf
   clone RhbSpecs_KnightsTour_Impl1_Available_Interface as Available0 with predicate Wf0.wf = Wf0.wf,
@@ -3698,4 +3678,38 @@ module RhbSpecs_KnightsTour_KnightsTour
 end
 module RhbSpecs_KnightsTour_Impl2
   
+end
+module Core_Clone_Clone_Clone_Interface
+  type self   
+  use prelude.Prelude
+  val clone' [@cfg:stackify] (self : self) : self
+    requires {false}
+    
+end
+module Core_Clone_Clone_Clone
+  type self   
+  use prelude.Prelude
+  val clone' [@cfg:stackify] (self : self) : self
+    requires {false}
+    
+end
+module Core_Clone_Clone_CloneFrom_Interface
+  type self   
+  use prelude.Prelude
+  val clone_from [@cfg:stackify] (self : borrowed self) (source : self) : ()
+    requires {false}
+    
+end
+module Core_Clone_Clone_CloneFrom
+  type self   
+  use prelude.Prelude
+  val clone_from [@cfg:stackify] (self : borrowed self) (source : self) : ()
+    requires {false}
+    
+end
+module RhbSpecs_KnightsTour_Impl3
+  use Type
+  clone RhbSpecs_KnightsTour_Impl3_Clone_Interface as Clone0
+  clone Core_Clone_Clone_Clone_Interface as Clone1 with type self = Type.rhbspecs_knightstour_point,
+  val clone' = Clone0.clone'
 end

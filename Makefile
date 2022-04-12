@@ -4,13 +4,10 @@ clean: reset-session
 	cargo clean
 
 reset-session:
-	rm -r proofs
+	rm -rf proofs
 
-build-lib:
-	CREUSOT_CONTINUE=1 cargo creusot --features=contracts > /dev/null
-	cargo clean -p rhb-specs
-
-build: build-lib
-	CREUSOT_CONTINUE=1 cargo creusot --features=contracts > proofs.mlcfg
+build:
+	cargo creusot --features=contracts
+	cp target/debug/rhb_specs.mlcfg proofs.mlcfg
 
 proofs: build
